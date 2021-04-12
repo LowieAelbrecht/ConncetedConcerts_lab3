@@ -1,0 +1,43 @@
+/* MAIN CSS */
+
+@import url("https://use.typekit.net/zoq2vaz.css");
+@import url(https://allfont.net/allfont.css?fonts=vera-humana-95);
+
+:root {
+    /* COLORS */
+    --cc-purple: #240046;
+    /* FONTS */
+    --font-coolvetica: "coolvetica", sans-serif;
+    --font-humana: "Vera Humana 95", arial;
+    /* LOGO */
+    --logo-full: url("../images/logofull.png");
+}
+
+body {
+    background-color: var(--cc-purple);
+}
+
+.logofull {
+    background-image: var(--logo-full);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 50%;
+}
+
+/* BUTTONS */
+
+.btn-orange {
+    font-family: var(--font-humana);
+    font-weight: 700;
+    background: rgb(255, 158, 0);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 158, 0, 1) 0%,
+        rgba(255, 109, 0, 1) 100%
+    );
+    color: #fff;
+    border: 0;
+    border-radius: 15px;
+    padding: 10px 20px;
+}

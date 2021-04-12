@@ -1,9 +1,13 @@
 @extends('layouts/frontend')
 
-@section('content')
-<h1>Login page</h1>
+@section('title')
+    Login
+@endsection
 
-<form action="" method="get">
-    <button class="btn btn-info" type="submit" name="login" value="login">Login with spotify</button>
-</form>
+<div class="logofull"></div>
+
+@section('content')  
+    <form class="text-center" action="" method="get">
+        <button class="btn-orange" type="submit" name="login" value="login">Login with spotify</button>
+    </form>
 @endsection
