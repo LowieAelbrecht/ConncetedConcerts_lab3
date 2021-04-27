@@ -14,7 +14,7 @@ class ClientController extends Controller
             $session = new \SpotifyWebAPI\Session(
                 'c3ee0d861721448dbecc1b0c475b29e4',
                 '056c230dbe804f16aa56d45718175c4a',
-                'http://ConnectedConcerts.test/callback'
+                'http://ConnectedConcerts.test/user-home'
             );
     
             $api = new \SpotifyWebAPI\SpotifyWebAPI();
@@ -22,7 +22,11 @@ class ClientController extends Controller
             if (isset($_GET['code'])) {
                 $session->requestAccessToken($_GET['code']);
                 $api->setAccessToken($session->getAccessToken());
-    
+                //echo $session->getAccessToken();
+                /*
+                $user = new \App\User();
+                $user->name = 
+                */
                 print_r($api->me());
             } else {
                 $options = [
@@ -34,6 +38,13 @@ class ClientController extends Controller
                 header('Location: ' . $session->getAuthorizeUrl($options));
                 die();
             }
+            
+            
         }
+    }
+
+    public function userHome()
+    {
+        return view('/user-home');
     }
 }

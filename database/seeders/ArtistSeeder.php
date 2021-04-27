@@ -13,9 +13,6 @@ class ArtistSeeder extends Seeder
      */
     public function run()
     {
-        $artist = new \App\Models\Artist();
-        $artist->name = "Sophie";
-        $artist->bio = "Lorem ipsum";
-        $artist->save();
+        //
     }
 }
