@@ -1,1 +1,10 @@
-<h1>In here</h1>
+@extends('layouts/main-nav')
+
+@section('title')
+    Home
+@endsection
+
+
+@section('content')  
+    
+@endsection

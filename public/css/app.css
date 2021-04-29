@@ -6,6 +6,7 @@
 :root {
     /* COLORS */
     --cc-purple: #240046;
+    --cc-white: #efefef;
     /* FONTS */
     --font-coolvetica: "coolvetica", sans-serif;
     --font-humana: "Vera Humana 95", arial;
@@ -14,16 +15,41 @@
 }
 
 body {
-    background-color: var(--cc-purple);
+    background-color: var(--cc-white);
+    width: 100vw;
+    height: 100vh;
 }
+
+.main-nav {
+    background-color: var(--cc-purple);
+    width: 100vw;
+    height: 60px;
+}
+
+.main-nav .material-icons {
+    color: var(--cc-white);
+    font-size: 48px;
+}
+
+.main-nav .orange-logo {
+    width: 30vw;
+}
+
+/* LOGIN */
 
 .logofull {
     background-image: var(--logo-full);
     background-repeat: no-repeat;
     background-position: center;
-    width: 100%;
-    height: 50%;
-    margin: 0;
+    background-size: 100vw;
+    height: 30%;
+}
+
+.login {
+    background-color: var(--cc-purple);
+    padding-top: 60%;
+    width: 100vw;
+    height: 100vh;
 }
 
 /* BUTTONS */

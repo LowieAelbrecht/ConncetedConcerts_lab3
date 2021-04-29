@@ -4,9 +4,12 @@
     Login
 @endsection
 
-<div class="logofull"></div>
+
 
 @section('content')  
+
+    <div class="logofull"></div>
+
     <form class="text-center" action="" method="get">
         <button class="btn-orange" type="submit" name="login" value="login">Login with spotify</button>
     </form>

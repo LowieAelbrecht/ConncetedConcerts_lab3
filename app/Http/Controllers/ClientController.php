@@ -38,7 +38,7 @@ class ClientController extends Controller
                 header('Location: ' . $session->getAuthorizeUrl($options));
                 die();
             }
-            
+            return view('/user-home');
             
         }
     }
