@@ -31,8 +31,42 @@ body {
     font-size: 48px;
 }
 
+.main-nav .invisible {
+    color: none;
+}
+
 .main-nav .orange-logo {
     width: 30vw;
+}
+
+.purple-line {
+    height: 2px;
+    background-color: var(--cc-purple);
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    padding: 0;
+}
+
+/* BUTTONS */
+
+.btn-orange {
+    font-family: var(--font-humana);
+    font-weight: 700;
+    background: rgb(255, 158, 0);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 158, 0, 1) 0%,
+        rgba(255, 109, 0, 1) 100%
+    );
+    color: #fff;
+    border: 0;
+    border-radius: 15px;
+    padding: 10px 20px;
 }
 
 /* LOGIN */
@@ -52,19 +86,14 @@ body {
     height: 100vh;
 }
 
-/* BUTTONS */
+/* SETTINGS */
 
-.btn-orange {
-    font-family: var(--font-humana);
-    font-weight: 700;
-    background: rgb(255, 158, 0);
-    background: linear-gradient(
-        180deg,
-        rgba(255, 158, 0, 1) 0%,
-        rgba(255, 109, 0, 1) 100%
-    );
-    color: #fff;
-    border: 0;
-    border-radius: 15px;
-    padding: 10px 20px;
+.list-settings .setting {
+    font-family: var(--font-coolvetica);
+    font-size: 32px;
+    color: var(--cc-purple);
+}
+
+.list-settings li {
+    margin-top: 1em;
 }

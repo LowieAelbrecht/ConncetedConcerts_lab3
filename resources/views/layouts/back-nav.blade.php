@@ -12,13 +12,13 @@
 <body>
     <nav class="containter main-nav d-flex justify-content-between">
         <div class="ml-1 mt-1">
-            <a href="/profile"><i class="material-icons">person</i></a>
+            <a href="/user-home" ><i class="material-icons">arrow_back</i></a>
         </div>
         <div>
             <img class="orange-logo" src="../images/LogoLetterOrange.png" alt="">
         </div>
         <div class="mr-1 mt-1">
-            <a href="/settings"><i class="material-icons">more_vert</i></a>
+            <i class="material-icons invisible">more_vert</i>
         </div>     
     </nav>
     <div class="container content">

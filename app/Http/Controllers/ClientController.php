@@ -18,17 +18,24 @@ class ClientController extends Controller
             );
     
             $api = new \SpotifyWebAPI\SpotifyWebAPI();
-    
+            
+            /*
             if (isset($_GET['code'])) {
                 $session->requestAccessToken($_GET['code']);
+                
                 $api->setAccessToken($session->getAccessToken());
+
+                $accessToken = $session->getAccessToken();
+                $refreshToken = $session->getRefreshToken();
+
                 //echo $session->getAccessToken();
-                /*
                 $user = new \App\User();
                 $user->name = 
-                */
+                
                 print_r($api->me());
             } else {
+                echo "check check";
+                
                 $options = [
                     'scope' => [
                         'user-read-email',
@@ -37,14 +44,21 @@ class ClientController extends Controller
     
                 header('Location: ' . $session->getAuthorizeUrl($options));
                 die();
+                
             }
+            */
             return view('/user-home');
             
         }
     }
 
-    public function userHome()
+    public function profile()
     {
-        return view('/user-home');
+        return view('/profile');
+    }
+
+    public function settings()
+    {
+        return view('/settings');
     }
 }
