@@ -6,54 +6,27 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+    public function __construct(Request $request)
+    {    
+        require '../vendor/autoload.php';
+
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+
+        $accessToken = session('accessToken');
+
+        $api->setAccessToken($accessToken);
+        //print_r($api->me());             
+    }
+
     public function index()
     {
-        {     
-            require '../vendor/autoload.php';
-    
-            $session = new \SpotifyWebAPI\Session(
-                'c3ee0d861721448dbecc1b0c475b29e4',
-                '056c230dbe804f16aa56d45718175c4a',
-                'http://ConnectedConcerts.test/user-home'
-            );
-    
-            $api = new \SpotifyWebAPI\SpotifyWebAPI();
-            
-            /*
-            if (isset($_GET['code'])) {
-                $session->requestAccessToken($_GET['code']);
-                
-                $api->setAccessToken($session->getAccessToken());
-
-                $accessToken = $session->getAccessToken();
-                $refreshToken = $session->getRefreshToken();
-
-                //echo $session->getAccessToken();
-                $user = new \App\User();
-                $user->name = 
-                
-                print_r($api->me());
-            } else {
-                echo "check check";
-                
-                $options = [
-                    'scope' => [
-                        'user-read-email',
-                    ],
-                ];
-    
-                header('Location: ' . $session->getAuthorizeUrl($options));
-                die();
-                
-            }
-            */
-            return view('/user-home');
-            
-        }
+        return view('/user-home');
     }
 
     public function profile()
     {
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+        //print_r($api->me());
         return view('/profile');
     }
 

@@ -91,6 +91,7 @@ ul {
 .list-settings .setting {
     font-family: var(--font-coolvetica);
     font-size: 32px;
+    font-weight: bolder;
     color: var(--cc-purple);
 }
 
