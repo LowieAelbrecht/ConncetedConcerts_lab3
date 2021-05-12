@@ -12,7 +12,20 @@ class ClientController extends Controller
 
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
 
-        $accessToken = session('accessToken');
+        //$accessToken = session('accessToken');
+        $accessToken = $request->session()->get('accessToken');
+        if ($request->session()->has('accessToken')) {
+            $url = $request->url();
+            echo $url;
+        }
+        
+        echo "hello";
+        //var_dump($accessToken);
+        
+        $data = $request->session()->all();
+
+        print_r($data);
+        
 
         $api->setAccessToken($accessToken);
         //print_r($api->me());             

@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware' => ['web'], 'prefix' => 'api'], function(){
+
+   // YOUR ROUTES
+});
+
 Route::get('/login', 'App\Http\Controllers\Login@index');
 Route::get('/user-home', 'App\Http\Controllers\ClientController@index');
 //Route::get('/user-home', 'App\Http\Controllers\ClientController@userHome');

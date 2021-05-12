@@ -5,12 +5,11 @@ https://github.com/jwilsson/spotify-web-api-php/blob/main/docs/examples/access-t
 */
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 
 class Callback extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {     
         require '../vendor/autoload.php';
 
@@ -28,7 +27,11 @@ class Callback extends Controller
         $accessToken = $session->getAccessToken();
         $refreshToken = $session->getRefreshToken();
 
-        session()->put('accessToken', $accessToken);
+        //session()->put('accessToken', $accessToken);
+        //session(['accessToken' => $accessToken]);
+        $request->session()->put('accessToken', $accessToken);
+        $request->session()->put('refreshToken', $refreshToken);
+
 
         // Store the access and refresh tokens somewhere. In a session for example
 
