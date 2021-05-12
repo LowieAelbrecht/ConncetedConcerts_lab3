@@ -86,6 +86,12 @@ ul {
     height: 100vh;
 }
 
+/* PROFILE */
+
+.profile-image {
+    border-radius: 50%;
+}
+
 /* SETTINGS */
 
 .list-settings .setting {

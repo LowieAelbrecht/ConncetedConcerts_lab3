@@ -1,7 +1,7 @@
 @extends('layouts/back-nav')
 
 @section('title')
-    profile
+    settings
 @endsection
 
 

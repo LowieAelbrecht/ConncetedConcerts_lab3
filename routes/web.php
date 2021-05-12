@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 Route::get('/login', 'App\Http\Controllers\Login@index');
 Route::get('/user-home', 'App\Http\Controllers\ClientController@index');
+Route::get('/checkUser', 'App\Http\Controllers\ClientController@checkUser');
 //Route::get('/user-home', 'App\Http\Controllers\ClientController@userHome');
 Route::get('/callback', 'App\Http\Controllers\Callback@index');
-Route::get('/profile', 'App\Http\Controllers\ClientController@profile');
+Route::get('/user-profile', 'App\Http\Controllers\ClientController@profile');
 Route::get('/settings', 'App\Http\Controllers\ClientController@settings');

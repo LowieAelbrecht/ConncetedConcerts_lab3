@@ -7,43 +7,50 @@ use Illuminate\Http\Request;
 class ClientController extends Controller
 {
     public function __construct(Request $request)
-    {    
-        require '../vendor/autoload.php';
-
-        $api = new \SpotifyWebAPI\SpotifyWebAPI();
-
-        //$accessToken = session('accessToken');
-        $accessToken = $request->session()->get('accessToken');
+    {
         if ($request->session()->has('accessToken')) {
-            $url = $request->url();
-            echo $url;
+
+        } else {
+
         }
-        
-        echo "hello";
-        //var_dump($accessToken);
-        
-        $data = $request->session()->all();
-
-        print_r($data);
-        
-
-        $api->setAccessToken($accessToken);
-        print_r($api->me());             
     }
 
-    public function index()
+    public function checkUser(Request $request)
+    {
+        $accessToken = $request->session()->get('accessToken');
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($accessToken);
+        $me = $api->me();
+        /*
+        $id = $me->id;
+        $artist = $api->getArtist('6V49rvx2KPFjV4fmFsguWX');
+        var_dump($artist);
+        die;
+        if($artist == "invalid id"){
+            echo "not artist";
+        } else {
+            echo "artist";
+        }
+        var_dump($artist); 
+        */
+        return redirect('/user-home');     
+    }
+
+    public function index(Request $request)
     {
         return view('/user-home');
-    }
+    }    
 
-    public function profile()
+    public function profile(Request $request)
     {
+        $accessToken = $request->session()->get('accessToken');
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
-        //print_r($api->me());
-        return view('/profile');
+        $api->setAccessToken($accessToken);
+        $data['profile'] = $api->me();
+        return view('/user-profile', $data);
     }
 
-    public function settings()
+    public function settings(Request $request)
     {
         return view('/settings');
     }

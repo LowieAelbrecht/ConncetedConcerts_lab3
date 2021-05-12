@@ -37,7 +37,7 @@ class Callback extends Controller
 
         // Send the user along and fetch some data!
         //header('Location: http://ConnectedConcerts.test/user-home');
-        $url = "http://ConnectedConcerts.test/user-home";
+        $url = "http://ConnectedConcerts.test/checkUser";
         return \Illuminate\Support\Facades\Redirect::to($url);
         die();
     }

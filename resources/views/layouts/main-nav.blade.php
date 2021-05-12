@@ -12,7 +12,7 @@
 <body>
     <nav class="containter main-nav d-flex justify-content-between">
         <div class="ml-1 mt-1">
-            <a href="/profile"><i class="material-icons">person</i></a>
+            <a href="/user-profile"><i class="material-icons">person</i></a>
         </div>
         <div>
             <img class="orange-logo" src="../images/LogoLetterOrange.png" alt="">
