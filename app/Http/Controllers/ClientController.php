@@ -28,7 +28,7 @@ class ClientController extends Controller
         
 
         $api->setAccessToken($accessToken);
-        //print_r($api->me());             
+        print_r($api->me());             
     }
 
     public function index()

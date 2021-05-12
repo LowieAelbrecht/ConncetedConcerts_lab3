@@ -36,7 +36,9 @@ class Callback extends Controller
         // Store the access and refresh tokens somewhere. In a session for example
 
         // Send the user along and fetch some data!
-        header('Location: http://ConnectedConcerts.test/user-home');
+        //header('Location: http://ConnectedConcerts.test/user-home');
+        $url = "http://ConnectedConcerts.test/user-home";
+        return \Illuminate\Support\Facades\Redirect::to($url);
         die();
     }
 }
