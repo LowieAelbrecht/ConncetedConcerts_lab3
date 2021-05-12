@@ -9,9 +9,9 @@ class ClientController extends Controller
     public function __construct(Request $request)
     {
         if ($request->session()->has('accessToken')) {
-
+            
         } else {
-
+            // logout here
         }
     }
 
