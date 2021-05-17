@@ -33,13 +33,25 @@ class ClientController extends Controller
         }
         var_dump($artist); 
         */
-        return redirect('/user-home');     
+        return redirect('/user-rooms');     
     }
 
     public function index(Request $request)
     {
-        return view('/user-home');
-    }    
+        return view('/user-rooms');
+    }
+
+    public function discover(Request $request)
+    {
+        $data['concerts'] = \DB::table('concerts')->get();
+
+        return view('/user-discover', $data);
+    }
+    
+    public function showConcert($concerts){
+        $concerts = \DB::table('concerts')->where('id', $concerts)->first();
+        dd($concerts);
+    }
 
     public function profile(Request $request)
     {

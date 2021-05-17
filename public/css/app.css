@@ -98,6 +98,26 @@ ul {
     height: 100vh;
 }
 
+/* ROOMS/CONCERTS */
+
+.rooms {
+    font-size: 22px;
+}
+
+.rooms a {
+    font-family: var(--font-coolvetica);
+    color: var(--cc-purple);
+    font-weight: bolder;
+}
+
+.active-link {
+    text-decoration: underline;
+}
+
+.non-active-link {
+    opacity: 50%;
+}
+
 /* PROFILE */
 
 .profile-image {

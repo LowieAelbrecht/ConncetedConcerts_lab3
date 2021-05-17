@@ -12,7 +12,7 @@
 <body>
     <nav class="containter main-nav d-flex justify-content-between">
         <div class="ml-1 mt-1">
-            <a href="/user-home" ><i class="material-icons">arrow_back</i></a>
+            <a href="/user-rooms" ><i class="material-icons">arrow_back</i></a>
         </div>
         <div>
             <img class="orange-logo" src="../images/LogoLetterOrange.png" alt="">
