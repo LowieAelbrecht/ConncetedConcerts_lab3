@@ -20,7 +20,7 @@ class CreateConcertsTable extends Migration
             $table->string('locatie');
             $table->dateTime('concert_date');
             $table->double('prijs', 15, 2);
-            $table->integer('artistID')->nullable();
+            $table->integer('artist_id')->nullable();
             //$table->integer('userID')->nullable(); Nog nakijken hoe we gaan checken of een user zich heeft ingekocht in een room
             $table->timestamps();
         });

@@ -20,6 +20,15 @@ body {
     height: 100vh;
 }
 
+h3,
+h4 {
+    font-family: var(--font-coolvetica);
+}
+
+h5 {
+    font-family: var(--font-humana);
+}
+
 .main-nav {
     background-color: var(--cc-purple);
     width: 100vw;
@@ -116,6 +125,11 @@ ul {
 
 .non-active-link {
     opacity: 50%;
+}
+
+.card {
+    font-size: 20px;
+    border-radius: 3;
 }
 
 /* PROFILE */

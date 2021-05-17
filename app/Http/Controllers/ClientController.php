@@ -22,17 +22,17 @@ class ClientController extends Controller
         $api->setAccessToken($accessToken);
         $me = $api->me();
         /*
-        $id = $me->id;
-        $artist = $api->getArtist('6V49rvx2KPFjV4fmFsguWX');
-        var_dump($artist);
-        die;
-        if($artist == "invalid id"){
+        $artist = $api->getArtist($me->id);
+        
+        if($this->reason == "invalid id"){
             echo "not artist";
         } else {
             echo "artist";
+            //return redirect('/artist-home');
         }
         var_dump($artist); 
         */
+        
         return redirect('/user-rooms');     
     }
 
@@ -43,7 +43,10 @@ class ClientController extends Controller
 
     public function discover(Request $request)
     {
-        $data['concerts'] = \DB::table('concerts')->orderBy('concert_date', 'desc')->get();
+        $data['concerts'] = \DB::table('concerts')
+        ->whereRaw('Date(concert_date) >= CURDATE()')
+        ->orderBy('concert_date', 'asc')
+        ->get();
 
         return view('/user-discover', $data);
     }
