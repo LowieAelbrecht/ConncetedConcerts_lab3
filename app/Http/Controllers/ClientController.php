@@ -43,7 +43,7 @@ class ClientController extends Controller
 
     public function discover(Request $request)
     {
-        $data['concerts'] = \DB::table('concerts')->get();
+        $data['concerts'] = \DB::table('concerts')->orderBy('concert_date', 'desc')->get();
 
         return view('/user-discover', $data);
     }

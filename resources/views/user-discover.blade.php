@@ -13,8 +13,10 @@
     </div>
 
     @foreach( $concerts as $concert )
-        <div>
+        <div class="card">
+            <h3><a href="/concerts/{{ $concert->id }}">{{ $concert->artist_name }}</a></h3>
             <h3><a href="/concerts/{{ $concert->id }}">{{ $concert->name }}</a></h3>
+            <h3><a href="/concerts/{{ $concert->id }}">{{ $concert->locatie }}</a></h3>
         </div>
     @endforeach
 
