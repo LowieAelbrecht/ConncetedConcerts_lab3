@@ -16,5 +16,9 @@
         <li><a class="setting">Contact<a></li>
         <div class="purple-line"></div>
     </ul>
+
+    <form class="text-center" action="" method="get">
+        <button class="btn-outline-purple" type="submit" name="logout" value="logout">Log out</button>
+    </form>
     
 @endsection

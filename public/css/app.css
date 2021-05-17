@@ -69,6 +69,18 @@ ul {
     padding: 10px 20px;
 }
 
+.btn-outline-purple {
+    font-family: var(--font-humana);
+    color: var(--cc-purple);
+    font-weight: 700;
+    font-size: 22px;
+    border-radius: 20px;
+    border-width: 3px;
+    border-color: var(--cc-purple);
+    width: 80vw;
+    padding: 6px 20px;
+}
+
 /* LOGIN */
 
 .logofull {

@@ -11,7 +11,7 @@ class ClientController extends Controller
         if ($request->session()->has('accessToken')) {
             
         } else {
-            // logout here
+            echo "User should not be able to visis this pages";
         }
     }
 
@@ -52,6 +52,10 @@ class ClientController extends Controller
 
     public function settings(Request $request)
     {
+        if($_GET){
+            $request->session()->flush();
+            return redirect('/login');
+        }
         return view('/settings');
     }
 }
