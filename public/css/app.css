@@ -20,6 +20,15 @@ body {
     height: 100vh;
 }
 
+h3,
+h4 {
+    font-family: var(--font-coolvetica);
+}
+
+h5 {
+    font-family: var(--font-humana);
+}
+
 .main-nav {
     background-color: var(--cc-purple);
     width: 100vw;
@@ -31,8 +40,54 @@ body {
     font-size: 48px;
 }
 
+.main-nav .invisible {
+    color: none;
+}
+
 .main-nav .orange-logo {
     width: 30vw;
+}
+
+.purple-line {
+    height: 2px;
+    background-color: var(--cc-purple);
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    padding: 0;
+}
+
+/* BUTTONS */
+
+.btn-orange {
+    font-family: var(--font-humana);
+    font-weight: 700;
+    background: rgb(255, 158, 0);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 158, 0, 1) 0%,
+        rgba(255, 109, 0, 1) 100%
+    );
+    color: #fff;
+    border: 0;
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+
+.btn-outline-purple {
+    font-family: var(--font-humana);
+    color: var(--cc-purple);
+    font-weight: 700;
+    font-size: 22px;
+    border-radius: 20px;
+    border-width: 3px;
+    border-color: var(--cc-purple);
+    width: 80vw;
+    padding: 6px 20px;
 }
 
 /* LOGIN */
@@ -52,19 +107,47 @@ body {
     height: 100vh;
 }
 
-/* BUTTONS */
+/* ROOMS/CONCERTS */
 
-.btn-orange {
-    font-family: var(--font-humana);
-    font-weight: 700;
-    background: rgb(255, 158, 0);
-    background: linear-gradient(
-        180deg,
-        rgba(255, 158, 0, 1) 0%,
-        rgba(255, 109, 0, 1) 100%
-    );
-    color: #fff;
-    border: 0;
-    border-radius: 15px;
-    padding: 10px 20px;
+.rooms {
+    font-size: 22px;
+}
+
+.rooms a {
+    font-family: var(--font-coolvetica);
+    color: var(--cc-purple);
+    font-weight: bolder;
+}
+
+.active-link {
+    text-decoration: underline;
+}
+
+.non-active-link {
+    opacity: 50%;
+}
+
+.card {
+    font-size: 20px;
+    border-radius: 3;
+}
+
+/* PROFILE */
+
+.profile-image {
+    border-radius: 50%;
+    width: 35vw;
+}
+
+/* SETTINGS */
+
+.list-settings .setting {
+    font-family: var(--font-coolvetica);
+    font-size: 32px;
+    font-weight: bolder;
+    color: var(--cc-purple);
+}
+
+.list-settings li {
+    margin-top: 1em;
 }

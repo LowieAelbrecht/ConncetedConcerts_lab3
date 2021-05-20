@@ -5,31 +5,21 @@ https://github.com/jwilsson/spotify-web-api-php/blob/main/docs/examples/access-t
 */
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 
 class Callback extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {     
         require '../vendor/autoload.php';
 
         $session = new \SpotifyWebAPI\Session(
             'c3ee0d861721448dbecc1b0c475b29e4',
             '056c230dbe804f16aa56d45718175c4a',
-            'http://ConnectedConcerts.test/user-home'
+            'http://ConnectedConcerts.test/callback'
         );
 
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
-
-        $state = $_GET['state'];
-
-        // Fetch the stored state value from somewhere. A session for example
-
-        if ($state !== $storedState) {
-            // The state returned isn't the same as the one we've stored, we shouldn't continue
-            die('State mismatch');
-        }
 
         // Request a access token using the code from Spotify
         $session->requestAccessToken($_GET['code']);
@@ -37,12 +27,19 @@ class Callback extends Controller
         $accessToken = $session->getAccessToken();
         $refreshToken = $session->getRefreshToken();
 
+        //session()->put('accessToken', $accessToken);
+        //session(['accessToken' => $accessToken]);
+        $request->session()->put('accessToken', $accessToken);
+        $request->session()->put('refreshToken', $refreshToken);
+
+
         // Store the access and refresh tokens somewhere. In a session for example
 
         // Send the user along and fetch some data!
-        header('Location: app.php');
+        //header('Location: http://ConnectedConcerts.test/user-home');
+        $url = "http://ConnectedConcerts.test/checkUser";
+        return \Illuminate\Support\Facades\Redirect::to($url);
         die();
-        return view('/user-home');
     }
 }
 
