@@ -21,7 +21,7 @@ class ClientController extends Controller
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
         $api->setAccessToken($accessToken);
         $me = $api->me();
-        $request->session()->put('userId', ($me->id));
+        $request->session()->put('userSpotifyId', ($me->id));
         $request->session()->put('userType', 'user');
         /*
         $artist = $api->getArtist($me->id);
@@ -42,7 +42,7 @@ class ClientController extends Controller
     { 
         if((session()->get('userType')) == ("user")){
             $request->session()->put('userType', 'artist');
-            $request->session()->put('artistId', '2Sm4rGKWBnOQhdqDy4JJh0');
+            $request->session()->put('artistSpotifyId', '2Sm4rGKWBnOQhdqDy4JJh0');
         } else {
             $request->session()->put('userType', 'user');
         }
@@ -52,6 +52,10 @@ class ClientController extends Controller
 
     public function index(Request $request)
     {
+        if((session()->get('userType')) == ("artist")){
+           $data['myConcerts'] = \DB::table('concerts')->where('artist_id', session()->get('artistSpotifyId'));
+           //var_dump($data['myConcerts']);
+        }
         return view('/user-rooms');
     }
 
@@ -75,7 +79,13 @@ class ClientController extends Controller
         $accessToken = $request->session()->get('accessToken');
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
         $api->setAccessToken($accessToken);
-        $data['profile'] = $api->me();
+        if((session()->get('userType')) == ("user")){
+            $data['profile'] = $api->me();
+        } else {
+            $data['profile'] = $api->getArtist(session()->get('artistSpotifyId'));
+            
+        }
+        
         return view('/user-profile', $data);
     }
 
