@@ -26,3 +26,4 @@ Route::get('/checkUser', 'App\Http\Controllers\ClientController@checkUser');
 Route::get('/callback', 'App\Http\Controllers\Callback@index');
 Route::get('/user-profile', 'App\Http\Controllers\ClientController@profile');
 Route::get('/settings', 'App\Http\Controllers\ClientController@settings');
+Route::get('/changeArtist', 'App\Http\Controllers\ClientController@change');

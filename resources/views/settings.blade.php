@@ -16,6 +16,15 @@
         <li><a class="setting">Contact<a></li>
         <div class="purple-line"></div>
     </ul>
+    <?php if((session()->get('userType')) == ("user")) : ?>
+        <form action="/changeArtist" method="get">
+            <button class="btn btn-info mb-2" type="submit" value="change">Change to artist</button>
+        </form>
+    <?php else: ?>
+        <form action="/changeArtist" method="get">
+            <button class="btn btn-info mb-2" type="submit" value="change">Change to normal user</button>
+        </form>
+    <?php endif; ?>
 
     <form class="text-center" action="" method="get">
         <button class="btn-outline-purple" type="submit" name="logout" value="logout">Log out</button>

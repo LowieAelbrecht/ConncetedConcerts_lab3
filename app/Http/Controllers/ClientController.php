@@ -21,6 +21,8 @@ class ClientController extends Controller
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
         $api->setAccessToken($accessToken);
         $me = $api->me();
+        $request->session()->put('userId', ($me->id));
+        $request->session()->put('userType', 'user');
         /*
         $artist = $api->getArtist($me->id);
         
@@ -33,7 +35,19 @@ class ClientController extends Controller
         var_dump($artist); 
         */
         
-        return redirect('/user-rooms');     
+        return redirect('/rooms');     
+    }
+
+    public function change(Request $request)
+    { 
+        if((session()->get('userType')) == ("user")){
+            $request->session()->put('userType', 'artist');
+            $request->session()->put('artistId', '2Sm4rGKWBnOQhdqDy4JJh0');
+        } else {
+            $request->session()->put('userType', 'user');
+        }
+        
+        return redirect('/settings');
     }
 
     public function index(Request $request)
