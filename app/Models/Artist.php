@@ -7,9 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Artist extends Model
 {
-    use HasFactory;
-
-    public function concerts(){
-        return $this->hasMany('\App\Concerts');
-    }
+    
 }
