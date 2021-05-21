@@ -35,7 +35,7 @@ class ClientController extends Controller
         var_dump($artist); 
         */
         
-        return redirect('/rooms');     
+        return redirect('/user-rooms');     
     }
 
     public function change(Request $request)
