@@ -24,5 +24,9 @@
     <div class="container content">
         @yield('content')
     </div>
+    <div>
+        @yield('steps')
+    </div>
 </body>
 </html>
+@yield('js')

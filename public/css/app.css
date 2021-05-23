@@ -151,3 +151,31 @@ ul {
 .list-settings li {
     margin-top: 1em;
 }
+
+/* ADD CONCERT */
+
+.range-wrap {
+    position: relative;
+}
+
+.steps {
+    background-color: #fff;
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: var(--cc-purple);
+    opacity: 50%;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.selected-dot {
+    opacity: 100%;
+}
