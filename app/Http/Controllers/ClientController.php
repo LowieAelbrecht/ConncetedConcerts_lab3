@@ -40,9 +40,26 @@ class ClientController extends Controller
 
     public function change(Request $request)
     { 
+        $accessToken = $request->session()->get('accessToken');
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($accessToken);
+
         if((session()->get('userType')) == ("user")){
             $request->session()->put('userType', 'artist');
             $request->session()->put('artistSpotifyId', '2Sm4rGKWBnOQhdqDy4JJh0');
+            $artist = \DB::table('artists')->where('token', session()->get('artistSpotifyId'))->first();
+            $artistinfo = $api->getArtist('2Sm4rGKWBnOQhdqDy4JJh0');
+
+            if(empty($artist)){
+                $artistId = \DB::table('artists')->insertGetId([
+                    'name' => $artistinfo->name,
+                    'token' => $artistinfo->id
+                ]);
+            } else {
+                $artistId = $artist->id;
+            }
+
+            $request->session()->put('artistId', $artistId);
         } else {
             $request->session()->put('userType', 'user');
         }
@@ -53,10 +70,17 @@ class ClientController extends Controller
     public function index(Request $request)
     {
         if((session()->get('userType')) == ("artist")){
-           $data['myConcerts'] = \DB::table('concerts')->where('artist_id', session()->get('artistSpotifyId'));
+           $data['myConcerts'] = \DB::table('concerts')->where('artist_id', session()->get('artistId'))->get();
            //var_dump($data['myConcerts']);
+        } else {
+            $data['myConcerts'] = 'kijken in welke concerten gebruiker is ingekocht';
         }
-        return view('/user-rooms');
+
+        if($_GET){
+            return redirect('/add-concert');
+        }
+
+        return view('/user-rooms', $data);
     }
 
     public function discover(Request $request)
