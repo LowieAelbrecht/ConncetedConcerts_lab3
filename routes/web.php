@@ -29,3 +29,6 @@ Route::get('/settings', 'App\Http\Controllers\ClientController@settings');
 Route::get('/changeArtist', 'App\Http\Controllers\ClientController@change');
 
 Route::get('/add-concert', 'App\Http\Controllers\ArtistController@addConcert');
+Route::post('/add-concert', 'App\Http\Controllers\ArtistController@storeConcert');
+
+Route::get('/add-songvote', 'App\Http\Controllers\ArtistController@addSongVote');

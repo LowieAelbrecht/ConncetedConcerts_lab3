@@ -20,6 +20,7 @@ class CreateConcertsTable extends Migration
             $table->string('locatie');
             $table->dateTime('concert_date');
             $table->double('prijs', 15, 2);
+            $table->string('file_path');
             $table->boolean('published')->default(false);
             $table->integer('artist_id')->nullable();            
             //$table->integer('userID')->nullable(); zal apparte kolom worden dat userid en concerid samenbrengt

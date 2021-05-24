@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-    <form action="">
+    <form method="post" action="/add-concert" enctype="multipart/form-data"> 
+    @csrf
         <div>
             <label for="concertName" class="form-label">Room name</label>
             <input type="text" name="concertName" class="form-control" value=""> 
@@ -26,24 +27,29 @@
         </div>
         <div class="range-wrap col-12">
             <label for="price" class="form-label">Price</label>
-            <input type="range" class="range" min="4" max="10" step="1">
+            <input type="range" name="price" class="range" min="4" max="10" step="1">
             <output class="bubble"></output>
         </div>
-    </form>
+        <div>
+            <label for="photo" class="form-label">Image</label>
+            <input type="file" name="photo">
+        </div>
+    
 @endsection
 
 @section('steps')
-    <div class="steps row justify-content-center">
-        <div class="text-center">
-            <h5>Basic info</h5>
-            <span class="selected-dot dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>        
+        <div class="steps row justify-content-center">
+            <div class="text-center">
+                <h5>Basic info</h5>
+                <span class="selected-dot dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>        
+            </div>
+            <div class="pull-right">
+                <input type="submit" name="upload" value="Next"></input>
+            </div>        
         </div>
-        <div class="pull-right">
-            <h4>Next</h4>
-        </div>        
-    </div>
+    </form>
 @endsection
 
 @section('js')

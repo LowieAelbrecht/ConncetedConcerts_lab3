@@ -90,6 +90,20 @@ ul {
     padding: 6px 20px;
 }
 
+.btn-add {
+    font-family: var(--font-humana);
+    background-color: var(--cc-purple);
+    color: var(--cc-white);
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+
 /* LOGIN */
 
 .logofull {
