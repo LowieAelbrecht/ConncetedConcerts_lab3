@@ -17,5 +17,6 @@ class ConcertsSeeder extends Seeder
     public function run()
     {
         \App\Models\Concerts::factory(30)->create();
+    
     }
 }

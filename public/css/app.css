@@ -141,9 +141,42 @@ ul {
     opacity: 50%;
 }
 
+.concert-date {
+    margin: 20px 0 10px 5px;
+}
+
+.concert-date a{
+    color: black;
+}
+
 .card {
+    width: 100%;
     font-size: 20px;
-    border-radius: 3;
+    border-radius: 15px;
+    padding: 8px;
+
+  
+}
+
+.card h3{
+    display: block;
+    position: relative;
+    font-size: 25px;
+    float: right;
+    color: black;    
+}
+
+.card a{
+    color: black;
+}
+
+.card h5{
+    background-image: linear-gradient(90deg,#000000 0%,rgba(0,0,0,0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position:relative;
+    display:inline-block;
+    font-size: 18px;
 }
 
 /* PROFILE */
