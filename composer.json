@@ -11,7 +11,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "jwilsson/spotify-web-api-php": "^5.0",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "mollie/laravel-mollie": "^2.14"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

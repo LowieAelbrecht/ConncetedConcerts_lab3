@@ -99,6 +99,10 @@ class ClientController extends Controller
     {
         $data['concert'] = \DB::table('concerts')->where('id', $concerts)->first();
         //dd($data['concert']);
+
+        if($_GET){
+            return redirect('/concertspayment/{concerts})');
+        }
         
         return view('/concert', $data);
     }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MollieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::get('/login', 'App\Http\Controllers\Login@index');
 Route::get('/user-rooms', 'App\Http\Controllers\ClientController@index');
 Route::get('/user-discover', 'App\Http\Controllers\ClientController@discover');
 Route::get('/concerts/{concerts}', 'App\Http\Controllers\ClientController@showConcert');
+Route::get('/concertspayment/{concerts}', 'App\Http\Controllers\MollieController@preparePayment');
 Route::get('/checkUser', 'App\Http\Controllers\ClientController@checkUser');
 //Route::get('/user-home', 'App\Http\Controllers\ClientController@userHome');
 Route::get('/callback', 'App\Http\Controllers\Callback@index');
@@ -32,3 +34,7 @@ Route::get('/add-concert', 'App\Http\Controllers\ArtistController@addConcert');
 Route::post('/add-concert', 'App\Http\Controllers\ArtistController@storeConcert');
 
 Route::get('/add-songvote', 'App\Http\Controllers\ArtistController@addSongVote');
+
+//MOLLIE ROUTES
+Route::get('mollie-paymnet',[MollieController::Class,'preparePayment'])->name('mollie.payment');
+Route::get('payment-success',[MollieController::Class, 'paymentSuccess'])->name('payment.success');
