@@ -15,6 +15,7 @@
     @foreach( $concerts as $concert )
         <h4 class="concert-date"><a href="/concerts/{{ $concert->id }}">{{ date("d/m/'y ", strtotime($concert->concert_date)) }}</a></h4>
         <div class="card">
+            <img class src="uploads/{{ $concert->file_path }}" alt="">
             <h3 class="card-title"><a href="/concerts/{{ $concert->id }}">{{ $concert->artist_name }}</a></h3>
             <h5><a href="/concerts/{{ $concert->id }}">{{ $concert->name }}</a></h5>
             <h5><a href="/concerts/{{ $concert->id }}">{{ $concert->locatie }}</a></h5>

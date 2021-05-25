@@ -28,6 +28,13 @@ class ArtistController extends Controller
         $artistinfo = $api->getArtist(session()->get('artistSpotifyId'));
         $artistId = $request->session()->get('artistId');
 
+        $request->validate([
+            'concertName' => 'required',
+            'location' => 'required',
+            'date' => 'required|date|after:tomorrow',
+            'time' => 'required',
+            'photo' => 'required|mimes:jpg,png,jpeg'
+        ]);
 
         if($request->hasFile('photo')){
             // Get all data from form
@@ -36,11 +43,11 @@ class ArtistController extends Controller
             $locatie = $request->input('location');
             $date = $request->input('date') . " " .  $request->input('time');
             $prijs = $request->input('price');
-            $file_path = $request->file('photo')->getClientOriginalName();
+            $newImageName = time() . '-' . $request->concertName . '.' . $request->photo->extension();
 
-            // Store image (WERKT NOG NIET MOMENTEEL)
-            $request->file('photo')->store('public/images/uploads');
-    
+            // store image in public uploads folder    
+            $request->photo->move(public_path('uploads'), $newImageName);
+            
             // Store in DB
             \DB::table('concerts')->insert(
                 ['name' => $concertName, 
@@ -48,10 +55,11 @@ class ArtistController extends Controller
                 'locatie' => $locatie,
                 'concert_date' => $date,
                 'prijs' => $prijs,
-                'file_path' => $file_path,
+                'file_path' => $newImageName,
                 'artist_id' => $artistId
                 ]
             );
+            
         }
 
         return redirect('/add-songvote'); 
