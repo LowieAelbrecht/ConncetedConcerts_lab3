@@ -7,6 +7,7 @@
     /* COLORS */
     --cc-purple: #240046;
     --cc-white: #efefef;
+    --cc-gradient: linear-gradient(#ff9e00, #ff6d00);
     /* FONTS */
     --font-coolvetica: "coolvetica", sans-serif;
     --font-humana: "Vera Humana 95", arial;
@@ -66,12 +67,7 @@ ul {
 .btn-orange {
     font-family: var(--font-humana);
     font-weight: 700;
-    background: rgb(255, 158, 0);
-    background: linear-gradient(
-        180deg,
-        rgba(255, 158, 0, 1) 0%,
-        rgba(255, 109, 0, 1) 100%
-    );
+    background-image: var(--cc-gradient);
     color: #fff;
     border: 0;
     border-radius: 15px;
@@ -145,7 +141,7 @@ ul {
     margin: 20px 0 10px 5px;
 }
 
-.concert-date a{
+.concert-date a {
     color: black;
 }
 
@@ -154,29 +150,35 @@ ul {
     font-size: 20px;
     border-radius: 15px;
     padding: 8px;
-
-  
 }
 
-.card h3{
+.card h3 {
     display: block;
     position: relative;
     font-size: 25px;
     float: right;
-    color: black;    
-}
-
-.card a{
     color: black;
 }
 
-.card h5{
-    background-image: linear-gradient(90deg,#000000 0%,rgba(0,0,0,0));
+.card a {
+    color: black;
+}
+
+.card h5 {
+    background-image: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    position:relative;
-    display:inline-block;
+    position: relative;
+    display: inline-block;
     font-size: 18px;
+}
+
+/* DETAILPAGE ROOM/CONCERT */
+
+.price {
+    background-image: var(--cc-gradient);
+    color: var(--cc-white);
+    border-radius: 50%;
 }
 
 /* PROFILE */

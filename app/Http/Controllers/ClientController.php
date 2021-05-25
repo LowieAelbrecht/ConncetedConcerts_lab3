@@ -23,6 +23,7 @@ class ClientController extends Controller
         $me = $api->me();
         $request->session()->put('userSpotifyId', ($me->id));
         $request->session()->put('userType', 'user');
+        
         /*
         $artist = $api->getArtist($me->id);
         
@@ -87,15 +88,19 @@ class ClientController extends Controller
     {
         $data['concerts'] = \DB::table('concerts')
         ->whereRaw('Date(concert_date) >= CURDATE()')
+        ->where('published', '1')
         ->orderBy('concert_date', 'asc')
         ->get();
 
         return view('/user-discover', $data);
     }
     
-    public function showConcert($concerts){
-        $concerts = \DB::table('concerts')->where('id', $concerts)->first();
-        dd($concerts);
+    public function showConcert($concerts)
+    {
+        $data['concert'] = \DB::table('concerts')->where('id', $concerts)->first();
+        //dd($data['concert']);
+        
+        return view('/concert', $data);
     }
 
     public function profile(Request $request)

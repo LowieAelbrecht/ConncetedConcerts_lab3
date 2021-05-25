@@ -13,13 +13,15 @@
     </div>
 
     @foreach( $concerts as $concert )
-        <h4 class="concert-date"><a href="/concerts/{{ $concert->id }}">{{ date("d/m/'y ", strtotime($concert->concert_date)) }}</a></h4>
+        <h4 class="concert-date">{{ date("d/m/'y ", strtotime($concert->concert_date)) }}</h4>
+        <a href="/concerts/{{ $concert->id }}"> 
         <div class="card">
-            <img class src="uploads/{{ $concert->file_path }}" alt="">
-            <h3 class="card-title"><a href="/concerts/{{ $concert->id }}">{{ $concert->artist_name }}</a></h3>
-            <h5><a href="/concerts/{{ $concert->id }}">{{ $concert->name }}</a></h5>
-            <h5><a href="/concerts/{{ $concert->id }}">{{ $concert->locatie }}</a></h5>
+            <img src="uploads/{{ $concert->file_path }}" alt="concert picture">
+            <h3 class="card-title">{{ $concert->artist_name }}</h3>
+            <h5>{{ $concert->name }}</h5>
+            <h5>{{ $concert->locatie }}</h5>
         </div>
+        </a>
     @endforeach
 
 @endsection
