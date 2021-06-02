@@ -18,8 +18,8 @@ class CreateSongvoteTable extends Migration
             $table->string('album');
             $table->string('song');
             $table->integer('votes');
-            $table->integer('concertID');
-            $table->integer('artistID');   
+            $table->integer('concert_id');
+            $table->integer('artist_id');   
             $table->timestamps();
         });
     }

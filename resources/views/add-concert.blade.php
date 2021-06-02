@@ -27,7 +27,7 @@
         </div>
         <div class="range-wrap col-12">
             <label for="price" class="form-label">Price</label>
-            <input type="range" name="price" class="range" min="4" max="10" step="1">
+            <input type="range" name="price" class="range" min="5" max="10" step="1">
             <output class="bubble"></output>
         </div>
         <div>

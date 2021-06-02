@@ -17,28 +17,7 @@ class ClientController extends Controller
 
     public function checkUser(Request $request)
     {
-        $accessToken = $request->session()->get('accessToken');
-        $api = new \SpotifyWebAPI\SpotifyWebAPI();
-        $api->setAccessToken($accessToken);
-        $me = $api->me();
-        $request->session()->put('userSpotifyId', ($me->id));
-        
-        
-        /*
-        $artist = $api->getArtist($me->id);
-        
-        if($this->reason == "invalid id"){
-            echo "not artist";
-        } else {
-            echo "artist";
-            //return redirect('/artist-home');
-        }
-        var_dump($artist); 
-        */
-
         return view('/choose-user');
-        
-        //return redirect('/user-rooms');     
     }
 
     public function fixUser(Request $request)
@@ -49,6 +28,17 @@ class ClientController extends Controller
 
         if($request->input('user') == true){
             $request->session()->put('userType', 'user');
+            $me = $api->me();
+            $request->session()->put('userSpotifyId', ($me->id));
+            $users = \DB::table('users')->where('token', ($me->id))->first();
+
+            if(empty($users)){
+                \DB::table('users')->insert([
+                    'name' => $me->display_name,
+                    'token' => $me->id
+                ]);
+            }
+
             return redirect('/user-rooms'); 
         } elseif($request->input('artist') == true){
             $request->session()->put('userType', 'artist');
@@ -67,7 +57,7 @@ class ClientController extends Controller
 
             $request->session()->put('artistId', $artistId);
         }
-        
+
         return redirect('/user-rooms');         
     }
 

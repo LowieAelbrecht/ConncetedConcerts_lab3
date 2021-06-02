@@ -26,7 +26,7 @@ class ConcertsFactory extends Factory
             'artist_name' => $this->faker->name,
             'locatie' => $this->faker->address,
             'concert_date' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '+2 years', $timezone = null),
-            'prijs' => $this->faker->randomNumber(2),
+            'prijs' => $this->faker->numberBetween(5,10),
             'published' => true,
             'file_path' => '1621944960-summer concert.jpg'
         ];
