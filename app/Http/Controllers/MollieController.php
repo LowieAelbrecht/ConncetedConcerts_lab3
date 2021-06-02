@@ -45,6 +45,11 @@ class MollieController extends Controller
             ]
         );
 
+        \DB::table('concerts')->where('id', $payment->metadata->concert_id)
+        ->update([
+          'tickets_sold'=> \DB::raw('tickets_sold+1')
+        ]);
+
         return redirect('/user-rooms'); 
     }
 

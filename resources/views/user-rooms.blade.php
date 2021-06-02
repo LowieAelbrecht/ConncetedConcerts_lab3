@@ -13,7 +13,14 @@
             <a href="/user-discover" class="non-active-link">Discover</a>
         </div>
         @if(empty($myConcerts[0]))
-            <h1>start at discover</h1>
+        <div class="row justify-content-center">
+                <i class="material-icons">folder_open</i>
+                <h2 class="text-center">You are not in any rooms</h2>
+                <p class="text-center">Please go to the discover tab to start looking for concert rooms.</p>
+                <form class="text-center" action="/user-discover" method="get">
+                    <button class="btn-orange" type="submit" name="room" value="room">Discover rooms</button>
+                </form>
+            </div>   
         @else
             @for($x = 0; $x < $amount; $x++)
                 @foreach( $myConcerts[$x] as $myConcert )
@@ -43,21 +50,26 @@
                     <h4>Published rooms</h4>
                     <h4 class="concert-date"><a href="/concerts/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
                     <div class="card">
-                        <h3 class="card-title"><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->name }}</a></h3>
-                        <h5><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->locatie }}</a></h5>
-                        <h5><a href="/concerts/{{ $myConcert->id }}">X tickets sold</a></h5>
+                        <img  src="uploads/{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
+                        <div class="card-body">
+                            <h3><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->name }}</a></h3>
+                            <h5><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->locatie }}</a></h5>
+                            <h5><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->tickets_sold }} ticket(s) sold</a></h5>
+                        </div>                        
                     </div>
                 @else
                     <h4>Unpublished rooms</h4>
                     <h4 class="concert-date"><a href="/concerts/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
                     <div class="card">
-                        <img class src="uploads/{{ $myConcert->file_path }}" alt="">
-                        <h3 class="card-title"><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->name }}</a></h3>
-                        <h5><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->locatie }}</a></h5>
+                        <img  src="uploads/{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
+                        <div class="card-body">
+                            <h3><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->name }}</a></h3>
+                            <h5><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->locatie }}</a></h5>
+                        </div>
                     </div>
                 @endif
             @endforeach
-            <form action="" method="get">
+            <form action="/add-concert" method="get">
                 <button class="btn-add" type="submit" name="room" value="room">+</button>
             </form>
         @endif
