@@ -123,6 +123,18 @@ class ClientController extends Controller
 
     public function discover(Request $request)
     {
+        $concertCheck = \DB::table('userconcerts')
+            ->where('user_id', session()->get('userId'))
+            ->get(); 
+            
+            $data['amount'] = count($concertCheck);
+            $data['concertIds'] = array();
+
+            for($x = 0; $x < $data['amount']; $x++){
+                $concertId = $concertCheck[$x]->concert_id;
+                array_push($data['concertIds'], $concertId); 
+            }
+
         $data['concerts'] = \DB::table('concerts')
         ->whereRaw('Date(concert_date) >= CURDATE()')
         ->where('published', '1')
@@ -144,7 +156,7 @@ class ClientController extends Controller
         $data['concert'] = \DB::table('concerts')->where('id', $concerts)->first();
 
         if($_GET){
-            return redirect('/concertspayment/{concerts})');            
+            return redirect('/concertspayment/' . $data['concert']->id);            
         }
         
         return view('/concert', $data);

@@ -13,6 +13,7 @@
     </div>
 
     @foreach( $concerts as $concert )
+        @if (!in_array($concert->id, $concertIds))
         <h4 class="concert-date">{{ date("d/m/'y ", strtotime($concert->concert_date)) }}</h4>
         <a href="/concerts/{{ $concert->id }}"> 
         <div class="card">
@@ -22,6 +23,7 @@
             <h5>{{ $concert->locatie }}</h5>
         </div>
         </a>
+        @endif
     @endforeach
 
 @endsection
