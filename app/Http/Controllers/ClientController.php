@@ -22,7 +22,7 @@ class ClientController extends Controller
         $api->setAccessToken($accessToken);
         $me = $api->me();
         $request->session()->put('userSpotifyId', ($me->id));
-        $request->session()->put('userType', 'user');
+        
         
         /*
         $artist = $api->getArtist($me->id);
@@ -35,8 +35,40 @@ class ClientController extends Controller
         }
         var_dump($artist); 
         */
+
+        return view('/choose-user');
         
-        return redirect('/user-rooms');     
+        //return redirect('/user-rooms');     
+    }
+
+    public function fixUser(Request $request)
+    {
+        $accessToken = $request->session()->get('accessToken');
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($accessToken);
+
+        if($request->input('user') == true){
+            $request->session()->put('userType', 'user');
+            return redirect('/user-rooms'); 
+        } elseif($request->input('artist') == true){
+            $request->session()->put('userType', 'artist');
+            $request->session()->put('artistSpotifyId', '2Sm4rGKWBnOQhdqDy4JJh0');
+            $artist = \DB::table('artists')->where('token', session()->get('artistSpotifyId'))->first();
+            $artistinfo = $api->getArtist('2Sm4rGKWBnOQhdqDy4JJh0');
+
+            if(empty($artist)){
+                $artistId = \DB::table('artists')->insertGetId([
+                    'name' => $artistinfo->name,
+                    'token' => $artistinfo->id
+                ]);
+            } else {
+                $artistId = $artist->id;
+            }
+
+            $request->session()->put('artistId', $artistId);
+        }
+        
+        return redirect('/user-rooms');         
     }
 
     public function change(Request $request)

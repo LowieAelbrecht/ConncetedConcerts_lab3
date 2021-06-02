@@ -24,6 +24,7 @@ Route::get('/user-discover', 'App\Http\Controllers\ClientController@discover');
 Route::get('/concerts/{concerts}', 'App\Http\Controllers\ClientController@showConcert');
 Route::get('/concertspayment/{concerts}', 'App\Http\Controllers\MollieController@preparePayment');
 Route::get('/checkUser', 'App\Http\Controllers\ClientController@checkUser');
+Route::post('/checkUser', 'App\Http\Controllers\ClientController@fixUser');
 //Route::get('/user-home', 'App\Http\Controllers\ClientController@userHome');
 Route::get('/callback', 'App\Http\Controllers\Callback@index');
 Route::get('/user-profile', 'App\Http\Controllers\ClientController@profile');
