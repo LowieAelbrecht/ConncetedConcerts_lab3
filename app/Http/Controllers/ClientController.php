@@ -33,11 +33,15 @@ class ClientController extends Controller
             $users = \DB::table('users')->where('token', ($me->id))->first();
 
             if(empty($users)){
-                \DB::table('users')->insert([
+                $userId =\DB::table('users')->insertGetId([
                     'name' => $me->display_name,
                     'token' => $me->id
                 ]);
+            } else {
+                $userId = $users->id;
             }
+
+            $request->session()->put('userId', $userId);
 
             return redirect('/user-rooms'); 
         } elseif($request->input('artist') == true){
@@ -96,7 +100,18 @@ class ClientController extends Controller
            $data['myConcerts'] = \DB::table('concerts')->where('artist_id', session()->get('artistId'))->get();
            //var_dump($data['myConcerts']);
         } else {
-            $data['myConcerts'] = 'kijken in welke concerten gebruiker is ingekocht';
+            $concertCheck = \DB::table('userconcerts')
+            ->where('user_id', session()->get('userId'))
+            ->get();      
+            
+            $data['amount'] = count($concertCheck);
+
+            if(!empty($concertCheck)){
+                for($x = 0; $x < $data['amount']; $x++){
+                $concertId = $concertCheck[$x]->concert_id;
+                $data['myConcerts'][$x] = \DB::table('concerts')->where('id', $concertId)->get();
+                }
+            }
         }
 
         if($_GET){
@@ -119,14 +134,26 @@ class ClientController extends Controller
     
     public function showConcert($concerts)
     {
+        $concertCheck = \DB::table('userconcerts')
+            ->where('user_id', session()->get('userId'))
+            ->where('concert_id', $concerts)
+            ->first();
+  
+                  
+        if(empty($concertCheck)){
         $data['concert'] = \DB::table('concerts')->where('id', $concerts)->first();
-        //dd($data['concert']);
 
         if($_GET){
-            return redirect('/concertspayment/{concerts})');
+            return redirect('/concertspayment/{concerts})');            
         }
         
         return view('/concert', $data);
+        }
+    }
+
+    public function socialConcert($concerts)
+    {
+        return view('/social-room');
     }
 
     public function profile(Request $request)

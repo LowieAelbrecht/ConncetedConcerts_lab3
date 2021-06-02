@@ -12,6 +12,21 @@
             <p class="px-3"> | </p>
             <a href="/user-discover" class="non-active-link">Discover</a>
         </div>
+        @if(empty($myConcerts[0]))
+            <h1>start at discover</h1>
+        @else
+            @for($x = 0; $x < $amount; $x++)
+                @foreach( $myConcerts[$x] as $myConcert )
+                    <h4 class="concert-date"><a href="/social-room/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
+                    <div class="card">
+                    <img src="uploads/{{ $myConcert->file_path }}" alt="concert picture">
+                        <h3 class="card-title"><a href="/social-room/{{ $myConcert->id }}">{{ $myConcert->artist_name }}</a></h3>
+                        <h5><a href="/social-room/{{ $myConcert->id }}">{{ $myConcert->name }}</a></h5>
+                        <h5><a href="/social-room/{{ $myConcert->id }}">{{ $myConcert->locatie }}</a></h5>
+                    </div>
+                @endforeach
+            @endfor    
+        @endif
     @else
         @if(empty($myConcerts[0]))
             <div class="row justify-content-center">

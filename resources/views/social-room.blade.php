@@ -1,0 +1,1 @@
+<h1>Je hebt toegang tot deze room, hier moet social page komen</h1>
