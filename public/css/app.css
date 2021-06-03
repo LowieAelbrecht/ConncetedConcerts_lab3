@@ -249,9 +249,6 @@ ul {
 .album-cover {
     width: 60px;
     height: auto;
-    margin: 5px;
+    margin: 5px 5px 5px 20px;
     border-radius: 20%;
-}
-
-.show-tracks {
 }

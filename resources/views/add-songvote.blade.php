@@ -8,13 +8,12 @@
     <h2 class="text-center">Song vote</h2>
     <div class="song-vote">
         @foreach ( $artistAlbums->items as $artistAlbum )
-            <div class="row grey-row">
-                <img class="album-cover" src="<?php echo $artistAlbum->images[0]->url; ?>" alt="album cover">
-                <h4 class="pl-2 my-auto albumDetails" id="{{ $artistAlbum->id }}">{{ $artistAlbum->name }}</h4>
-            </div>   
-            <ul id="tracks" class="show-tracks" id="{{ $artistAlbum->id }}">
-
-            </ul>         
+            <div class="grey-row">
+                <div class="row albumDetails" id="{{ $artistAlbum->id }}">
+                    <img class="album-cover" src="<?php echo $artistAlbum->images[0]->url; ?>" alt="album cover">
+                    <h4 class="pl-2 my-auto" >{{ $artistAlbum->name }}</h4>
+                </div>                
+            </div>        
         @endforeach
     </div>
     
@@ -48,10 +47,10 @@ $(document).ready(function(){
                 "albumId": albumId},
             dataType: 'json',
             success: function(response){
-                if(response.length > 0){
-                    for (var i = 0; i < response.length; i++){
-                    $("#tracks").append('<li class="added">' + response[i]['name'] + '</li>');  
-                    }
+                if(response.length > 0){  
+                    for (var i = 0; i < response.length; i++){   
+                    $("#" + albumId).after('<div class="row"><label class="pl-5">' + response[i]['name'] + '</label><input type="checkbox" id="' + response[i]['id'] +'"value="' + response[i]['id'] +'""></div>');  
+                    }                   
                 }
         }
     });
