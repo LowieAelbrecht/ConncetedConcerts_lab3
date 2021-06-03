@@ -5,8 +5,21 @@
 @endsection
 
 @section('content')
-    <h2 class="text-center">Song vote</h2>
-    <div class="song-vote">
+<div class="container">
+    <div class="text-center">
+        <h2>Song vote</h2>
+        <p>A poll where fans can vote for a song they want to hear at the performance, song with most votes will be played!</p>
+    </div>
+
+    <div>
+        <label for="ending-date" class="form-label">Vote ending date</label>
+        <input type="text" name="ending-date" class="form-control" value=""> 
+    </div>
+
+
+    <label class="form-label">Vote options</label>
+    <p>Select options fans can vote for</p>
+    <div class="song-vote">        
         @foreach ( $artistAlbums->items as $artistAlbum )
             <div class="grey-row">
                 <div class="row albumDetails" id="{{ $artistAlbum->id }}">
@@ -16,7 +29,7 @@
             </div>        
         @endforeach
     </div>
-    
+</div>    
 @endsection
 
 @section('steps')
@@ -47,10 +60,13 @@ $(document).ready(function(){
                 "albumId": albumId},
             dataType: 'json',
             success: function(response){
+                $('.album-tracks').remove();
                 if(response.length > 0){  
                     for (var i = 0; i < response.length; i++){   
-                    $("#" + albumId).after('<div class="row"><label class="pl-5">' + response[i]['name'] + '</label><input type="checkbox" id="' + response[i]['id'] +'"value="' + response[i]['id'] +'""></div>');  
+                    $("#" + albumId).after('<div class="row album-tracks"><label class="pl-5">' + response[i]['name'] + '</label><input type="checkbox" id="' + response[i]['id'] +'"value="' + response[i]['id'] +'""></div>');  
                     }                   
+                } else {
+                    $('.album-tracks').remove();
                 }
         }
     });
