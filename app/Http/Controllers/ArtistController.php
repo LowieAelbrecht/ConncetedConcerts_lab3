@@ -68,7 +68,25 @@ class ArtistController extends Controller
         
     public function addSongVote(Request $request)
     {
-        return view('/add-songvote');
+        $accessToken = $request->session()->get('accessToken');
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($accessToken);
+        $data['artistAlbums'] = $api->getArtistAlbums(session()->get('artistSpotifyId'), ['include_groups' => 'album,single', 'market' => 'BE', 'limit' => '50']);
+        //dd($data['artistAlbums']);
+        return view('/add-songvote', $data);
+    }
+
+    public function getAlbumTracks(Request $request)
+    {
+        $accessToken = $request->session()->get('accessToken');
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($accessToken);
+
+        $albumId = $_POST['albumId'];
+
+        $data = $api->getAlbumTracks($albumId, ['market' => 'BE', 'limit' => '50'])->items;
+
+        echo json_encode($data);
     }
         
 }

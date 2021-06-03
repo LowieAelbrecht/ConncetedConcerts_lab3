@@ -38,6 +38,8 @@ Route::post('/add-concert', 'App\Http\Controllers\ArtistController@storeConcert'
 
 Route::get('/add-songvote', 'App\Http\Controllers\ArtistController@addSongVote');
 
+Route::post('getAlbumTracks', 'App\Http\Controllers\ArtistController@getAlbumTracks');
+
 //MOLLIE ROUTES
 Route::get('mollie-paymnet',[MollieController::Class,'preparePayment'])->name('mollie.payment');
 Route::get('payment-success',[MollieController::Class, 'paymentSuccess'])->name('payment.success');

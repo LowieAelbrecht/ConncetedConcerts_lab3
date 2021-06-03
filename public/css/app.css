@@ -233,3 +233,25 @@ ul {
 .selected-dot {
     opacity: 100%;
 }
+
+/* ADD SONGVOTE */
+
+.song-vote {
+    background-color: #fff;
+    padding: 1em 0 2em 0;
+}
+
+.grey-row {
+    background-color: var(--cc-white);
+    margin: 20px 0px;
+}
+
+.album-cover {
+    width: 60px;
+    height: auto;
+    margin: 5px;
+    border-radius: 20%;
+}
+
+.show-tracks {
+}

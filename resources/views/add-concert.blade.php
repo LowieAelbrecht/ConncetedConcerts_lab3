@@ -7,6 +7,7 @@
 @section('content')
     <form method="post" action="/add-concert" enctype="multipart/form-data"> 
     @csrf
+    <div class="container">
         <div>
             <label for="concertName" class="form-label">Room name</label>
             <input type="text" name="concertName" class="form-control" value=""> 
@@ -34,7 +35,7 @@
             <label for="photo" class="form-label">Image</label>
             <input type="file" name="photo">
         </div>
-    
+    </div>
 @endsection
 
 @section('steps')

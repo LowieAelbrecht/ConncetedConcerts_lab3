@@ -5,7 +5,18 @@
 @endsection
 
 @section('content')
+    <h2 class="text-center">Song vote</h2>
+    <div class="song-vote">
+        @foreach ( $artistAlbums->items as $artistAlbum )
+            <div class="row grey-row">
+                <img class="album-cover" src="<?php echo $artistAlbum->images[0]->url; ?>" alt="album cover">
+                <h4 class="pl-2 my-auto albumDetails" id="{{ $artistAlbum->id }}">{{ $artistAlbum->name }}</h4>
+            </div>   
+            <ul id="tracks" class="show-tracks" id="{{ $artistAlbum->id }}">
 
+            </ul>         
+        @endforeach
+    </div>
     
 @endsection
 
@@ -21,4 +32,31 @@
                 <input type="submit" name="upload" value="Next"></input>
             </div>        
         </div>
+@endsection
+
+@section('js')
+<script>
+$(document).ready(function(){
+    $(".albumDetails").click(function(){
+        var albumId = $(this).attr("id");
+        console.log(albumId);
+
+        $.ajax({
+            url:'/getAlbumTracks',
+            method: 'post',
+            data: { "_token": "{{ csrf_token() }}",
+                "albumId": albumId},
+            dataType: 'json',
+            success: function(response){
+                if(response.length > 0){
+                    for (var i = 0; i < response.length; i++){
+                    $("#tracks").append('<li class="added">' + response[i]['name'] + '</li>');  
+                    }
+                }
+        }
+    });
+});
+
+});
+</script>    
 @endsection
