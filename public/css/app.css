@@ -21,13 +21,24 @@ body {
     height: 100vh;
 }
 
+h2,
 h3,
 h4 {
     font-family: var(--font-coolvetica);
+    color: var(--cc-purple);
 }
 
 h5 {
     font-family: var(--font-humana);
+}
+
+label {
+    color: var(--cc-purple);
+    font-family: var(--font-coolvetica);
+}
+
+.h3-label {
+    font-size: 24px;
 }
 
 .main-nav {
@@ -244,6 +255,11 @@ ul {
 .grey-row {
     background-color: var(--cc-white);
     margin: 10px 0px;
+}
+
+.grey-row-sm {
+    background-color: var(--cc-white);
+    margin: 5px 0px 5px 40px;
 }
 
 .album-cover {

@@ -13,18 +13,18 @@
         <p>A poll where fans can vote for a song they want to hear at the performance, song with most votes will be played!</p>
     </div>
 
-    <div>
-        <label for="endingDate" class="form-label">Vote ending date</label>
+    <div class="mb-3">
+        <label for="endingDate" class="form-label h3-label">Vote ending date</label>
         <input type="date" name="endingDate" class="form-control" value=""> 
     </div>
 
 
-    <label class="form-label">Vote options</label>
+    <label class="form-label h3-label">Vote options</label>
     <p>Select options fans can vote for</p>
     <div class="song-vote">        
         @foreach ( $artistAlbums->items as $artistAlbum )
-            <div class="grey-row">
-                <div class="row albumDetails" id="{{ $artistAlbum->id }}">
+            <div>
+                <div class="grey-row row albumDetails" id="{{ $artistAlbum->id }}">
                     <img class="album-cover" src="<?php echo $artistAlbum->images[0]->url; ?>" alt="album cover">
                     <h4 class="pl-2 my-auto" >{{ $artistAlbum->name }}</h4>
                 </div>                
@@ -66,7 +66,7 @@ $(document).ready(function(){
                 $('.album-tracks').hide();
                 if(response.length > 0){  
                     for (var i = 0; i < response.length; i++){   
-                    $("#" + albumId).after('<div class="row album-tracks"><label class="pl-5" name="songs">' + response[i]['name'] + '</label><input type="checkbox" name="songs[]" id="' + response[i]['id'] +'"value="' + response[i]['id'] +'""></div>');  
+                    $("#" + albumId).after('<div class="row grey-row-sm album-tracks"><label class="pl-5 my-auto" style="font-size: 18px;" name="songs">' + response[i]['name'] + '</label><input type="checkbox" class="my-auto" style="width: 20px; display: flex; align-items: right;" class="pull-right" name="songs[]" id="' + response[i]['id'] +'"value="' + response[i]['id'] +'""></div>');  
                     }                   
                 } else {
                     $('.album-tracks').hide();
