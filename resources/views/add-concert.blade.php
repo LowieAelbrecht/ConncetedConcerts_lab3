@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form method="post" action="/add-concert" enctype="multipart/form-data"> 
+<form method="post" action="/add-concert" enctype="multipart/form-data"> 
     @csrf
     <div class="container">
         <div>
@@ -39,18 +39,18 @@
 @endsection
 
 @section('steps')
-        <div class="steps row justify-content-center">
-            <div class="text-center">
-                <h5>Basic info</h5>
-                <span class="selected-dot dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>        
-            </div>
-            <div class="pull-right">
-                <input type="submit" name="upload" value="Next"></input>
-            </div>        
+    <div class="steps row justify-content-center">
+        <div class="text-center">
+            <h5>Basic info</h5>
+            <span class="selected-dot dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>        
         </div>
-    </form>
+        <div class="pull-right">
+            <input type="submit" name="upload" value="Next"></input>
+        </div>        
+    </div>
+</form>
 @endsection
 
 @section('js')
