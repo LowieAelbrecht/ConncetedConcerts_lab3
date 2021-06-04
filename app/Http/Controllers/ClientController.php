@@ -168,9 +168,36 @@ class ClientController extends Controller
         return view('/social-room');
     }
 
-    public function voteConcert($concerts)
+    public function voteConcert(Request $request, $concerts)
     {
-        return view('/vote-room');
+        $accessToken = $request->session()->get('accessToken');
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($accessToken);
+
+        $data['songs'] = \DB::table('songvote')
+            ->where('concert_id', $concerts)
+            ->get(); 
+
+        $data['amount'] = count($data['songs']);
+        
+        
+        $trackIds = array();
+
+        for($x = 0; $x < $data['amount']; $x++){
+            $songId = $data['songs'][$x]->song;
+            array_push($trackIds, $songId); 
+        }
+
+        $future = strtotime($data['songs'][0]->ending_date);
+        $now = time();
+        $timeleft = $future-$now;
+        $data['daysleft'] = round((($timeleft/24)/60)/60); 
+
+        $data['songVoteOptions'] = $api->getTracks($trackIds, []);
+
+        //dd($data['songVoteOptions']);   
+
+        return view('/vote-room', $data);
     }
 
     public function bingoConcert($concerts)
