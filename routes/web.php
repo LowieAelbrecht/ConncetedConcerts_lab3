@@ -37,11 +37,6 @@ Route::get('/add-concert', 'App\Http\Controllers\ArtistController@addConcert');
 Route::post('/add-concert', 'App\Http\Controllers\ArtistController@storeConcert');
 
 Route::get('/add-songvote', 'App\Http\Controllers\ArtistController@addSongVote');
-Route::post('/add-songvote', 'App\Http\Controllers\ArtistController@storeSongVote');
-
-Route::get('/add-bingo', 'App\Http\Controllers\ArtistController@addBingo');
-
-Route::post('getAlbumTracks', 'App\Http\Controllers\ArtistController@getAlbumTracks');
 
 //MOLLIE ROUTES
 Route::get('mollie-paymnet',[MollieController::Class,'preparePayment'])->name('mollie.payment');

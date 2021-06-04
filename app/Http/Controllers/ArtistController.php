@@ -49,7 +49,7 @@ class ArtistController extends Controller
             $request->photo->move(public_path('uploads'), $newImageName);
             
             // Store in DB
-            $concertId = \DB::table('concerts')->insertGetId(
+            \DB::table('concerts')->insert(
                 ['name' => $concertName, 
                 'artist_name' => $artistName,
                 'locatie' => $locatie,
@@ -59,8 +59,6 @@ class ArtistController extends Controller
                 'artist_id' => $artistId
                 ]
             );
-
-            $request->session()->put('concertId', $concertId);
             
         }
 
@@ -70,61 +68,7 @@ class ArtistController extends Controller
         
     public function addSongVote(Request $request)
     {
-        $accessToken = $request->session()->get('accessToken');
-        $api = new \SpotifyWebAPI\SpotifyWebAPI();
-        $api->setAccessToken($accessToken);
-        $data['artistAlbums'] = $api->getArtistAlbums(session()->get('artistSpotifyId'), ['include_groups' => 'album,single', 'market' => 'BE', 'limit' => '50']);
-        //dd($data['artistAlbums']);
-
-
-        return view('/add-songvote', $data);
-    }
-
-    public function storeSongVote(Request $request)
-    {
-        $accessToken = $request->session()->get('accessToken');
-        $api = new \SpotifyWebAPI\SpotifyWebAPI();
-        $api->setAccessToken($accessToken);
-        $artistId = $request->session()->get('artistId');
-        $concertId = $request->session()->get('concertId');
-        $date = $request->input('endingDate');
-
-        $request->validate([
-            'endingDate' => 'required|date|after:tomorrow',
-            'songs' => 'array|min:2'
-        ]);
-
-        foreach(($request->input('songs')) as $song){
-            \DB::table('songvote')->insertOrIgnore(
-                ['song' => $song,
-                'votes' => '0',
-                'concert_id' => $concertId, 
-                'artist_id' => $artistId,
-                'ending_date' => $date
-                ]
-            );
-        }
-        
-        return redirect('/add-bingo');
-    }
-
-
-    public function getAlbumTracks(Request $request)
-    {
-        $accessToken = $request->session()->get('accessToken');
-        $api = new \SpotifyWebAPI\SpotifyWebAPI();
-        $api->setAccessToken($accessToken);
-
-        $albumId = $_POST['albumId'];
-
-        $data = $api->getAlbumTracks($albumId, ['market' => 'BE', 'limit' => '50'])->items;
-
-        echo json_encode($data);
-    }
-
-    public function addBingo(Request $request)
-    {
-        return view('/add-bingo');
+        return view('/add-songvote');
     }
         
 }

@@ -21,24 +21,13 @@ body {
     height: 100vh;
 }
 
-h2,
 h3,
 h4 {
     font-family: var(--font-coolvetica);
-    color: var(--cc-purple);
 }
 
 h5 {
     font-family: var(--font-humana);
-}
-
-label {
-    color: var(--cc-purple);
-    font-family: var(--font-coolvetica);
-}
-
-.h3-label {
-    font-size: 24px;
 }
 
 .main-nav {
@@ -243,28 +232,4 @@ ul {
 
 .selected-dot {
     opacity: 100%;
-}
-
-/* ADD SONGVOTE */
-
-.song-vote {
-    background-color: #fff;
-    padding: 1em 0 3em 0;
-}
-
-.grey-row {
-    background-color: var(--cc-white);
-    margin: 10px 0px;
-}
-
-.grey-row-sm {
-    background-color: var(--cc-white);
-    margin: 5px 0px 5px 40px;
-}
-
-.album-cover {
-    width: 50px;
-    height: auto;
-    margin: 5px 5px 5px 20px;
-    border-radius: 20%;
 }
