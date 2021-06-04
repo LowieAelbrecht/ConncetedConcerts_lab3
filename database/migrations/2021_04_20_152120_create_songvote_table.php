@@ -15,11 +15,11 @@ class CreateSongvoteTable extends Migration
     {
         Schema::create('songvote', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('album');
             $table->string('song');
             $table->integer('votes');
             $table->integer('concert_id');
-            $table->integer('artist_id');   
+            $table->integer('artist_id');  
+            $table->date('ending_date'); 
             $table->timestamps();
         });
     }

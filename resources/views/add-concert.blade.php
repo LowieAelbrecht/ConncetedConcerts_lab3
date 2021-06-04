@@ -5,51 +5,52 @@
 @endsection
 
 @section('content')
-    <form method="post" action="/add-concert" enctype="multipart/form-data"> 
+<form method="post" action="/add-concert" enctype="multipart/form-data"> 
     @csrf
+    <div class="container">
         <div>
-            <label for="concertName" class="form-label">Room name</label>
+            <label for="concertName" class="form-label h3-label">Room name</label>
             <input type="text" name="concertName" class="form-control" value=""> 
         </div>
         <div class="row">
             <div class="col-8">
-                <label for="date" class="form-label">Date</label>
+                <label for="date" class="form-label h3-label">Date</label>
                 <input type="date" name="date" class="form-control" value=""> 
             </div>
             <div class="col-4">
-                <label for="time" class="form-label">Time</label>
+                <label for="time" class="form-label h3-label">Time</label>
                 <input type="time" name="time" class="form-control" value=""> 
             </div>
         </div>
         <div>
-            <label for="location" class="form-label">Location</label>
+            <label for="location" class="form-label h3-label">Location</label>
             <input type="text" name="location" class="form-control" value=""> 
         </div>
         <div class="range-wrap col-12">
-            <label for="price" class="form-label">Price</label>
+            <label for="price" class="form-label h3-label">Price</label>
             <input type="range" name="price" class="range" min="5" max="10" step="1">
             <output class="bubble"></output>
         </div>
         <div>
-            <label for="photo" class="form-label">Image</label>
+            <label for="photo" class="form-label h3-label">Image</label>
             <input type="file" name="photo">
         </div>
-    
+    </div>
 @endsection
 
 @section('steps')
-        <div class="steps row justify-content-center">
-            <div class="text-center">
-                <h5>Basic info</h5>
-                <span class="selected-dot dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>        
-            </div>
-            <div class="pull-right">
-                <input type="submit" name="upload" value="Next"></input>
-            </div>        
+    <div class="steps row justify-content-center">
+        <div class="text-center">
+            <h5>Basic info</h5>
+            <span class="selected-dot dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>        
         </div>
-    </form>
+        <div class="pull-right">
+            <input type="submit" name="upload" value="Next"></input>
+        </div>        
+    </div>
+</form>
 @endsection
 
 @section('js')
