@@ -168,6 +168,16 @@ class ClientController extends Controller
         return view('/social-room');
     }
 
+    public function voteConcert($concerts)
+    {
+        return view('/vote-room');
+    }
+
+    public function bingoConcert($concerts)
+    {
+        return view('/bingo-room');
+    }
+
     public function profile(Request $request)
     {
         $accessToken = $request->session()->get('accessToken');

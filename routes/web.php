@@ -24,6 +24,8 @@ Route::get('/user-discover', 'App\Http\Controllers\ClientController@discover');
 Route::get('/concerts/{concerts}', 'App\Http\Controllers\ClientController@showConcert');
 Route::get('/concertspayment/{concerts}', 'App\Http\Controllers\MollieController@preparePayment');
 Route::get('/social-room/{concerts}', 'App\Http\Controllers\ClientController@socialConcert');
+Route::get('/vote-room/{concerts}', 'App\Http\Controllers\ClientController@voteConcert');
+Route::get('/bingo-room/{concerts}', 'App\Http\Controllers\ClientController@bingoConcert');
 
 Route::get('/checkUser', 'App\Http\Controllers\ClientController@checkUser');
 Route::post('/checkUser', 'App\Http\Controllers\ClientController@fixUser');
