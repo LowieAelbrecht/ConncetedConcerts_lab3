@@ -12,14 +12,3 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .vagrant/machines/connectedconcerts/virtualbox/action_set_name
-.vagrant/machines/connectedconcerts/virtualbox/action_provision
-.vagrant/machines/connectedconcerts/virtualbox/box_meta
-.vagrant/machines/connectedconcerts/virtualbox/box_meta
-.vagrant/machines/connectedconcerts/virtualbox/creator_uid
-.vagrant/machines/connectedconcerts/virtualbox/id
-.vagrant/machines/connectedconcerts/virtualbox/index_uuid
-.vagrant/machines/connectedconcerts/virtualbox/private_key
-.vagrant/machines/connectedconcerts/virtualbox/synced_folders
-.vagrant/machines/connectedconcerts/virtualbox/vagrant_cwd
-.vagrant/machines/connectedconcerts/virtualbox/vagrant_cwd
-.vagrant/machines/connectedconcerts/virtualbox/vagrant_cwd
