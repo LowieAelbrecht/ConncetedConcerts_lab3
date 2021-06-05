@@ -34,7 +34,7 @@
                 @endforeach
             @endfor    
         @endif
-    @else
+    @else 
         @if(empty($myConcerts[0]))
             <div class="row justify-content-center">
                 <i class="material-icons">folder_open</i>
@@ -45,9 +45,11 @@
                 </form>
             </div>        
         @else
+            @if(!empty($published))
+                <h4>Published rooms</h4>
+            @endif
             @foreach( $myConcerts as $myConcert )
-                @if($myConcert->published == true)
-                    <h4>Published rooms</h4>
+                @if($myConcert->published == true) 
                     <h4 class="concert-date"><a href="/concerts/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
                     <div class="card">
                         <img  src="uploads/{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
@@ -57,8 +59,13 @@
                             <h5><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->tickets_sold }} ticket(s) sold</a></h5>
                         </div>                        
                     </div>
-                @else
-                    <h4>Unpublished rooms</h4>
+                @endif    
+            @endforeach
+            @if(!empty($unPublished))
+                <h4>Unpublished rooms</h4>
+            @endif
+            @foreach( $myConcerts as $myConcert )
+                @if($myConcert->published == false)  
                     <h4 class="concert-date"><a href="/concerts/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
                     <div class="card">
                         <img  src="uploads/{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
@@ -67,7 +74,7 @@
                             <h5><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->locatie }}</a></h5>
                         </div>
                     </div>
-                @endif
+                @endif 
             @endforeach
             <form action="/add-concert" method="get">
                 <button class="btn-add" type="submit" name="room" value="room">+</button>

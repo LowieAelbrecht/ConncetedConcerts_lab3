@@ -98,6 +98,8 @@ class ClientController extends Controller
     {
         if((session()->get('userType')) == ("artist")){
            $data['myConcerts'] = \DB::table('concerts')->where('artist_id', session()->get('artistId'))->get();
+           $data['published'] = \DB::table('concerts')->where('artist_id', session()->get('artistId'))->where('published', true)->first();
+           $data['unPublished'] = \DB::table('concerts')->where('artist_id', session()->get('artistId'))->where('published', false)->first();
            //var_dump($data['myConcerts']);
         } else {
             $concertCheck = \DB::table('userconcerts')
