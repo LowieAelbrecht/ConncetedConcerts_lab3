@@ -173,6 +173,7 @@ class ClientController extends Controller
         $accessToken = $request->session()->get('accessToken');
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
         $api->setAccessToken($accessToken);
+        $userId = $request->session()->get('userId');
 
         $data['songs'] = \DB::table('songvote')
             ->where('concert_id', $concerts)
@@ -195,9 +196,55 @@ class ClientController extends Controller
 
         $data['songVoteOptions'] = $api->getTracks($trackIds, []);
 
+        $data['voted'] = \DB::table('usersongvote')
+            ->where('concert_id', $concerts)
+            ->where('user_id', $userId)
+            ->first();
+        
+        //dd($data['voted']);    
+
         //dd($data['songVoteOptions']);   
 
         return view('/vote-room', $data);
+    }
+
+    public function insertVote(Request $request)
+    {
+        $songId = $_POST['songId'];
+        $concertId = $_POST['concertId'];
+        $userId = $request->session()->get('userId');
+
+        $voted = \DB::table('usersongvote')
+            ->where('concert_id', $concertId)
+            ->where('user_id', $userId)
+            ->first();
+
+        if(empty($voted)){
+            \DB::table('usersongvote')->insert(
+                ['user_id' => $userId, 
+                'concert_id' => $concertId,
+                'songSpotifyId' => $songId
+                ]
+            );
+            \DB::table('songvote')
+                ->where('concert_id', $concertId)
+                ->where('song', $songId)
+                ->update(['votes'=> \DB::raw('votes+1')]);
+        } else {
+            \DB::table('songvote')
+                ->where('concert_id', $concertId)
+                ->where('song', $voted->songSpotifyId)
+                ->update(['votes'=> \DB::raw('votes-1')]);
+            \DB::table('usersongvote')
+                ->where('concert_id', $concertId)
+                ->where('user_id', $userId)
+                ->update(['songSpotifyId' => $songId]);
+                
+            \DB::table('songvote')
+                ->where('concert_id', $concertId)
+                ->where('song', $songId)
+                ->update(['votes'=> \DB::raw('votes+1')]);       
+        }
     }
 
     public function bingoConcert($concerts)

@@ -29,7 +29,6 @@ Route::get('/bingo-room/{concerts}', 'App\Http\Controllers\ClientController@bing
 
 Route::get('/checkUser', 'App\Http\Controllers\ClientController@checkUser');
 Route::post('/checkUser', 'App\Http\Controllers\ClientController@fixUser');
-//Route::get('/user-home', 'App\Http\Controllers\ClientController@userHome');
 Route::get('/callback', 'App\Http\Controllers\Callback@index');
 Route::get('/user-profile', 'App\Http\Controllers\ClientController@profile');
 Route::get('/settings', 'App\Http\Controllers\ClientController@settings');
@@ -43,7 +42,10 @@ Route::post('/add-songvote', 'App\Http\Controllers\ArtistController@storeSongVot
 
 Route::get('/add-bingo', 'App\Http\Controllers\ArtistController@addBingo');
 
+
+// AJAX ROUTES
 Route::post('getAlbumTracks', 'App\Http\Controllers\ArtistController@getAlbumTracks');
+Route::post('insertVote', 'App\Http\Controllers\ClientController@insertVote');
 
 //MOLLIE ROUTES
 Route::get('mollie-paymnet',[MollieController::Class,'preparePayment'])->name('mollie.payment');
