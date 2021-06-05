@@ -26,7 +26,7 @@
                 @foreach( $myConcerts[$x] as $myConcert )
                     <h4 class="concert-date"><a href="/social-room/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
                     <div class="card">
-                    <img src="uploads/{{ $myConcert->file_path }}" alt="concert picture">
+                        <img src="uploads/{{ $myConcert->file_path }}" alt="concert picture">
                         <h3 class="card-title"><a href="/social-room/{{ $myConcert->id }}">{{ $myConcert->artist_name }}</a></h3>
                         <h5><a href="/social-room/{{ $myConcert->id }}">{{ $myConcert->name }}</a></h5>
                         <h5><a href="/social-room/{{ $myConcert->id }}">{{ $myConcert->locatie }}</a></h5>
@@ -66,12 +66,12 @@
             @endif
             @foreach( $myConcerts as $myConcert )
                 @if($myConcert->published == false)  
-                    <h4 class="concert-date"><a href="/concerts/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
+                    <h4 class="concert-date"><a href="/update-concert/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
                     <div class="card">
                         <img  src="uploads/{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
                         <div class="card-body">
-                            <h3><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->name }}</a></h3>
-                            <h5><a href="/concerts/{{ $myConcert->id }}">{{ $myConcert->locatie }}</a></h5>
+                            <h3><a href="/update-concert/{{ $myConcert->id }}">{{ $myConcert->name }}</a></h3>
+                            <h5><a href="/update-concert/{{ $myConcert->id }}">{{ $myConcert->locatie }}</a></h5>
                         </div>
                     </div>
                 @endif 

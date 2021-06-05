@@ -67,6 +67,55 @@ class ArtistController extends Controller
         return redirect('/add-songvote'); 
     }
 
+    public function updateConcert(Request $request, $concert)
+    {
+        $data['myConcert'] = \DB::table('concerts')
+            ->where('artist_id', session()->get('artistId'))
+            ->where('id', $concert)
+            ->first();
+
+        return view('/update-concert', $data);
+    }
+
+    public function saveUpdateConcert(Request $request, $concert)
+    {
+        $date = $request->input('date') . " " .  $request->input('time');
+        //$newImageName = time() . '-' . $request->concertName . '.' . $request->photo->extension(); 
+        //$request->photo->move(public_path('uploads'), $newImageName);
+
+        switch ($request->input('action')) {
+            case 'publish':
+                \DB::table('concerts')
+                ->where('id', $concert)
+                ->update(
+                    ['name' => $request->input('concertName'), 
+                    'locatie' => $request->input('location'),
+                    'concert_date' => $date,
+                    'prijs' => $request->input('price'),
+                   // 'file_path' => $newImageName,
+                    'published' => true
+                ]
+                );
+                return redirect('/update-concert/' . $concert); 
+                break;
+    
+            case 'save':
+                \DB::table('concerts')
+                ->where('id', $concert)
+                ->update(
+                    ['name' => $request->input('concertName'), 
+                    'locatie' => $request->input('location'),
+                    'concert_date' => $date,
+                    'prijs' => $request->input('price'),
+                   // 'file_path' => $newImageName,
+                    'published' => false
+                ]
+                );
+                return redirect('/update-concert/' . $concert);  
+                break;
+            }       
+    }
+
         
     public function addSongVote(Request $request)
     {
