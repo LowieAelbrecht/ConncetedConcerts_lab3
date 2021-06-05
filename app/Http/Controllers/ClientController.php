@@ -177,6 +177,7 @@ class ClientController extends Controller
 
         $data['songs'] = \DB::table('songvote')
             ->where('concert_id', $concerts)
+            ->orderBy('votes', 'desc')
             ->get(); 
 
         $data['amount'] = count($data['songs']);
@@ -200,8 +201,16 @@ class ClientController extends Controller
             ->where('concert_id', $concerts)
             ->where('user_id', $userId)
             ->first();
-        
-        //dd($data['voted']);    
+
+        if(!empty($data['voted'])){
+            $data['totalVotes'] = 0;
+            for($x = 0; $x < $data['amount']; $x++){
+                $votes = $data['songs'][$x]->votes;
+                $data['totalVotes'] = $data['totalVotes'] + $votes; 
+            }
+            //dd($totalVotes);  
+        }        
+          
 
         //dd($data['songVoteOptions']);   
 
@@ -245,6 +254,8 @@ class ClientController extends Controller
                 ->where('song', $songId)
                 ->update(['votes'=> \DB::raw('votes+1')]);       
         }
+
+        echo json_encode(true);
     }
 
     public function bingoConcert($concerts)
