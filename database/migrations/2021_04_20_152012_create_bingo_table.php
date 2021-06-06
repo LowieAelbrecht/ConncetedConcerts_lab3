@@ -15,7 +15,10 @@ class CreateBingoTable extends Migration
     {
         Schema::create('bingo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('naam');
+            $table->string('item_name');
+            $table->integer('item_amount');
+            $table->string('item_info');
+            $table->integer('concert_id'); 
             $table->timestamps();
         });
     }

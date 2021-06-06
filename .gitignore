@@ -23,3 +23,5 @@ yarn-error.log
 .vagrant/machines/connectedconcerts/virtualbox/vagrant_cwd
 .vagrant/machines/connectedconcerts/virtualbox/vagrant_cwd
 .vagrant/machines/connectedconcerts/virtualbox/vagrant_cwd
+.vagrant/machines/connectedconcerts/virtualbox/vagrant_cwd
+.vagrant/machines/connectedconcerts/virtualbox/box_meta

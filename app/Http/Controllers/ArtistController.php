@@ -175,5 +175,37 @@ class ArtistController extends Controller
     {
         return view('/add-bingo');
     }
+
+    public function storeBingo(Request $request)
+    {
+        $name = $request->input('name');
+        $amount = $request->input('amount');
+        $info = $request->input('info');
+        $concertId = $request->session()->get('concertId');
+        
+        $request->validate([
+            'name' => 'required',
+            'amount' => 'required',
+            'info' => 'required'
+        ]);
+
+        $request->flash();
+
+        \DB::table('bingo')->insertOrIgnore(
+            ['item_name' => $name,
+            'item_amount' => $amount,
+            'item_info' => $info, 
+            'concert_id' => $concertId,
+            ]
+        );
+        
+
+    }
+
+    public function addPost(Request $request, $concert)
+    {
+        return view('/add-post');
+    }
+
         
 }

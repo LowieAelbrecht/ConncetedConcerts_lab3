@@ -176,6 +176,7 @@ class ClientController extends Controller
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
         $api->setAccessToken($accessToken);
         $userId = $request->session()->get('userId');
+        $userType = $request->session()->get('userType');
 
         $data['songs'] = \DB::table('songvote')
             ->where('concert_id', $concerts)
@@ -204,14 +205,22 @@ class ClientController extends Controller
             ->where('user_id', $userId)
             ->first();
 
-        if(!empty($data['voted'])){
+        if($userType == 'user'){
+            if(!empty($data['voted'])){
+                $data['totalVotes'] = 0;
+                for($x = 0; $x < $data['amount']; $x++){
+                    $votes = $data['songs'][$x]->votes;
+                    $data['totalVotes'] = $data['totalVotes'] + $votes; 
+                }
+            } 
+        } else {
             $data['totalVotes'] = 0;
             for($x = 0; $x < $data['amount']; $x++){
                 $votes = $data['songs'][$x]->votes;
                 $data['totalVotes'] = $data['totalVotes'] + $votes; 
             }
-            //dd($totalVotes);  
-        }        
+        }
+               
           
 
         //dd($data['songVoteOptions']);   

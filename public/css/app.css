@@ -131,7 +131,15 @@ input[type="time"] {
     border: 0;
     border-radius: 10px;
     position: fixed;
+}
+
+.bottom {
     bottom: 15px;
+    right: 15px;
+}
+
+.bottom-nav-btn {
+    bottom: 65px;
     right: 15px;
 }
 

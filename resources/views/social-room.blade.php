@@ -4,6 +4,14 @@
     Social
 @endsection
 
+@section('content')
+    @if((session()->get('userType')) == ("artist"))
+    <form action="/new-post/{{ request()->route('concerts') }}" method="get">
+        <button class="btn-add bottom-nav-btn" type="submit" name="room" value="room">+</button>
+    </form>
+    @endif
+@endsection
+
 @section('steps')
     <div class="bottom-nav">
         <div class="justify-content-center row bottom-nav">
