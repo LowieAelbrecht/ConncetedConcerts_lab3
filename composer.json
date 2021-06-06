@@ -9,7 +9,7 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "jwilsson/spotify-web-api-php": "^5.0",
+        "jwilsson/spotify-web-api-c": "^5.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "mollie/laravel-mollie": "^2.14"
