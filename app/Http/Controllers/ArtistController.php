@@ -204,7 +204,37 @@ class ArtistController extends Controller
             );
         }
         
-        return redirect('/add-bingo');
+        return redirect('/finish-concert');
+    }
+
+    public function finishConcert(Request $request)
+    {
+        $concertId = $request->session()->get('concertId');
+        $data['myConcert'] = \DB::table('concerts')
+        ->where('id', $concertId)
+        ->first();
+
+        return view('/finish-concert', $data);
+    }
+
+    public function publishConcert(Request $request)
+    {
+        $concertId = $request->session()->get('concertId');
+
+        switch ($request->input('action')) {
+            case 'publish':
+                \DB::table('concerts')
+                ->where('id', $concertId)
+                ->update(
+                    [
+                    'published' => true
+                ]
+                );
+                break;
+
+            }
+            
+        return redirect('/user-rooms'); 
     }
 
     public function addPost(Request $request, $concert)
