@@ -18,6 +18,7 @@ class CreateBingoTable extends Migration
             $table->string('item_name');
             $table->integer('item_amount');
             $table->string('item_info');
+            $table->string('file_path');
             $table->integer('concert_id'); 
             $table->timestamps();
         });

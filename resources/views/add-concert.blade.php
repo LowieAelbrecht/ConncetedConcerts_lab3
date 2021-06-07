@@ -31,9 +31,13 @@
             <input type="range" name="price" class="range" min="5" max="10" step="1">
             <output class="bubble"></output>
         </div>
-        <div>
-            <label for="photo" class="form-label h3-label">Image</label>
-            <input type="file" name="photo">
+        <h3 class="form-label h3-label">Picture</h3>
+        <div class="image-concert">    
+            <label class="custom-file-upload text-center">
+                <input type="file" name="photo"/>
+                <span class="material-icons">image</span>
+                <h5>Choose your image</h5>
+            </label>
         </div>
     </div>
 @endsection

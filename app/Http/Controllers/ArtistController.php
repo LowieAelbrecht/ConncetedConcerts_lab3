@@ -125,7 +125,6 @@ class ArtistController extends Controller
         $data['artistAlbums'] = $api->getArtistAlbums(session()->get('artistSpotifyId'), ['include_groups' => 'album,single', 'market' => 'BE', 'limit' => '50']);
         //dd($data['artistAlbums']);
 
-
         return view('/add-songvote', $data);
     }
 
@@ -177,29 +176,35 @@ class ArtistController extends Controller
     }
 
     public function storeBingo(Request $request)
-    {
-        $name = $request->input('name');
-        $amount = $request->input('amount');
-        $info = $request->input('info');
+    {       
+        $request->flash();
         $concertId = $request->session()->get('concertId');
         
-        $request->validate([
-            'name' => 'required',
-            'amount' => 'required',
-            'info' => 'required'
-        ]);
+        foreach(($request->input('name')) as $key => $item){
 
-        $request->flash();
+            $newImageName[$key] = time() . '-' . $request->name[$key] . '.' . $request->photo[$key]->extension();
+            // store image in public uploads folder    
+            $request->photo[$key]->move(public_path('uploads'), $newImageName[$key]);
+            /*
+            $request->validate([
+                'name' => 'required',
+                'amount' => 'required',
+                'info' => 'required',
+                'photo' => 'required|mimes:jpg,png,jpeg'
+            ]);
+            */
 
-        \DB::table('bingo')->insertOrIgnore(
-            ['item_name' => $name,
-            'item_amount' => $amount,
-            'item_info' => $info, 
-            'concert_id' => $concertId,
-            ]
-        );
+            \DB::table('bingo')->insertOrIgnore(
+                ['item_name' => $item,
+                'item_amount' => ($request->input('amount'))[$key],
+                'item_info' => ($request->input('info'))[$key], 
+                'concert_id' => $concertId,
+                'file_path' => $newImageName[$key]
+                ]
+            );
+        }
         
-
+        return redirect('/add-bingo');
     }
 
     public function addPost(Request $request, $concert)
