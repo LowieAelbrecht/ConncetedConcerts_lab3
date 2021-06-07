@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="container mt-3">
+    @if(empty($bingoResults[0]))
     <div class="text-center">
         <h2>Bingo</h2>
         @if((session()->get('userType')) == ("user"))
@@ -38,6 +39,23 @@
             <button class="button bingo-btn">START <br>BINGO</button>
         </form>    
     </div>    
+    @endif
+    @else 
+    <div class="text-center">
+        <h2>Bingo</h2>
+        <p>The winners are confirmed!</p>
+    </div>   
+    <h3>Winners</h3>
+    @foreach($prices as $price)
+        <h2>{{ $price->item_name }}</h2>
+        @foreach($bingoResults as $bingoResult)
+            @foreach($users as $user)
+                @if($user->id == $bingoResult->user_id && $price->id == $bingoResult->bingo_id)
+                    <h3 class="winners">{{ $user->name }}</h3>
+                @endif
+            @endforeach
+        @endforeach
+    @endforeach
     @endif
 </div>    
 @endsection

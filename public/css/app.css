@@ -7,6 +7,7 @@
     /* COLORS */
     --cc-purple: #240046;
     --cc-white: #efefef;
+    --cc-orange: #ff6d00;
     --cc-gradient: linear-gradient(#ff9e00, #ff6d00);
     /* FONTS */
     --font-coolvetica: "coolvetica", sans-serif;
@@ -387,4 +388,8 @@ input[type="file"] {
     color: #fff;
     height: 200px;
     width: 200px;
+}
+
+.winners {
+    color: var(--cc-orange);
 }

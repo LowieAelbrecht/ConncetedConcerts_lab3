@@ -233,6 +233,7 @@ class ArtistController extends Controller
                 break;
 
             }
+
             
         return redirect('/user-rooms'); 
     }
@@ -252,23 +253,20 @@ class ArtistController extends Controller
         $winnerIds = array();
 
         $prices = \DB::table('bingo')->where('concert_id', $concert)->get();
-        $numberOfPrices = 0;
         foreach($prices as $price){
-            $winnerIds[$price->id] = array();;
+            $winnerIds[$price->id] = array();
             for($x = 0; $x < $price->item_amount; $x++){
-                array_push($winnerIds[$price->id], array_pop($userIds)); 
+                $winnerId = array_pop($userIds);
+                \DB::table('userbingo')->insertOrIgnore(
+                    ['user_id' => $winnerId,
+                    'bingo_id' => $price->id,
+                    'concert_id' => $concert 
+                    ]
+                ); 
             } 
-        }
-        //echo $numberOfPrices       
-  
+        }     
         
-        dd($winnerIds[1]);
-        die;
-
-        //dd($prices);
-        
-        die;
-        //return view('/bingo-room'); 
+        return redirect('/bingo-room/' . $concert); 
     }
 
     public function addPost(Request $request, $concert)

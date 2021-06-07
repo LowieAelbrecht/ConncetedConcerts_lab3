@@ -277,6 +277,29 @@ class ClientController extends Controller
     {
         $data['bingoPrices'] = \DB::table('bingo')->where('concert_id', $concerts)->get();
 
+        $data['bingoResults'] = \DB::table('userbingo')->where('concert_id', $concerts)->get();
+
+        $data['users'] = array();
+
+        foreach($data['bingoResults'] as $result){
+            $user = \DB::table('users')
+                ->where('id', $result->user_id)
+                ->first();
+            array_push($data['users'], $user);
+        }
+
+        $data['prices'] = array();
+
+        foreach($data['bingoPrices'] as $result){
+            $price = \DB::table('bingo')
+                ->where('id', $result->id)
+                ->first();
+            array_push($data['prices'], $price);
+        }
+
+        //dd($data['prices']);
+
+
         return view('/bingo-room', $data);
     }
 
