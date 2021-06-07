@@ -237,6 +237,40 @@ class ArtistController extends Controller
         return redirect('/user-rooms'); 
     }
 
+    public function bingoResults(Request $request, $concert)
+    {
+        $users = \DB::table('userconcerts')->where('concert_id', $concert)->get();
+
+        $userIds = array(); 
+
+        foreach($users as $user){
+            $userId = $user->user_id;
+            array_push($userIds, $userId); 
+        }
+
+        shuffle($userIds);
+        $winnerIds = array();
+
+        $prices = \DB::table('bingo')->where('concert_id', $concert)->get();
+        $numberOfPrices = 0;
+        foreach($prices as $price){
+            $winnerIds[$price->id] = array();;
+            for($x = 0; $x < $price->item_amount; $x++){
+                array_push($winnerIds[$price->id], array_pop($userIds)); 
+            } 
+        }
+        //echo $numberOfPrices       
+  
+        
+        dd($winnerIds[1]);
+        die;
+
+        //dd($prices);
+        
+        die;
+        //return view('/bingo-room'); 
+    }
+
     public function addPost(Request $request, $concert)
     {
         return view('/add-post');

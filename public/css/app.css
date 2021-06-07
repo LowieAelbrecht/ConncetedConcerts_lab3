@@ -124,6 +124,14 @@ input[type="file"] {
     display: none;
 }
 
+.bg-white {
+    background-color: #fff;
+    padding: 5px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 1px 2px 5px #888888;
+}
+
 /* BUTTONS */
 
 .btn-orange {
@@ -342,7 +350,7 @@ input[type="file"] {
     padding: 5px 0;
 }
 
-/* ADD BINGO */
+/* BINGO */
 
 .addItem {
     background-color: #fff;
@@ -354,4 +362,29 @@ input[type="file"] {
 
 .addItem h5 {
     margin: 5px 0;
+}
+
+.bingo-picture {
+    width: 40vw;
+    height: auto;
+    border-radius: 25px;
+}
+
+.bg-white .d-flex .material-icons {
+    font-size: 60px;
+    font-weight: bolder;
+    color: var(--cc-purple);
+}
+
+.bingo-btn {
+    background-image: var(--cc-gradient);
+    border: 0;
+    border-radius: 50%;
+    font-family: var(--font-humana);
+    font-weight: 700;
+    font-size: 24px;
+    background-image: var(--cc-gradient);
+    color: #fff;
+    height: 200px;
+    width: 200px;
 }

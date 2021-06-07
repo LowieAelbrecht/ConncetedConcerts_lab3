@@ -153,6 +153,10 @@ class ClientController extends Controller
             ->where('concert_id', $concerts)
             ->first();
   
+        $data['bingoPrices'] = \DB::table('bingo')->where('concert_id', $concerts)->get();
+        
+        $data['prices'] = count($data['bingoPrices']);
+
                   
         if(empty($concertCheck)){
         $data['concert'] = \DB::table('concerts')->where('id', $concerts)->first();
@@ -271,7 +275,9 @@ class ClientController extends Controller
 
     public function bingoConcert($concerts)
     {
-        return view('/bingo-room');
+        $data['bingoPrices'] = \DB::table('bingo')->where('concert_id', $concerts)->get();
+
+        return view('/bingo-room', $data);
     }
 
     public function profile(Request $request)

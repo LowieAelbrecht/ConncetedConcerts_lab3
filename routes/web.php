@@ -26,6 +26,7 @@ Route::get('/concertspayment/{concerts}', 'App\Http\Controllers\MollieController
 Route::get('/social-room/{concerts}', 'App\Http\Controllers\ClientController@socialConcert');
 Route::get('/vote-room/{concerts}', 'App\Http\Controllers\ClientController@voteConcert');
 Route::get('/bingo-room/{concerts}', 'App\Http\Controllers\ClientController@bingoConcert');
+Route::post('/bingo-room/{concerts}', 'App\Http\Controllers\ArtistController@bingoResults');
 Route::get('/update-concert/{concerts}', 'App\Http\Controllers\ArtistController@updateConcert');
 Route::post('/update-concert/{concerts}', 'App\Http\Controllers\ArtistController@saveUpdateConcert');
 Route::get('/new-post/{concerts}', 'App\Http\Controllers\ArtistController@addPost');

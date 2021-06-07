@@ -24,13 +24,21 @@
                     @else
                         @foreach($songs as $song)
                             @if($song->song == $songVoteOption->id)
+                                @if($totalVotes > 0)
                                 <div class="row grey-row vote" 
                                 style="background: linear-gradient(to right, #ff9e00 0%, #ff9e00 <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ff9e00 <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ddd <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ddd 100%);"
                                 id="{{ $songVoteOption->id }}">
+                                @else
+                                <div class="row grey-row vote">    
+                                @endif
                                     <h4 class="pl-2 my-auto" >{{ $key+1 }}</h4>
                                     <img class="album-cover" src="<?php echo $songVoteOption->album->images[0]->url; ?>" alt="album cover">
                                     <h4 class="pl-2 my-auto" >{{ $songVoteOption->name }}</h4>
+                                    @if($totalVotes > 0)
                                     <h4 class="pl-2 my-auto">{{ round((($song->votes)/$totalVotes)*100) }}%</h4>
+                                    @else
+                                    <h4 class="pl-2 my-auto">0%</h4> 
+                                    @endif
                                 </div>                  
                             @endif
                         @endforeach
@@ -84,7 +92,6 @@ $(document).ready(function(){
         var songId = $(this).attr("id");
         var url = window.location.pathname;
         var concertId = url.substring(url.lastIndexOf('/') + 1);
-        console.log(concertId);
 
         $.ajax({
             url:'/insertVote',

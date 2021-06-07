@@ -1,1 +1,62 @@
-<h1>BINGO</h1>
+@extends('layouts/back-nav')
+
+@section('title')
+    Bingo
+@endsection
+
+@section('content')
+<div class="container mt-3">
+    <div class="text-center">
+        <h2>Bingo</h2>
+        @if((session()->get('userType')) == ("user"))
+        <p>The artist starts the bingo at the end of the concert. The winnners can recieve their prices at the mentioned point.</p>
+        @else
+        <p>Press the "Start Bingo" button after your concert and make your fans happy with prices!</p>
+        @endif
+    </div>
+    <div class="bg-white"> 
+        <div class="text-center">
+            <h3>The prices</h3>
+        </div>
+        @foreach($bingoPrices as $key => $bingoPrice)
+            @if($key == 0)
+            <div>                        
+                <div class="d-flex justify-content-center">
+                    <span class="material-icons my-auto" id="previous">chevron_left</span>
+                    <img  src="/uploads/{{ $bingoPrice->file_path }}" class="bingo-picture" alt="Picture of bingo price" id="image">
+                    <span class="material-icons my-auto" id="next">chevron_right</span>
+                </div>
+                <h5 class="text-center" id="item">{{ $bingoPrice->item_amount }} {{ $bingoPrice->item_name }}</h5>
+            </div>
+            @endif
+        @endforeach 
+    </div>
+    @if((session()->get('userType')) == ("artist"))
+    <div  class="d-flex justify-content-center">
+        <form method="post" action="/bingo-room/{{ request()->route('concerts') }}">
+        @csrf 
+            <button class="button bingo-btn">START <br>BINGO</button>
+        </form>    
+    </div>    
+    @endif
+</div>    
+@endsection
+
+@section('steps')
+    <div class="bottom-nav">
+        <div class="justify-content-center row bottom-nav">
+            <a class="row px-4" href="/social-room/{{ request()->route('concerts') }}">
+                <i class="material-icons">people</i>
+                <h5>Social</h5>
+            </a>
+            <a class="row px-4" href="/vote-room/{{ request()->route('concerts') }}">
+                <i class="material-icons">recommend</i>
+                <h5>Vote</h5>
+            </a>
+            <a class="row px-4  selected-nav">
+                <i class="material-icons">celebration</i>
+                <h5>Bingo</h5>
+            </a>                  
+        </div>      
+    </div>
+@endsection
