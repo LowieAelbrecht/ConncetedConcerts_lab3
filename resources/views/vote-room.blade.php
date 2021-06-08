@@ -11,11 +11,15 @@
         <p>Click on a song you want to hear at the concert</p>
     </div>
     <div class="song-vote justify-content-center">
-        <h5 class="days-left text-center">{{ $daysleft }} Days left</h5>
+        @if(strtotime($daysleft) < strtotime('now'))
+            <h5 class="days-left text-center">{{ $daysleft }} Days left</h5>
+        @else
+         <h5 class="days-left text-center">Song vote is over</h5>
+        @endif
         @foreach( $songVoteOptions->tracks as $key => $songVoteOption)
                 @if(empty($voted))
                     @if((session()->get('userType')) == ("user")) 
-                    <div class="row grey-row vote" id="{{ $songVoteOption->id }}">
+                    <div class="row grey-row <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" id="{{ $songVoteOption->id }}">
                         <h4 class="pl-2 my-auto" >{{ $key+1 }}</h4>
                         <img class="album-cover" src="<?php echo $songVoteOption->album->images[0]->url; ?>" alt="album cover">
                         <h4 class="pl-2 my-auto" >{{ $songVoteOption->name }}</h4>
@@ -46,7 +50,7 @@
                 @else 
                     @foreach($songs as $song)
                         @if($song->song == $songVoteOption->id)
-                            <div class="row grey-row vote" 
+                            <div class="row grey-row <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" 
                                 <?php if($voted->songSpotifyId != $songVoteOption->id) : ?>
                                 style="background: linear-gradient(to right, #ff9e00 0%, #ff9e00 <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ff9e00 <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ddd <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ddd 100%);" 
                                 <?php else : ?>
