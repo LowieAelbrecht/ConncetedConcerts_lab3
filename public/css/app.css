@@ -34,30 +34,6 @@ h5 {
     font-family: var(--font-humana);
 }
 
-.image-preview {
-    width: 300px;
-    min-height: 100px;
-    border: 2px solid #dddddd;
-    margin-top: 15px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: #cccccc;
-}
-
-.image-preview__image {
-    display: none;
-    width: 100%;
-}
-
-#inpFile {
-    background-color: rgb(36, 0, 70);
-    border-radius: 30px;
-    color: white;
-}
-
 label {
     color: var(--cc-purple);
     font-family: var(--font-coolvetica);
@@ -71,24 +47,6 @@ label {
     background-color: var(--cc-purple);
     width: 100vw;
     height: 60px;
-    z-index: 12;
-    position: fixed;
-    margin-bottom: 30px;
-
-}
-
-.nextBtn {
-    background-color: var(--cc-gradient);
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 3px;
-    border-color: var(--cc-gradient);
-
-
-}
-
-.my-auto {
-    align-items: right;
 }
 
 .main-nav .material-icons {
