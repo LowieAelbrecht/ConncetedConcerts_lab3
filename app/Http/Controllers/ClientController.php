@@ -286,8 +286,10 @@ class ClientController extends Controller
                                         ->where('user_id', (session()->get('userId')))
                                         ->first();
 
-            $data['user'] = \DB::table('users')->where('id', (session()->get('userId')))->first();
-            $data['price'] = \DB::table('bingo')->where('id', $data['winnerOrNot']->bingo_id)->first();
+            if(!empty($data['winnerOrNot'])){
+                $data['user'] = \DB::table('users')->where('id', (session()->get('userId')))->first();
+                $data['price'] = \DB::table('bingo')->where('id', $data['winnerOrNot']->bingo_id)->first();
+            }                          
 
         } elseif((session()->get('userType')) == ("artist")){
             $data['users'] = array();

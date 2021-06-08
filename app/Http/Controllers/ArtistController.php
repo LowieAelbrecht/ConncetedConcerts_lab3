@@ -274,5 +274,29 @@ class ArtistController extends Controller
         return view('/add-post');
     }
 
+    public function checkReceived()
+    {
+        $id = $_POST['id'];
+        $checked = $_POST['checked'];
+
+        if($checked == false){
+            \DB::table('userbingo')
+                ->where('id', $id)
+                ->update(
+                    ['received' => true 
+                ]
+                );
+
+        } else {
+            \DB::table('userbingo')
+                ->where('id', $id)
+                ->update(
+                    ['received' => false
+                ]
+                );
+        }
+
+    }
+
         
 }

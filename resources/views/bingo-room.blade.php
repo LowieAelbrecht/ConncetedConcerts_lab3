@@ -43,21 +43,39 @@
     @endif  
     @else
         @if((session()->get('userType')) == ("artist")) 
+        <div class="container mt-3">
             <div class="text-center">
                 <h2>Bingo</h2>
                 <p>The winners are confirmed!</p>
             </div>   
             <h3>Winners</h3>
             @foreach($prices as $price)
-                <h2>{{ $price->item_name }}</h2>
+                <div class="row">
+                    <div class="col-9">
+                        <h3>{{ $price->item_name }}</h3>
+                    </div>
+                    @if($prices[0]->item_name == $price->item_name) 
+                    <div>
+                        <p class="col-3">Received</p>
+                    </div>
+                     @endif
+                </div>
                 @foreach($bingoResults as $bingoResult)
                     @foreach($users as $user)
                         @if($user->id == $bingoResult->user_id && $price->id == $bingoResult->bingo_id)
-                            <h3 class="winners">{{ $user->name }}</h3>
+                        <div class="row">
+                            <div class="col-10">
+                                <h4 class="winners">{{ $user->name }}</h4>
+                            </div>
+                            <div class="col-2">
+                                <input type="checkbox" class="received" value="<?php echo $bingoResult->received; ?>" id="<?php echo $bingoResult->id; ?>" <?php if($bingoResult->received == true)  :?> checked <?php endif; ?>>
+                            </div>                             
+                        </div>
                         @endif
                     @endforeach
                 @endforeach
             @endforeach
+        </div>    
         @else
             @if(empty($winnerOrNot))
                 <div class="lostBingo">
@@ -97,4 +115,28 @@
             </a>                  
         </div>      
     </div>
+@endsection
+
+@section('js')
+<script>
+$(document).ready(function(){
+    $(".received").click(function(){
+        var id = $(this).attr("id");
+        var checked = $(this).attr("value");
+        console.log(checked);
+
+        $.ajax({
+            url:'/checkReceived',
+            method: 'post',
+            data: { "_token": "{{ csrf_token() }}",
+                "id": id,
+                "checked": checked},
+            dataType: 'json'
+            
+        });
+
+    });
+
+});
+</script>
 @endsection

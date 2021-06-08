@@ -17,7 +17,8 @@ class Userbingo extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('bingo_id');
-            $table->integer('concert_id'); 
+            $table->integer('concert_id');
+            $table->boolean('received')->default(false); 
         });
     }
 
