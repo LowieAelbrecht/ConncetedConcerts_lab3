@@ -393,3 +393,32 @@ input[type="file"] {
 .winners {
     color: var(--cc-orange);
 }
+
+.lostBingo {
+    background-image: linear-gradient(#bd00ff, #f80000);
+    width: 100vw;
+    height: 92vh;
+    overflow: auto;
+}
+
+.wonBingo {
+    background-image: var(--cc-gradient);
+    width: 100vw;
+    height: 92vh;
+    overflow: auto;
+}
+
+.bingoEndConcent {
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.bingoEndConcent h1 {
+    color: var(--cc-white);
+    font-size: 48px;
+    font-style: bolder;
+}

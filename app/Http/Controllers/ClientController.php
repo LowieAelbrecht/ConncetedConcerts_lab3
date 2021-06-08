@@ -279,7 +279,18 @@ class ClientController extends Controller
 
         $data['bingoResults'] = \DB::table('userbingo')->where('concert_id', $concerts)->get();
 
-        $data['users'] = array();
+
+        if((session()->get('userType')) == ("user")){
+            $data['winnerOrNot'] = \DB::table('userbingo')
+                                        ->where('concert_id', $concerts)
+                                        ->where('user_id', (session()->get('userId')))
+                                        ->first();
+
+            $data['user'] = \DB::table('users')->where('id', (session()->get('userId')))->first();
+            $data['price'] = \DB::table('bingo')->where('id', $data['winnerOrNot']->bingo_id)->first();
+
+        } elseif((session()->get('userType')) == ("artist")){
+            $data['users'] = array();
 
         foreach($data['bingoResults'] as $result){
             $user = \DB::table('users')
@@ -296,8 +307,7 @@ class ClientController extends Controller
                 ->first();
             array_push($data['prices'], $price);
         }
-
-        //dd($data['prices']);
+        }
 
 
         return view('/bingo-room', $data);
