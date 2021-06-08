@@ -43,7 +43,7 @@
             <span class="dot"></span>        
         </div>
         <div class="pull-right">
-            <input type="submit" name="next" value="Next"></input>
+            <input class="nextBtn" type="submit" name="next" value="Next"></input>
         </div>        
     </div>
 </form>
