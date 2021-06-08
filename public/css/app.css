@@ -351,6 +351,13 @@ input[type="file"] {
     padding: 5px 0;
 }
 
+.play i {
+    position: absolute;
+    left: 64px;
+    padding-top: 14px;
+    color: var(--cc-orange);
+}
+
 /* BINGO */
 
 .addItem {

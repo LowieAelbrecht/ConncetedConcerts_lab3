@@ -203,6 +203,7 @@ class ClientController extends Controller
         $data['daysleft'] = round((($timeleft/24)/60)/60); 
 
         $data['songVoteOptions'] = $api->getTracks($trackIds, []);
+        //dd($data['songVoteOptions']);
 
         $data['voted'] = \DB::table('usersongvote')
             ->where('concert_id', $concerts)
