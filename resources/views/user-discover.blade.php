@@ -81,7 +81,7 @@ $.ajax({
             if(data.length > 0){
                 $('.php-output').hide();
                 for (var i = 0; i < data.length; i++){
-                    if(data[i]['id'] != response){
+                    if(!(response.includes(data[i]['id']))){
                         if(data[i]['published'] == 1){
                             var concertDate = data[i]['concert_date'];
                             var concertDate = new Date(concertDate);
