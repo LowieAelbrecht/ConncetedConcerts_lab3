@@ -29,7 +29,7 @@ Route::get('/bingo-room/{concerts}', 'App\Http\Controllers\ClientController@bing
 Route::post('/bingo-room/{concerts}', 'App\Http\Controllers\ArtistController@bingoResults');
 Route::get('/update-concert/{concerts}', 'App\Http\Controllers\ArtistController@updateConcert');
 Route::post('/update-concert/{concerts}', 'App\Http\Controllers\ArtistController@saveUpdateConcert');
-Route::get('/new-post/{concerts}', 'App\Http\Controllers\ArtistController@addPost');
+
 
 Route::get('/checkUser', 'App\Http\Controllers\ClientController@checkUser');
 Route::post('/checkUser', 'App\Http\Controllers\ClientController@fixUser');
@@ -49,6 +49,9 @@ Route::post('/add-bingo', 'App\Http\Controllers\ArtistController@storeBingo');
 
 Route::get('/finish-concert', 'App\Http\Controllers\ArtistController@finishConcert');
 Route::post('/finish-concert', 'App\Http\Controllers\ArtistController@publishConcert');
+
+Route::get('/new-post/{concerts}', 'App\Http\Controllers\ArtistController@addPost');
+Route::post('/add-post/{concerts}', 'App\Http\Controllers\ArtistController@storePost');
 
 // AJAX ROUTES
 Route::post('getAlbumTracks', 'App\Http\Controllers\ArtistController@getAlbumTracks');

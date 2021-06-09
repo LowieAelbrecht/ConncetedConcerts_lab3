@@ -55,7 +55,7 @@
             @foreach( $myConcerts as $myConcert )
                 @if($myConcert->published == true) 
                     <h4 class="concert-date"><a href="/social-room/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
-                    <a href="/concerts/{{ $myConcert->id }}">
+                    <a href="/social-room/{{ $myConcert->id }}">
                     <div class="card">
                         <img  src="uploads/{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
                         <div class="card-body">

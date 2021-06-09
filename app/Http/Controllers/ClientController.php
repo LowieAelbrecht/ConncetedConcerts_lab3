@@ -169,9 +169,24 @@ class ClientController extends Controller
         }
     }
 
-    public function socialConcert($concerts)
+    public function socialConcert(Request $request, $concerts)
     {
-        return view('/social-room');
+        $accessToken = $request->session()->get('accessToken');
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($accessToken);
+
+        $data['posts'] = \DB::table('posts')
+            ->where('concert_id', $concerts)
+            ->orderBy('post_date', 'desc')
+            ->get(); 
+
+        $artistSpotifyId = \DB::table('posts')
+            ->where('concert_id', $concerts)
+            ->first()->profile_image_artist; 
+
+        $data['profile'] = $api->getArtist($artistSpotifyId);
+
+        return view('/social-room', $data);
     }
 
     public function voteConcert(Request $request, $concerts)
