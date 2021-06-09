@@ -60,6 +60,7 @@ h5 {
     background-color: rgb(36, 0, 70);
     border-radius: 30px;
     color: white;
+    width: 90px;
 }
 
 label {
@@ -107,6 +108,13 @@ label {
 .image-upload {
     height: 80px;
     width: 80px;
+    border-radius: 15px;
+    box-shadow: 1px 2px 5px #888888;
+}
+
+.image-upload2 {
+    height: 180px;
+    width: 180px;
     border-radius: 15px;
     box-shadow: 1px 2px 5px #888888;
 }
@@ -424,7 +432,8 @@ input[type="time"] {
 /* BINGO */
 
 .addItem {
-    background-color: #fff;
+    background-color: rgb(36, 0, 70);
+    color: white;
     padding: 5px;
     margin: 20px 0;
     border-radius: 10px;
@@ -487,6 +496,14 @@ input[type="time"] {
     color: var(--cc-white);
     font-size: 48px;
     font-style: bolder;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.row {
+    padding: 10px;
 }
 
 .winners h4 {

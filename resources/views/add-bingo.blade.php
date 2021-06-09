@@ -13,14 +13,23 @@
             <p>All fans that bought a ticket for your room make an equal chance of winning prices. Add prices and activate the bingo after the performance.</p>
         </div>
         <h3>Give away items</h3>
-        <div class="card mb-5" id="1">
+        <div class="bg-white mb-5" id="1">
             <div class="card-body">
                 <div class="row">
-                    <div class="image-upload col-4 my-2">
+                    <div id="image-upload2" class="image-upload col-4 my-2">
                         <label class="custom-file-upload">
-                            <input type="file" name="photo[1]"/>
-                            <span class="material-icons">image</span>
+
+
+                            <input id="inpFile" type="file" name="photo[1]"/>
+                            <div id="image-upload2">
+
+                            <img src="" alt="Image Preview" class="image-preview__image">
+
+                            </div>
+                           <!-- <span class="material-icons">image</span>-->
                         </label>
+                        
+
                     </div>
                     <div class="col-8">
                         <div class="my-2">
@@ -62,10 +71,53 @@
 <script>
 $(document).ready(function(){
     $(".addItem").click(function(){
-        var itemId = $(".card").last().attr("id");
+        var itemId = $(".bg-white").last().attr("id");
         var newItemId = (+itemId +1);
-        $("#" + itemId).after('<div class="card mb-5" id="'+ newItemId +'"><div class="card-body"><div class="row"><div class="image-upload col-4 my-2"><label class="custom-file-upload"><input type="file" name="photo['+newItemId+']"/><span class="material-icons">image</span></label></div><div class="col-8"><div class="my-2"><input type="text" name="name['+newItemId+']" class="form-control" value="" placeholder="Name item"></div><div class="my-2"><input type="text" name="amount['+newItemId+']" class="form-control" value="" placeholder="Amount"></div></div></div><div class="row"><input type="text" name="info['+newItemId+']" class="form-control" value="" placeholder="Pick up location / Extra info"></div></div></div>');  
+    // var newImg = getElementById("#inpFile");
+       // var addNewImg =(+newImg +1);
+        $("#" + itemId).after('<div class="bg-white mb-5" id="'+ newItemId +'"><div class="card-body"><div class="row"><div class="image-upload col-4 my-2"><label class="custom-file-upload"><input id="inpFile" type="file" name="photo['+newItemId+']"/><img src="" alt="Image Preview" class="image-preview__image"> </label></div><div class="col-8"><div class="my-2"><input type="text" name="name['+newItemId+']" class="form-control" value="" placeholder="Name item"></div><div class="my-2"><input type="text" name="amount['+newItemId+']" class="form-control" value="" placeholder="Amount"></div></div></div><div class="row"><input type="text" name="info['+newItemId+']" class="form-control" value="" placeholder="Pick up location / Extra info"></div></div></div>');  
     });
 });
+
+
+
+        const inpFile =document.getElementById("inpFile");
+        const previewContainer = document.getElementById("image-upload2");
+        const previewImage = previewContainer.querySelector(".image-preview__image");
+        const previewDefaultText =previewContainer.querySelector(".image-preview__default-tet");  
+
+        inpFile.addEventListener("change", function(){
+        const file =this.files[0];
+
+        if(file){
+        const reader = new FileReader(); //image lezen als url
+
+        previewImage.style.display ="block"; //geladen image tonen.
+        previewImage.style.width ="100%"; //geladen image tonen.
+        previewContainer.style.overflow ="auto"; //geladen image tonen.
+
+        inpFile.style.display = "none"
+        //   previewDefaultText.style.display ="none"; //geladen image tonen.
+
+         reader.addEventListener("load", function(){      //toegevoegde img laden
+        previewImage.setAttribute("src", this.result);   //src veranderen in html, this verwijst nr fileReader
+
+         });
+
+         reader.readAsDataURL(file); //gelezen data tonen als image
+        }else{
+        previewImage.style.display = null; //als user niks kiest toon default css
+        previewDefaultText.Style.display =null;
+        inpFile.style.display = null;
+        previewImage.setAttribute("src","");
+}
+});
+
+
+
+
+
+
+
 </script>
 @endsection
