@@ -339,4 +339,19 @@ class ClientController extends Controller
         }
         return view('/settings');
     }
+
+    public function search()
+    {
+        $target = $_POST['target'];
+
+        $data = \DB::table('concerts')
+                                ->where('name', 'LIKE', '%'.$target.'%')
+                                ->orWhere('artist_name', 'LIKE', '%'.$target.'%')
+                                ->orWhere('locatie', 'LIKE', '%'.$target.'%')
+                                ->get();
+
+        $data = json_decode($data, true);
+
+        echo json_encode($data);
+    }
 }

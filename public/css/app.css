@@ -240,6 +240,26 @@ input[type="time"] {
     height: 100vh;
 }
 
+/* SEARCHBAR */
+
+.input-container {
+    position: relative;
+}
+
+.input-container input {
+    width: 75vw;
+    height: 30px;
+    border: 0;
+    box-shadow: 1px 2px 5px #888888;
+}
+
+.input-container i {
+    position: absolute;
+    color: var(--cc-orange);
+    left: 277px;
+    top: 2px;
+}
+
 /* ROOMS/CONCERTS */
 
 .rooms {

@@ -54,6 +54,7 @@ Route::post('/finish-concert', 'App\Http\Controllers\ArtistController@publishCon
 Route::post('getAlbumTracks', 'App\Http\Controllers\ArtistController@getAlbumTracks');
 Route::post('insertVote', 'App\Http\Controllers\ClientController@insertVote');
 Route::post('checkReceived', 'App\Http\Controllers\ArtistController@checkReceived');
+Route::post('/search', 'App\Http\Controllers\ClientController@search');
 
 //MOLLIE ROUTES
 Route::get('mollie-paymnet',[MollieController::Class,'preparePayment'])->name('mollie.payment');

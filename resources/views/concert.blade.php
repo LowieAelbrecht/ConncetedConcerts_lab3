@@ -27,18 +27,18 @@
                 <h3>Bingo!</h3>
                 <h4>Have a change of winning:</h4>
             </div>
-            @foreach($bingoPrices as $key => $bingoPrice)
-                @if($key == 0)
-                <div>                        
-                    <div class="d-flex justify-content-center">
-                        <span class="material-icons my-auto" id="previous">chevron_left</span>
-                        <img  src="/uploads/{{ $bingoPrice->file_path }}" class="bingo-picture" alt="Picture of bingo price" id="image">
-                        <span class="material-icons my-auto" id="next">chevron_right</span>
+                @foreach($bingoPrices as $key => $bingoPrice)
+                    @if($key == 0)
+                    <div>                        
+                        <div class="d-flex justify-content-center">
+                            <span class="material-icons my-auto" id="previous">chevron_left</span>
+                            <img  src="/uploads/{{ $bingoPrice->file_path }}" class="bingo-picture" alt="Picture of bingo price" id="image">
+                            <span class="material-icons my-auto" id="next">chevron_right</span>
+                        </div>
+                        <h5 class="text-center" id="item">{{ $bingoPrice->item_amount }} {{ $bingoPrice->item_name }}</h5>
                     </div>
-                    <h5 class="text-center" id="item">{{ $bingoPrice->item_amount }} {{ $bingoPrice->item_name }}</h5>
-                </div>
-                @endif
-            @endforeach 
+                    @endif
+                @endforeach 
         </div>        
     </div>
     <form class="text-center" action="" method="get">
