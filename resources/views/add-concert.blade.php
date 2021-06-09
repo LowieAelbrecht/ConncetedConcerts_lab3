@@ -38,13 +38,16 @@
         <!---    <input type="file" name="photo">-->
         </div>
 
-        <input type="file" name="photo" id="inpFile">
-    
+        <div class="inpContainer">
+
+        </div>
+        <input type="file" class="inpFile2" name="photo" id="inpFile">
+
         <div class="image-preview" id="imagePreview">
+
         <img src="" alt="Image Preview" class="image-preview__image">
+        <label for="inpFile" class="labelImg image-preview__default-text material-icons">image</span>
         <span class="image-preview__default-text"></span>
-
-
 
 
         </div>
@@ -91,7 +94,8 @@
         const inpFile =document.getElementById("inpFile");
         const previewContainer = document.getElementById("imagePreview");
         const previewImage = previewContainer.querySelector(".image-preview__image");
-        const previewDefaultText =previewContainer.querySelector(".image-preview__default-tet");  
+        const previewDefaultText =previewContainer.querySelector(".material-icons");  
+
 
         inpFile.addEventListener("change", function(){
         const file =this.files[0];
@@ -100,7 +104,9 @@
         const reader = new FileReader(); //image lezen als url
 
         previewImage.style.display ="block"; //geladen image tonen.
-        //previewDefaultText.style.display ="none"; //geladen image tonen.
+        previewImage.style.overflow ="auto"; //geladen image tonen.
+
+        previewDefaultText.style.display ="none"; //geladen image tonen.
 
          reader.addEventListener("load", function(){      //toegevoegde img laden
         previewImage.setAttribute("src", this.result);   //src veranderen in html, this verwijst nr fileReader
@@ -110,7 +116,7 @@
          reader.readAsDataURL(file); //gelezen data tonen als image
         }else{
     previewImage.style.display = null; //als user niks kiest toon default css
-    previewDefaultText.Style.display =null;
+    previewDefaultText.style.display ="block";
     previewImage.setAttribute("src","");
 }
 });

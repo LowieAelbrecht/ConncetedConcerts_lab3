@@ -20,7 +20,9 @@
                         <label class="custom-file-upload">
 
 
-                            <input id="inpFile" type="file" name="photo[1]"/>
+                            <input class="inpFileBingo" id="inpFileBingo" type="file" name="photo[1]"/>
+                            <label for="inpFileBingo" class="labelImgBingo image-preview__default-text material-icons">add_a_photo</span>
+
                             <div id="image-upload2">
 
                             <img src="" alt="Image Preview" class="image-preview__image">
@@ -81,9 +83,10 @@ $(document).ready(function(){
 
 
 
-        const inpFile =document.getElementById("inpFile");
+        const inpFile =document.getElementById("inpFileBingo");
         const previewContainer = document.getElementById("image-upload2");
         const previewImage = previewContainer.querySelector(".image-preview__image");
+        const labelImg =previewContainer.querySelector(".labelImgBingo");
         const previewDefaultText =previewContainer.querySelector(".image-preview__default-tet");  
 
         inpFile.addEventListener("change", function(){
@@ -97,7 +100,7 @@ $(document).ready(function(){
         previewContainer.style.overflow ="auto"; //geladen image tonen.
 
         inpFile.style.display = "none"
-        //   previewDefaultText.style.display ="none"; //geladen image tonen.
+        labelImg.style.display ="none"; //geladen image tonen.
 
          reader.addEventListener("load", function(){      //toegevoegde img laden
         previewImage.setAttribute("src", this.result);   //src veranderen in html, this verwijst nr fileReader
