@@ -350,8 +350,26 @@ class ClientController extends Controller
                                 ->orWhere('locatie', 'LIKE', '%'.$target.'%')
                                 ->get();
 
+
         $data = json_decode($data, true);
 
         echo json_encode($data);
+    }
+
+    public function concertCheck()
+    {
+        $concertCheck = \DB::table('userconcerts')
+        ->where('user_id', session()->get('userId'))
+        ->get(); 
+        
+        $data['amount'] = count($concertCheck);
+        $data['concertIds'] = array();
+
+        for($x = 0; $x < $data['amount']; $x++){
+            $concertId = $concertCheck[$x]->concert_id;
+            array_push($data['concertIds'], $concertId); 
+        }
+
+        echo json_encode($data['concertIds']);
     }
 }

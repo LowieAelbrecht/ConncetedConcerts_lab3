@@ -297,6 +297,10 @@ input[type="time"] {
     box-shadow: 1px 2px 11px #888888;
 }
 
+.card-body {
+    padding: 10px;
+}
+
 .card img {
     width: 30%;
     height: auto;
@@ -317,7 +321,7 @@ input[type="time"] {
 
 .card h5 {
     position: relative;
-    display: inline-block;
+    display: block;
     font-size: 18px;
     color: black;
 }

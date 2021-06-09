@@ -29,7 +29,7 @@
         <div class="card">
                 <img src="uploads/{{ $concert->file_path }}" class="card-img-top" alt="concert picture">
                 <div class="card-body">
-                    <h3 class="card-title">{{ $concert->artist_name }}</h3>
+                    <h3>{{ $concert->artist_name }}</h3>
                     <h5>{{ $concert->name }}</h5>
                     <h5>{{ $concert->locatie }}</h5>
                 </div>                         
@@ -69,30 +69,41 @@ $.ajax({
    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
    var yyyy = today.getFullYear();
    today = yyyy + '/' + mm + '/' + dd;
-   $('.added').remove();
-   if(data.length > 0){
-       $('.php-output').hide();
-     for (var i = 0; i < data.length; i++){
-        if(data[i]['published'] == 1){
-            var concertDate = data[i]['concert_date'];
-            var concertDate = new Date(concertDate);
-            var dd = String(concertDate.getDate()).padStart(2, '0');
-            var mm = String(concertDate.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = concertDate.getFullYear();
-            concertDate = yyyy + '/' + mm + '/' + dd;
-            var yy = String(new Date(concertDate).getFullYear().toString().substr(-2));
-            concertDateOutput = dd + '/' + mm + '/\'' + yy;
-            if(today < concertDate) {
-                $("#searchResult").append('<li class="added"><h4 class="concert-date">' +  concertDateOutput + '</h4><a href="/concerts/' + (data[i]['id']) + '"><div class="card"><img src="uploads/' + (data[i]['file_path']) + '" class="card-img-top" alt="concert picture"><div class="card-body"><h3 class="card-title">'+ (data[i]['artist_name']) + '</h3><h5>' + (data[i]['name']) + '</h5><h5>' + (data[i]['locatie']) + '</h5></div></div></a></li>');
+   
+        $.ajax({
+        url:'/check',
+        method: 'post',
+        data: { "_token": "{{ csrf_token() }}"},
+        dataType: 'json',
+        success: function(response){
+            console.log(response);
+            $('.added').remove();
+            if(data.length > 0){
+                $('.php-output').hide();
+                for (var i = 0; i < data.length; i++){
+                    if(data[i]['id'] != response){
+                        if(data[i]['published'] == 1){
+                            var concertDate = data[i]['concert_date'];
+                            var concertDate = new Date(concertDate);
+                            var dd = String(concertDate.getDate()).padStart(2, '0');
+                            var mm = String(concertDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+                            var yyyy = concertDate.getFullYear();
+                            concertDate = yyyy + '/' + mm + '/' + dd;
+                            var yy = String(new Date(concertDate).getFullYear().toString().substr(-2));
+                            concertDateOutput = dd + '/' + mm + '/\'' + yy;
+                            if(today < concertDate) {
+                                $("#searchResult").append('<li class="added"><h4 class="concert-date">' +  concertDateOutput + '</h4><a href="/concerts/' + (data[i]['id']) + '"><div class="card"><img src="uploads/' + (data[i]['file_path']) + '" class="card-img-top" alt="concert picture"><div class="card-body"><h3 class="card-title">'+ (data[i]['artist_name']) + '</h3><h5>' + (data[i]['name']) + '</h5><h5>' + (data[i]['locatie']) + '</h5></div></div></a></li>');
+                            }
+                        }
+                    }
+                }
+            } else {
+                $('.added').remove();
             }
-        }
-     }
-   } else {
-     $('.added').remove();
-   }
- }
+    }
+ });
+}
 });
 }
-
 </script>
 @endsection
