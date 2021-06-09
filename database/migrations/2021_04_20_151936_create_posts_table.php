@@ -18,9 +18,10 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->longText('tekst');
             $table->dateTime('post_date');
-            $table->integer('likes');
             $table->string('file_path')->nullable();
             $table->string('profile_image_artist');
+            $table->integer('likes');
+            $table->integer('comments');
             $table->integer('concert_id');
             $table->timestamps();
         });

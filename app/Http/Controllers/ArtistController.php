@@ -297,8 +297,9 @@ class ArtistController extends Controller
             ['title' => $request->input('title'),
             'tekst' => $request->input('tekst'),
             'post_date' => $now,
-            'likes' => 0,
             'file_path' => $newImageName,
+            'likes' => 0,
+            'comments' => 0,
             'profile_image_artist' => $artistSpotifyId,
             'concert_id' => $concert
             ]

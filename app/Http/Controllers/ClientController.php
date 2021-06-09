@@ -178,16 +178,61 @@ class ClientController extends Controller
         $data['posts'] = \DB::table('posts')
             ->where('concert_id', $concerts)
             ->orderBy('post_date', 'desc')
-            ->get(); 
+            ->get();
+        
+        $posts = count($data['posts']);
+       
 
-        $artistSpotifyId = \DB::table('posts')
+        if($posts > 0){
+            $artistSpotifyId = \DB::table('posts')
             ->where('concert_id', $concerts)
             ->first()->profile_image_artist; 
 
         $data['profile'] = $api->getArtist($artistSpotifyId);
 
+        $data['likedPosts'] = array();
+
+        $likedPosts = \DB::table('likes')
+                ->where('user_id', $request->session()->get('userId'))
+                ->get();
+
+        $likedPostsCount = count($likedPosts);        
+            
+
+        for($x = 0; $x < $likedPostsCount; $x++){
+            $likedPost = $likedPosts[$x]->post_id;
+            array_push($data['likedPosts'], $likedPost);
+        }
+
+            //dd($data['likedPosts']);
+
+        }
+        
+        
+
         return view('/social-room', $data);
     }
+
+    public function likePost(Request $request)
+    {
+        $postId = $_POST['postId'];
+        $concertId = $_POST['concertId'];
+        $userId = $request->session()->get('userId');
+
+        \DB::table('likes')->insert([
+            'post_id' => $postId,
+            'user_id' => $userId,
+            'concert_id' => $concertId
+        ]);
+
+        \DB::table('posts')
+            ->where('concert_id', $concertId)
+            ->where('id', $postId)
+            ->update(['likes'=> \DB::raw('likes+1')]);        
+        
+        echo json_encode(true);
+    }
+
 
     public function voteConcert(Request $request, $concerts)
     {
@@ -241,7 +286,6 @@ class ClientController extends Controller
             }
         }
                
-          
 
         //dd($data['songVoteOptions']);   
 

@@ -9,7 +9,7 @@
     <div class="text-center">
         <h2>Posts</h2>
     </div>
-    @if(!empty($posts))
+    @if(!empty($posts[0]))
         @foreach($posts as $post)
             <div class="bg-white post">
                 <div class="row">
@@ -27,12 +27,22 @@
                 @endif 
             </div>
             <div class="row like-comment">
-                <div class="col-6 text-center">
-                    <i class="material-icons">favorite_border</i>
-                </div>
-                <div class="col-6 text-center">
-                    <i class="material-icons">mode_comment</i>
-                </div>            
+                    <div class="col-6" id="{{ $post->id }}">
+                        <div class="row d-flex justify-content-center <?php if((session()->get('userType')) == ("user")) : ?>like<?php endif; ?>">
+                                @if(!in_array($post->id, $likedPosts))
+                                <i class="material-icons">favorite_border</i>
+                                @else
+                                <i class="material-icons">favorite</i>
+                                @endif
+                            <p class="pl-1">{{ $post->likes }}</p>
+                        </div>                         
+                    </div>
+                    <div class="col-6" id="{{ $post->id }}">
+                        <div class="row d-flex justify-content-center">
+                            <i class="material-icons">mode_comment</i>
+                            <p class="pl-1">{{ $post->comments }}</p>
+                        </div>                        
+                    </div>         
             </div>             
         @endforeach
     @endif
@@ -41,6 +51,8 @@
     <form action="/new-post/{{ request()->route('concerts') }}" method="get">
         <button class="btn-add bottom-nav-btn" type="submit" name="room" value="room">+</button>
     </form>
+    @else 
+    <form></form>
     @endif
 </div>
 @endsection
@@ -62,4 +74,40 @@
             </a>                  
         </div>      
     </div>
+@endsection
+
+@section('js')
+<script>
+$(document).ready(function(){
+    $(".like").click(function(){
+        var postId = $(this).parent().attr("id");
+        var url = window.location.pathname;
+        var concertId = url.substring(url.lastIndexOf('/') + 1);
+        var html = $(this).children('i').text();
+
+        if(html == "favorite_border"){                    
+            $(this).children('i').text("favorite");
+        } else {
+            console.log("in here");
+            $(this).children('i').text("favorite_border");
+        }
+
+        $.ajax({
+            url:'/likePost',
+            method: 'post',
+            data: { "_token": "{{ csrf_token() }}",
+                "postId": postId,
+                "concertId": concertId},
+            dataType: 'json',
+            success: function(response){
+                location.reload(true);                
+                
+            }
+        });
+    });
+           
+
+});
+
+</script>
 @endsection
