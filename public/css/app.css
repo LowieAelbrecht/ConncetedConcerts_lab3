@@ -22,6 +22,10 @@ body {
     height: 100vh;
 }
 
+.content {
+    padding-top: 17%;
+}
+
 h2,
 h3,
 h4 {
@@ -432,10 +436,6 @@ input[type="time"] {
     width: 200px;
 }
 
-.winners {
-    color: var(--cc-orange);
-}
-
 .lostBingo {
     background-image: linear-gradient(#bd00ff, #f80000);
     width: 100vw;
@@ -463,4 +463,14 @@ input[type="time"] {
     color: var(--cc-white);
     font-size: 48px;
     font-style: bolder;
+}
+
+.winners h4 {
+    color: var(--cc-orange);
+    font-size: 18px;
+}
+
+.winners p {
+    color: var(--cc-purple);
+    margin-left: 20px;
 }

@@ -6,7 +6,7 @@
 
 @section('content')
     @if(empty($bingoResults[0]))
-    <div class="container mt-3">
+    <div class="container">
         <div class="text-center">
             <h2>Bingo</h2>
             @if((session()->get('userType')) == ("user"))
@@ -43,20 +43,21 @@
     @endif  
     @else
         @if((session()->get('userType')) == ("artist")) 
-        <div class="container mt-3">
+        <div class="container">
             <div class="text-center">
                 <h2>Bingo</h2>
                 <p>The winners are confirmed!</p>
             </div>   
             <h3>Winners</h3>
             @foreach($prices as $price)
+            <div class="bg-white winners">
                 <div class="row">
-                    <div class="col-9">
+                    <div class="col-8">
                         <h3>{{ $price->item_name }}</h3>
                     </div>
                     @if($prices[0]->item_name == $price->item_name) 
                     <div>
-                        <p class="col-3">Received</p>
+                        <p class="col-4">Received</p>
                     </div>
                      @endif
                 </div>
@@ -65,7 +66,7 @@
                         @if($user->id == $bingoResult->user_id && $price->id == $bingoResult->bingo_id)
                         <div class="row">
                             <div class="col-10">
-                                <h4 class="winners">{{ $user->name }}</h4>
+                                <h4>{{ $user->name }}</h4>
                             </div>
                             <div class="col-2">
                                 <input type="checkbox" class="received" value="<?php echo $bingoResult->received; ?>" id="<?php echo $bingoResult->id; ?>" <?php if($bingoResult->received == true)  :?> checked <?php endif; ?>>
@@ -75,6 +76,7 @@
                     @endforeach
                 @endforeach
             @endforeach
+            </div>
         </div>    
         @else
             @if(empty($winnerOrNot))
