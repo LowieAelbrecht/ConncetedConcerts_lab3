@@ -23,7 +23,7 @@ body {
 }
 
 .content {
-    padding-top: 17%;
+    padding-top: 7vh;
 }
 
 h2,
@@ -142,7 +142,7 @@ label {
 .main-nav {
     background-color: var(--cc-purple);
     width: 100vw;
-    height: 60px;
+    height: 7vh;
     z-index: 12;
     position: fixed;
     top: 0;
@@ -241,6 +241,17 @@ input[type="time"] {
     border-radius: 15px;
 }
 
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 0.5px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+    resize: none;
+}
+
 .bg-white {
     background-color: #fff;
     padding: 5px;
@@ -298,6 +309,15 @@ input[type="time"] {
 .bottom-nav-btn {
     bottom: 65px;
     right: 15px;
+}
+
+.bottom-buttons {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 20px;
+    width: 80vw;
 }
 
 /* LOGIN */
@@ -583,4 +603,89 @@ input[type="time"] {
 .winners p {
     color: var(--cc-purple);
     margin-left: 20px;
+}
+
+/* POSTS */
+.post {
+    padding: 15px;
+}
+
+.post-page {
+    overflow: scroll;
+}
+
+.post-page form {
+    margin-bottom: 150px;
+}
+
+.post h5,
+.comments h5 {
+    color: var(--cc-orange);
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.post p,
+.comments p {
+    font-size: 14px;
+}
+
+.post-profile-image {
+    border-radius: 50%;
+    width: 15vw;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+}
+
+.like-comment {
+    background-color: var(--cc-purple);
+    color: var(--cc-orange);
+    border-radius: 0% 0% 20px 20px;
+    margin: -25px 0 0 0;
+    padding: 8px 0;
+    width: 100%;
+}
+
+.like-comment a {
+    text-decoration: none;
+    color: var(--cc-orange);
+}
+
+.comments {
+    background-color: #fff;
+    height: 93vh;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.comments hr {
+    border-top: 2px solid var(--cc-purple);
+}
+
+.commentbox {
+    height: 3em;
+    background-color: var(--cc-white);
+}
+
+.comments .input-container {
+    position: absolute;
+    bottom: 10px;
+    width: 90vw;
+    left: 5vw;
+    right: 5vw;
+}
+
+#add-comment {
+    font-size: 40px;
+    color: #636363;
+    padding-left: 17px;
+}
+
+.comments h6 {
+    float: right;
+    margin: 0;
+    font-size: 12px;
 }
