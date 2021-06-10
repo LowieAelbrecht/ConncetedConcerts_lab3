@@ -7,13 +7,13 @@
 
 @section('content')
     <ul class="list-settings pt-5">
-        <li><a class="setting">About<a></li>
+        <li><a href="http://www.connectedconcerts.be" target="_blank" class="setting">About<a></li>
         <div class="purple-line"></div>
         <li><a class="setting">FAQ<a></li>
         <div class="purple-line"></div>
         <li><a class="setting">Partners<a></li>
         <div class="purple-line"></div>
-        <li><a class="setting">Contact<a></li>
+        <li><a href="http://www.connectedconcerts.be" target="_blank" class="setting">Contact<a></li>
         <div class="purple-line"></div>
     </ul>
     <?php if((session()->get('userType')) == ("user")) : ?>
