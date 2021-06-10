@@ -23,7 +23,7 @@ body {
 }
 
 .content {
-    padding-top: 7vh;
+    padding-top: 10vh;
 }
 
 h2,
@@ -63,7 +63,6 @@ h5 {
     border-radius: 15px;
     color: rgb(36, 0, 70);
     outline: none;
-
 }
 
 .inpFileBingo {
@@ -73,25 +72,21 @@ h5 {
     border-radius: 15px;
     color: rgb(36, 0, 70);
     outline: none;
-
 }
 
 ::-webkit-file-upload-button {
     background-color: rgb(50, 0, 70);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
     padding: 9px;
     border: rgb(36, 0, 70);
 
     color: white;
     border-radius: 10px;
-
-
 }
 
 ::-webkit-file-upload-button:hover {
     background-color: rgb(255, 112, 0);
-
-
 }
 
 .labelImg:hover {
@@ -117,7 +112,6 @@ h5 {
     margin-right: -18px;
     letter-spacing: 2px;
 
-
     font-family: var(--font-humana);
     font-weight: 700;
     background-image: var(--cc-gradient);
@@ -139,16 +133,8 @@ h5 {
     font-weight: 700;
 }
 
-.profile-image {
-    border-color: red;
-    margin-left: 10px;
-    margin-top: 10px;
-    display: inline;
-}
-
 .userProfileName {
     margin-left: 10px;
-
 }
 
 label {
@@ -171,10 +157,12 @@ label {
 }
 
 .nextBtn {
-    background-color: var(--cc-gradient);
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 3px;
+    font-family: var(--font-humana);
+    font-size: 22px;
+
     border-color: var(--cc-gradient);
 }
 
@@ -193,7 +181,6 @@ label {
     font-size: 48px;
     padding: 16px;
 }
-
 
 .image-upload {
     height: 80px;
@@ -253,9 +240,7 @@ label {
 
 .px-4:hover {
     text-decoration: none;
-
 }
-
 
 .navSocial {
     color: var(--cc-purple);
@@ -424,6 +409,7 @@ textarea {
     color: black;
 }
 
+
 .date,
 .time,
 .datetime {
@@ -432,6 +418,7 @@ textarea {
 
 .datetime {
     padding-right: 0 !important;
+
 }
 
 .card {
@@ -483,8 +470,12 @@ textarea {
 /* PROFILE */
 
 .profile-image {
+    border-color: red;
+    margin-left: 10px;
+    margin-top: 10px;
     border-radius: 50%;
-    width: 35vw;
+    width: 50vw;
+    height: 50vw;
 }
 
 /* SETTINGS */
@@ -561,9 +552,10 @@ textarea {
 }
 
 .play i {
+    font-size: 32px;
     position: absolute;
-    left: 64px;
-    padding-top: 14px;
+    left: 71px;
+    padding-top: 15px;
     color: var(--cc-orange);
 }
 
@@ -695,7 +687,7 @@ textarea {
     color: var(--cc-orange);
     border-radius: 0% 0% 20px 20px;
     margin: -25px 0 0 0;
-    padding: 8px 0;
+    padding: 0;
     width: 100%;
 }
 
@@ -735,7 +727,15 @@ textarea {
 }
 
 .comments h6 {
-    float: right;
+    text-align: right;
     margin: 0;
     font-size: 12px;
+}
+
+.comments p {
+    margin-bottom: 0;
+}
+
+hr {
+    margin: 0;
 }

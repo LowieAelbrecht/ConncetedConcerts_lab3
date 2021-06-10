@@ -19,7 +19,7 @@
     @if($post->file_path != 0)
         <img class="post-image" src="/uploads/{{ $post->file_path }}" class="" alt="Picture at a post">
     @endif
-     <hr>
+     <hr class="mt-2">
      @for($x = 0; $x < $hasCommments; $x++)
      <div>
          <div class="row">

@@ -6,6 +6,7 @@
 
 
 @section('content')
+<div class="container">
     <ul class="list-settings pt-5">
         <li><a href="http://www.connectedconcerts.be" target="_blank" class="setting">About<a></li>
         <div class="purple-line"></div>
@@ -29,5 +30,5 @@
     <form class="text-center" action="" method="get">
         <button class="btn-outline-purple" type="submit" name="logout" value="logout">Log out</button>
     </form>
-    
+</div>   
 @endsection

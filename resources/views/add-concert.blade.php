@@ -14,12 +14,12 @@
             <label for="concertName" class="form-label h3-label">Room name</label>
             <input type="text" name="concertName" class="form-control" value="" required> 
         </div>
-        <div class="row">
-            <div class="col-8">
+        <div class="row datetime">
+            <div class="col-8 date">
                 <label for="date" class="form-label h3-label">Date</label>
-                <input type="date" name="date" class="form-control" value="" required> 
+                <input type="date" name="date" class="form-control dateInput" value="" required> 
             </div>
-            <div class="col-4">
+            <div class="col-4 time">
                 <label for="time" class="form-label h3-label">Time</label>
                 <input type="time" name="time" class="form-control" value="" required> 
             </div>
@@ -64,7 +64,7 @@
             <span class="dot"></span>        
         </div>
         <div class="pull-right">
-            <input type="submit" name="upload" value="Next"></input>
+            <input class="nextBtn" type="submit" name="upload" value="Next"></input>
         </div>        
     </div>
 </form>
