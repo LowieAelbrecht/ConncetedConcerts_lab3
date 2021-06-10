@@ -53,6 +53,9 @@ Route::post('/finish-concert', 'App\Http\Controllers\ArtistController@publishCon
 Route::get('/new-post/{concerts}', 'App\Http\Controllers\ArtistController@addPost');
 Route::post('/add-post/{concerts}', 'App\Http\Controllers\ArtistController@storePost');
 
+
+Route::get('/comments/{concerts}/post/{post}', 'App\Http\Controllers\ClientController@addComment');
+
 // AJAX ROUTES
 Route::post('getAlbumTracks', 'App\Http\Controllers\ArtistController@getAlbumTracks');
 Route::post('insertVote', 'App\Http\Controllers\ClientController@insertVote');
@@ -60,6 +63,8 @@ Route::post('checkReceived', 'App\Http\Controllers\ArtistController@checkReceive
 Route::post('/search', 'App\Http\Controllers\ClientController@search');
 Route::post('/check', 'App\Http\Controllers\ClientController@concertCheck');
 Route::post('/likePost', 'App\Http\Controllers\ClientController@likePost');
+Route::post('/unLikePost', 'App\Http\Controllers\ClientController@unLikePost');
+Route::post('/addComment', 'App\Http\Controllers\ClientController@storeComment');
 
 //MOLLIE ROUTES
 Route::get('mollie-paymnet',[MollieController::Class,'preparePayment'])->name('mollie.payment');

@@ -23,7 +23,7 @@ body {
 }
 
 .content {
-    padding-top: 17%;
+    padding-top: 7vh;
 }
 
 h2,
@@ -74,7 +74,7 @@ label {
 .main-nav {
     background-color: var(--cc-purple);
     width: 100vw;
-    height: 60px;
+    height: 7vh;
     z-index: 12;
     position: fixed;
     margin-bottom: 30px;
@@ -532,13 +532,15 @@ textarea {
     margin-bottom: 150px;
 }
 
-.post h5 {
+.post h5,
+.comments h5 {
     color: var(--cc-orange);
     font-size: 16px;
     font-weight: bolder;
 }
 
-.post p {
+.post p,
+.comments p {
     font-size: 14px;
 }
 
@@ -559,4 +561,39 @@ textarea {
     margin: -25px 0 0 0;
     padding: 8px 0;
     width: 100%;
+}
+
+.like-comment a {
+    text-decoration: none;
+    color: var(--cc-orange);
+}
+
+.comments {
+    background-color: #fff;
+    height: 93vh;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.comments hr {
+    border-top: 2px solid var(--cc-purple);
+}
+
+.commentbox {
+    height: 3em;
+    background-color: var(--cc-white);
+}
+
+.comments .input-container {
+    position: absolute;
+    bottom: 10px;
+    width: 90vw;
+    left: 5vw;
+    right: 5vw;
+}
+
+#add-comment {
+    font-size: 40px;
+    color: #636363;
+    padding-left: 17px;
 }

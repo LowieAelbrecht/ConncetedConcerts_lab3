@@ -19,9 +19,7 @@ class CreateCommentsTable extends Migration
             $table->dateTime('comment_date');
             $table->integer('post_id');
             $table->string('user_type');
-            $table->integer('user_id')->nullable();
-            $table->integer('artist_id')->nullable();
-            $table->integer('concert_id');
+            $table->string('spotify_token');
             $table->timestamps();
         });
     }

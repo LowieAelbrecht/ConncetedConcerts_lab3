@@ -23,7 +23,7 @@
                 </div>                
                 <p>{{ $post->tekst }}</p>
                 @if($post->file_path != 0)
-                    <img class="post-image"  src="/uploads/{{ $post->file_path }}" class="" alt="Picture at a post">
+                    <img class="post-image" src="/uploads/{{ $post->file_path }}" class="" alt="Picture at a post">
                 @endif 
             </div>
             <div class="row like-comment">
@@ -38,10 +38,12 @@
                         </div>                         
                     </div>
                     <div class="col-6" id="{{ $post->id }}">
-                        <div class="row d-flex justify-content-center">
-                            <i class="material-icons">mode_comment</i>
-                            <p class="pl-1">{{ $post->comments }}</p>
-                        </div>                        
+                        <a href="/comments/{{ request()->route('concerts') }}/post/{{ $post->id }}"> 
+                            <div class="row d-flex justify-content-center">
+                                <i class="material-icons">mode_comment</i>
+                                <p class="pl-1">{{ $post->comments }}</p>
+                            </div>
+                        </a>                           
                     </div>         
             </div>             
         @endforeach
@@ -87,12 +89,8 @@ $(document).ready(function(){
 
         if(html == "favorite_border"){                    
             $(this).children('i').text("favorite");
-        } else {
-            console.log("in here");
-            $(this).children('i').text("favorite_border");
-        }
 
-        $.ajax({
+            $.ajax({
             url:'/likePost',
             method: 'post',
             data: { "_token": "{{ csrf_token() }}",
@@ -104,6 +102,24 @@ $(document).ready(function(){
                 
             }
         });
+        } else {
+            $(this).children('i').text("favorite_border");
+
+            $.ajax({
+            url:'/unLikePost',
+            method: 'post',
+            data: { "_token": "{{ csrf_token() }}",
+                "postId": postId,
+                "concertId": concertId},
+            dataType: 'json',
+            success: function(response){
+                location.reload(true);                
+                
+            }
+        });
+        }
+
+        
     });
            
 

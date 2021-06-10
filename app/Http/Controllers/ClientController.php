@@ -208,8 +208,6 @@ class ClientController extends Controller
 
         }
         
-        
-
         return view('/social-room', $data);
     }
 
@@ -219,7 +217,7 @@ class ClientController extends Controller
         $concertId = $_POST['concertId'];
         $userId = $request->session()->get('userId');
 
-        \DB::table('likes')->insert([
+        \DB::table('likes')->insertOrIgnore([
             'post_id' => $postId,
             'user_id' => $userId,
             'concert_id' => $concertId
@@ -230,6 +228,97 @@ class ClientController extends Controller
             ->where('id', $postId)
             ->update(['likes'=> \DB::raw('likes+1')]);        
         
+        echo json_encode(true);
+    }
+
+    public function unLikePost(Request $request)
+    {
+        $postId = $_POST['postId'];
+        $concertId = $_POST['concertId'];
+        $userId = $request->session()->get('userId');
+        
+        \DB::table('likes')->where([
+            'post_id' => $postId,
+            'user_id' => $userId,
+            'concert_id' => $concertId
+        ])->delete();        
+
+        \DB::table('posts')
+            ->where('concert_id', $concertId)
+            ->where('id', $postId)
+            ->update(['likes'=> \DB::raw('likes-1')]);        
+        
+        echo json_encode(true);
+    }
+
+    public function addComment(Request $request, $concerts, $post)
+    {
+        $accessToken = $request->session()->get('accessToken');
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($accessToken);
+
+        $data['post'] = \DB::table('posts')
+            ->where('id', $post)
+            ->first();
+
+        $data['comments'] = \DB::table('comments')
+        ->where('post_id', $post)
+        ->get();
+
+        $data['hasCommments'] = count($data['comments']);
+        
+        if($data['hasCommments'] > 0){
+        
+            $data['commenters'] = array();
+
+            foreach($data['comments'] as $comment)
+            {
+            if(($comment->user_type) == ("user")){
+                $commentUser = $api->getUser($comment->spotify_token);
+                array_push($data['commenters'], $commentUser);
+            } else {
+                $commentUser = $api->getArtist($comment->spotify_token);
+                array_push($data['commenters'], $commentUser);
+            }
+        }
+        }
+        
+        $data['profile'] = $api->getArtist($data['post']->profile_image_artist);
+
+        return view('/add-comment', $data);
+    }
+
+    public function storeComment(Request $request)
+    {
+        $postId = $_POST['postId'];
+        $comment = $_POST['comment'];
+        $userType = $request->session()->get('userType');
+        $now = date("Y-m-d H:i:s");
+
+        if($userType == "user"){
+            $token = $request->session()->get('userSpotifyId');
+            \DB::table('comments')->insertOrIgnore([
+                'tekst' => $comment,
+                'comment_date' => $now,
+                'post_id' => $postId,
+                'user_type' => 'user',
+                'spotify_token' => $token
+            ]);
+        }else {
+            $token = $request->session()->get('artistSpotifyId');
+            \DB::table('comments')->insertOrIgnore([
+                'tekst' => $comment,
+                'comment_date' => $now,
+                'post_id' => $postId,
+                'user_type' => 'artist',
+                'spotify_token' => $token
+            ]);
+        }
+
+        \DB::table('posts')
+            ->where('id', $postId)
+            ->update(['comments'=> \DB::raw('comments+1')]);  
+            
         echo json_encode(true);
     }
 
