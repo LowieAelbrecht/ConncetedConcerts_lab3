@@ -36,6 +36,8 @@ h4 {
 
 h5 {
     font-family: var(--font-humana);
+    color: black;
+    font-weight: 700;
 }
 
 .image-preview {
@@ -238,7 +240,25 @@ label {
 }
 
 .selected-nav {
-    background-color: var(--cc-purple);
+    background-color: rgba(36, 0, 70, 0.199);
+    border-radius: 50px;
+    opacity: 90px;
+    padding-top: 9px;
+}
+
+.px-4 {
+    margin-top: 2px;
+    margin-left: 7px;
+}
+
+.px-4:hover {
+    text-decoration: none;
+
+}
+
+
+.navSocial {
+    color: var(--cc-purple);
 }
 
 .purple-line {
@@ -326,7 +346,7 @@ textarea {
 }
 
 .bottom-nav-btn {
-    bottom: 65px;
+    bottom: 78px;
     right: 15px;
 }
 
@@ -612,6 +632,7 @@ textarea {
 
 .row {
     padding: 10px;
+    margin-left: 0;
 }
 
 .winners h4 {
