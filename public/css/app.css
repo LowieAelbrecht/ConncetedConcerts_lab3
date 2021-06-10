@@ -597,3 +597,9 @@ textarea {
     color: #636363;
     padding-left: 17px;
 }
+
+.comments h6 {
+    float: right;
+    margin: 0;
+    font-size: 12px;
+}

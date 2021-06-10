@@ -22,16 +22,22 @@
      <hr>
      @for($x = 0; $x < $hasCommments; $x++)
      <div>
-        @if($comments[$x]->spotify_token == $commenters[$x]->id)
-        <img class="post-profile-image" src="<?php echo $commenters[$x]->images[0]->url; ?>" alt="profile_image">
-        @endif
-            @if($comments[$x]->spotify_token == $commenters[$x]->id && $commenters[$x]->type == "user")
-               <h4>{{ $commenters[$x]->display_name }}</h4> 
-            @elseif($comments[$x]->spotify_token == $commenters[$x]->id && $commenters[$x]->type == "artist")
-                <h4>{{ $commenters[$x]->name }}</h4> 
+         <div class="row">
+            @if($comments[$x]->spotify_token == $commenters[$x]->id)
+            <div class="col-3">
+                <img class="post-profile-image" src="<?php echo $commenters[$x]->images[0]->url; ?>" alt="profile_image">
+            </div>
             @endif
-        <p>{{$comments[$x]->tekst}}</p>
-        <h6><p>{{ date("H:i  d/m/'y ", strtotime($comments[$x]->comment_date)) }}</p></h6>
+            <div class="col-auto p-0">
+            @if($comments[$x]->spotify_token == $commenters[$x]->id && $commenters[$x]->type == "user")
+                <h5>{{ $commenters[$x]->display_name }}</h5> 
+            @elseif($comments[$x]->spotify_token == $commenters[$x]->id && $commenters[$x]->type == "artist")
+                <h5>{{ $commenters[$x]->name }}</h5> 
+            @endif
+            <p>{{$comments[$x]->tekst}}</p>
+            </div>
+        </div>    
+        <h6>{{ date("H:i  d/m/'y ", strtotime($comments[$x]->comment_date)) }}</h6>
         <hr>
      </div>
      @endfor
