@@ -30,6 +30,7 @@ class ArtistController extends Controller
             'photo' => 'required|mimes:jpg,png,jpeg'
         ]);
 
+
         $accessToken = $request->session()->get('accessToken');
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
         $api->setAccessToken($accessToken);
@@ -61,7 +62,6 @@ class ArtistController extends Controller
             );
 
             $request->session()->put('concertId', $concertId);
-            
         }
 
         return redirect('/add-songvote'); 

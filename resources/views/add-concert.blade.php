@@ -8,12 +8,13 @@
 @section('content')
  
 <form method="post" action="add-concert" enctype="multipart/form-data">
+{{ $errors }}
     @csrf
-    {{ $errors }}
+    
     <div class="container">
         <div>
             <label for="name" class="form-label h3-label">Room name</label>
-            <input type="text" name="name" class="form-control" value="{{ old('concertName') }}"></input>
+            <input type="text" name="name" class="form-control" value="{{ old('name') }}"></input>
             <div class="alert-danger">{{ $errors->first('concertName') }}</div>
         </div>        
         <div class="row">

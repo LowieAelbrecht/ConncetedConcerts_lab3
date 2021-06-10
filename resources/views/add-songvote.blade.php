@@ -6,8 +6,8 @@
 
 @section('content')
 <form method="post" action="/add-songvote" enctype="multipart/form-data"> 
-@csrf
 {{ $errors }}
+@csrf
 <div class="container">
     <div class="text-center">
         <h2>Song vote</h2>
