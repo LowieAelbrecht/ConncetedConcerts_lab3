@@ -157,10 +157,12 @@ label {
 }
 
 .nextBtn {
-    background-color: var(--cc-gradient);
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 3px;
+    font-family: var(--font-humana);
+    font-size: 22px;
+
     border-color: var(--cc-gradient);
 }
 
@@ -407,6 +409,7 @@ textarea {
     color: black;
 }
 
+<<<<<<< Updated upstream
 .date,
 .time,
 .datetime {
@@ -415,6 +418,10 @@ textarea {
 
 .datetime {
     padding-right: 0 !important;
+=======
+input.form-control.dateInput {
+    margin-left: -20px;
+>>>>>>> Stashed changes
 }
 
 .card {
