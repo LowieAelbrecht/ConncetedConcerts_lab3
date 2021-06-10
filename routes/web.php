@@ -29,7 +29,7 @@ Route::get('/bingo-room/{concerts}', 'App\Http\Controllers\ClientController@bing
 Route::post('/bingo-room/{concerts}', 'App\Http\Controllers\ArtistController@bingoResults');
 Route::get('/update-concert/{concerts}', 'App\Http\Controllers\ArtistController@updateConcert');
 Route::post('/update-concert/{concerts}', 'App\Http\Controllers\ArtistController@saveUpdateConcert');
-Route::get('/new-post/{concerts}', 'App\Http\Controllers\ArtistController@addPost');
+
 
 Route::get('/checkUser', 'App\Http\Controllers\ClientController@checkUser');
 Route::post('/checkUser', 'App\Http\Controllers\ClientController@fixUser');
@@ -50,12 +50,21 @@ Route::post('/add-bingo', 'App\Http\Controllers\ArtistController@storeBingo');
 Route::get('/finish-concert', 'App\Http\Controllers\ArtistController@finishConcert');
 Route::post('/finish-concert', 'App\Http\Controllers\ArtistController@publishConcert');
 
+Route::get('/new-post/{concerts}', 'App\Http\Controllers\ArtistController@addPost');
+Route::post('/add-post/{concerts}', 'App\Http\Controllers\ArtistController@storePost');
+
+
+Route::get('/comments/{concerts}/post/{post}', 'App\Http\Controllers\ClientController@addComment');
+
 // AJAX ROUTES
 Route::post('getAlbumTracks', 'App\Http\Controllers\ArtistController@getAlbumTracks');
 Route::post('insertVote', 'App\Http\Controllers\ClientController@insertVote');
 Route::post('checkReceived', 'App\Http\Controllers\ArtistController@checkReceived');
 Route::post('/search', 'App\Http\Controllers\ClientController@search');
 Route::post('/check', 'App\Http\Controllers\ClientController@concertCheck');
+Route::post('/likePost', 'App\Http\Controllers\ClientController@likePost');
+Route::post('/unLikePost', 'App\Http\Controllers\ClientController@unLikePost');
+Route::post('/addComment', 'App\Http\Controllers\ClientController@storeComment');
 
 //MOLLIE ROUTES
 Route::get('mollie-paymnet',[MollieController::Class,'preparePayment'])->name('mollie.payment');

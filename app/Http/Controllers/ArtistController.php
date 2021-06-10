@@ -271,7 +271,40 @@ class ArtistController extends Controller
 
     public function addPost(Request $request, $concert)
     {
+    
         return view('/add-post');
+    }
+
+    public function storePost(Request $request, $concert)
+    {   
+        $request->validate([
+            'title' => 'required',
+            'tekst' => 'required',
+            'photo' => 'mimes:jpg,png,jpeg'
+        ]);  
+        
+        $now = date("Y-m-d H:i:s");
+        $artistSpotifyId = session()->get('artistSpotifyId');
+        $newImageName = 0;
+        if(!empty($request->photo)){
+        $newImageName = time() . '-' . $request->title . '.' . $request->photo->extension();
+
+        // store image in public uploads folder    
+        $request->photo->move(public_path('uploads'), $newImageName);
+        }
+
+        \DB::table('posts')->insertOrIgnore(
+            ['title' => $request->input('title'),
+            'tekst' => $request->input('tekst'),
+            'post_date' => $now,
+            'file_path' => $newImageName,
+            'likes' => 0,
+            'comments' => 0,
+            'profile_image_artist' => $artistSpotifyId,
+            'concert_id' => $concert
+            ]
+        );
+        return redirect('/social-room/' . $concert); 
     }
 
     public function checkReceived()
