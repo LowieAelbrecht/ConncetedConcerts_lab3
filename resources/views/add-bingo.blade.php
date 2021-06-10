@@ -20,7 +20,7 @@
                         <label class="custom-file-upload">
 
 
-                            <input class="inpFileBingo" id="inpFileBingo" type="file" name="photo[1]"/>
+                            <input class="inpFileBingo" id="inpFileBingo" type="file" name="photo[1]" required/>
                             <label for="inpFileBingo" class="labelImgBingo image-preview__default-text material-icons">add_a_photo</span>
 
                             <div id="image-upload2">
@@ -35,15 +35,15 @@
                     </div>
                     <div class="col-8">
                         <div class="my-2">
-                            <input type="text" name="name[1]" class="form-control" value="" placeholder="Name item"> 
+                            <input type="text" name="name[1]" class="form-control" value="" placeholder="Name item"required> 
                         </div>
                         <div class="my-2">
-                            <input type="text" name="amount[1]" class="form-control" value="" placeholder="Amount"> 
+                            <input type="text" name="amount[1]" class="form-control" value="" placeholder="Amount"required> 
                         </div>
                     </div>                    
                 </div>
                 <div class="row">
-                    <input type="text" name="info[1]" class="form-control" value="" placeholder="Pick up location / Extra info"> 
+                    <input type="text" name="info[1]" class="form-control" value="" placeholder="Pick up location / Extra info"required> 
                 </div>    
             </div>
         </div>
