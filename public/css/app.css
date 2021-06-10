@@ -107,15 +107,20 @@ h5 {
 
 .userBtn {
     margin-top: 20px;
-    background-color: rgb(255, 137, 0);
     padding: 5px 40px 5px 40px;
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 26px;
+    font-size: 22px;
     border-radius: 40px;
     border-color: transparent;
     margin-right: -18px;
     letter-spacing: 2px;
+
+
+    font-family: var(--font-humana);
+    font-weight: 700;
+    background-image: var(--cc-gradient);
+    border: 0;
+}
 }
 
 .artistBtn {
