@@ -424,6 +424,16 @@ textarea {
     color: black;
 }
 
+.date,
+.time,
+.datetime {
+    padding-left: 0 !important;
+}
+
+.datetime {
+    padding-right: 0 !important;
+}
+
 .card {
     flex-direction: row;
     width: 100%;
