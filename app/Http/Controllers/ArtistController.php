@@ -22,24 +22,24 @@ class ArtistController extends Controller
 
     public function storeConcert(Request $request)
     {   
-        $accessToken = $request->session()->get('accessToken');
-        $api = new \SpotifyWebAPI\SpotifyWebAPI();
-        $api->setAccessToken($accessToken);
-        $artistinfo = $api->getArtist(session()->get('artistSpotifyId'));
-        $artistId = $request->session()->get('artistId');
-
         $request->validate([
-            'concertName' => 'required',
+            'name' => 'required',
             'location' => 'required',
             'date' => 'required|date|after:tomorrow',
             'time' => 'required',
             'photo' => 'required|mimes:jpg,png,jpeg'
         ]);
 
+        $accessToken = $request->session()->get('accessToken');
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($accessToken);
+        $artistinfo = $api->getArtist(session()->get('artistSpotifyId'));
+        $artistId = $request->session()->get('artistId');
+
         if($request->hasFile('photo')){
             // Get all data from form
             $artistName = $artistinfo->name;
-            $concertName = $request->input('concertName');
+            $concertName = $request->input('name');
             $locatie = $request->input('location');
             $date = $request->input('date') . " " .  $request->input('time');
             $prijs = $request->input('price');
@@ -136,6 +136,8 @@ class ArtistController extends Controller
         $artistId = $request->session()->get('artistId');
         $concertId = $request->session()->get('concertId');
         $date = $request->input('endingDate');
+
+
 
         $request->validate([
             'endingDate' => 'required|date|after:tomorrow',
@@ -271,7 +273,6 @@ class ArtistController extends Controller
 
     public function addPost(Request $request, $concert)
     {
-    
         return view('/add-post');
     }
 

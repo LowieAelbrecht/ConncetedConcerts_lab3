@@ -61,7 +61,6 @@ h5 {
     border-radius: 15px;
     color: rgb(36, 0, 70);
     outline: none;
-
 }
 
 .inpFileBingo {
@@ -71,25 +70,21 @@ h5 {
     border-radius: 15px;
     color: rgb(36, 0, 70);
     outline: none;
-
 }
 
 ::-webkit-file-upload-button {
     background-color: rgb(50, 0, 70);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
     padding: 9px;
     border: rgb(36, 0, 70);
 
     color: white;
     border-radius: 10px;
-
-
 }
 
 ::-webkit-file-upload-button:hover {
     background-color: rgb(255, 112, 0);
-
-
 }
 
 .labelImg:hover {
@@ -172,7 +167,6 @@ label {
     font-size: 48px;
     padding: 16px;
 }
-
 
 .image-upload {
     height: 80px;
@@ -512,9 +506,10 @@ textarea {
 }
 
 .play i {
+    font-size: 32px;
     position: absolute;
-    left: 64px;
-    padding-top: 14px;
+    left: 71px;
+    padding-top: 15px;
     color: var(--cc-orange);
 }
 
@@ -645,7 +640,7 @@ textarea {
     color: var(--cc-orange);
     border-radius: 0% 0% 20px 20px;
     margin: -25px 0 0 0;
-    padding: 8px 0;
+    padding: 0;
     width: 100%;
 }
 
@@ -685,7 +680,15 @@ textarea {
 }
 
 .comments h6 {
-    float: right;
+    text-align: right;
     margin: 0;
     font-size: 12px;
+}
+
+.comments p {
+    margin-bottom: 0;
+}
+
+hr {
+    margin: 0;
 }

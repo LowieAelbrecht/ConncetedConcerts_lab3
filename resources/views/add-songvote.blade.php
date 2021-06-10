@@ -7,6 +7,7 @@
 @section('content')
 <form method="post" action="/add-songvote" enctype="multipart/form-data"> 
 @csrf
+{{ $errors }}
 <div class="container">
     <div class="text-center">
         <h2>Song vote</h2>
@@ -15,7 +16,7 @@
 
     <div class="mb-3">
         <label for="endingDate" class="form-label h3-label">Vote ending date</label>
-        <input type="date" name="endingDate" class="form-control" value=""> 
+        <input type="date" name="endingDate" class="form-control" value="{{ old('endingDate') }}"> 
     </div>
 
 

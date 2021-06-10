@@ -13,10 +13,10 @@
             <input type="text" name="concertName" class="form-control" value="<?php echo $myConcert->name; ?>"> 
         </div>
         <div class="row">
-            <div class="col-8">
+            <div class="col-7">
                 <input type="date" name="date" class="form-control" value="<?php echo date('Y-m-d', strtotime($myConcert->concert_date)); ?>"> 
             </div>
-            <div class="col-4">
+            <div class="col-auto">
                 <input type="time" name="time" class="form-control" value="<?php echo date('H:i', strtotime($myConcert->concert_date)); ?>"> 
             </div>
         </div>
