@@ -23,7 +23,7 @@ body {
 }
 
 .content {
-    padding-top: 7vh;
+    padding-top: 10vh;
 }
 
 h2,
@@ -112,7 +112,6 @@ h5 {
     margin-right: -18px;
     letter-spacing: 2px;
 
-
     font-family: var(--font-humana);
     font-weight: 700;
     background-image: var(--cc-gradient);
@@ -134,16 +133,8 @@ h5 {
     font-weight: 700;
 }
 
-.profile-image {
-    border-color: red;
-    margin-left: 10px;
-    margin-top: 10px;
-    display: inline;
-}
-
 .userProfileName {
     margin-left: 10px;
-
 }
 
 label {
@@ -247,9 +238,7 @@ label {
 
 .px-4:hover {
     text-decoration: none;
-
 }
-
 
 .navSocial {
     color: var(--cc-purple);
@@ -418,6 +407,16 @@ textarea {
     color: black;
 }
 
+.date,
+.time,
+.datetime {
+    padding-left: 0 !important;
+}
+
+.datetime {
+    padding-right: 0 !important;
+}
+
 .card {
     flex-direction: row;
     width: 100%;
@@ -467,8 +466,12 @@ textarea {
 /* PROFILE */
 
 .profile-image {
+    border-color: red;
+    margin-left: 10px;
+    margin-top: 10px;
     border-radius: 50%;
-    width: 35vw;
+    width: 50vw;
+    height: 50vw;
 }
 
 /* SETTINGS */

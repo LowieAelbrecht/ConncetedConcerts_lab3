@@ -7,34 +7,31 @@
 
 @section('content')
  
-<form method="post" action="add-concert" enctype="multipart/form-data">
-{{ $errors }}
+<form method="post" action="/add-concert" enctype="multipart/form-data"> 
     @csrf
-    
     <div class="container">
         <div>
-            <label for="name" class="form-label h3-label">Room name</label>
-            <input type="text" name="name" class="form-control" value="{{ old('name') }}"></input>
-            <div class="alert-danger">{{ $errors->first('concertName') }}</div>
-        </div>        
-        <div class="row">
-            <div class="col-7">
+            <label for="concertName" class="form-label h3-label">Room name</label>
+            <input type="text" name="concertName" class="form-control" value="" required> 
+        </div>
+        <div class="row datetime">
+            <div class="col-8 date">
                 <label for="date" class="form-label h3-label">Date</label>
-                <input type="date" name="date" class="form-control" value="{{ old('date') }}"></input> 
+                <input type="date" name="date" class="form-control" value="" required> 
             </div>
-            <div class="col-auto">
+            <div class="col-4 time">
                 <label for="time" class="form-label h3-label">Time</label>
-                <input type="time" name="time" class="form-control" value="{{ old('time') }}"></input>
+                <input type="time" name="time" class="form-control" value="" required> 
             </div>
         </div>
         <div>
             <label for="location" class="form-label h3-label">Location</label>
-            <input type="text" name="location" class="form-control" value="{{ old('location') }}"></input> 
+            <input type="text" name="location" class="form-control" value="" required> 
 
         </div>
         <div class="range-wrap col-12">
             <label for="price" class="form-label h3-label">Price</label>
-            <input type="range" name="price" class="range" min="5" max="10" step="1"></input>
+            <input type="range" name="price" class="range" min="5" max="10" step="1">
             <output class="bubble"></output>
         </div>
         <div>
@@ -45,7 +42,7 @@
         <div class="inpContainer">
 
         </div>
-        <input type="file" class="inpFile2" name="photo" id="inpFile">
+        <input type="file" class="inpFile2" name="photo" id="inpFile" required>
 
         <div class="image-preview" id="imagePreview">
 
