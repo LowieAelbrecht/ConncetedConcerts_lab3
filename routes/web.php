@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/login', 'App\Http\Controllers\Login@index');
 Route::get('/user-rooms', 'App\Http\Controllers\ClientController@index');
 Route::get('/user-discover', 'App\Http\Controllers\ClientController@discover');
