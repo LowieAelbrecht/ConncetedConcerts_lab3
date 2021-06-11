@@ -17,54 +17,61 @@ class ArtistController extends Controller
 
     public function addConcert(Request $request)
     {
-        return view('/add-concert');
+        $urlAPI = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=BE&keyword=balthazar&apikey=kv2FiO7Vt292weDyR45Muj2uPVbTSpsb';
+
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL, $urlAPI);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $list = json_decode($response, true);
+        $data['concerts'] = $list['_embedded']['events'];
+        
+
+        //dd($data['concerts']);
+
+        return view('/add-concert', $data);
     }
 
     public function storeConcert(Request $request)
     {   
-        $request->validate([
-            'concertName' => 'required',
-            'location' => 'required',
-            'date' => 'required|date|after:tomorrow',
-            'time' => 'required',
-            'photo' => 'required|mimes:jpg,png,jpeg'
-        ]);
-
-
         $accessToken = $request->session()->get('accessToken');
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
         $api->setAccessToken($accessToken);
         $artistinfo = $api->getArtist(session()->get('artistSpotifyId'));
         $artistId = $request->session()->get('artistId');
 
-        if($request->hasFile('photo')){
-            // Get all data from form
-            $artistName = $artistinfo->name;
-            $concertName = $request->input('concertName');
-            $locatie = $request->input('location');
-            $date = $request->input('date') . " " .  $request->input('time');
-            $prijs = $request->input('price');
-            $newImageName = time() . '-' . $request->concertName . '.' . $request->photo->extension();
+        // Get all data from form
+        $jqdate = $_POST['dateTime'];
+        $artistName = $artistinfo->name;
+        $concertName = $_POST['concertName'];
+        $locatie = ($_POST['venue'] . $_POST['city']);
+        $date = date(preg_replace('/T|\Z/', ' ', $jqdate));
+        $prijs = "0";
+        $newImageName = "ok";
+        //$newImageName = time() . '-' . $request->concertName . '.' . $request->photo->extension();
 
-            // store image in public uploads folder    
-            $request->photo->move(public_path('uploads'), $newImageName);
-            
-            // Store in DB
-            $concertId = \DB::table('concerts')->insertGetId(
-                ['name' => $concertName, 
-                'artist_name' => $artistName,
-                'locatie' => $locatie,
-                'concert_date' => $date,
-                'prijs' => $prijs,
-                'file_path' => $newImageName,
-                'artist_id' => $artistId
-                ]
-            );
+        // store image in public uploads folder    
+        //$request->photo->move(public_path('uploads'), $newImageName);
+        
+        // Store in DB
+        $concertId = \DB::table('concerts')->insertGetId(
+            ['name' => $concertName, 
+            'artist_name' => $artistName,
+            'locatie' => $locatie,
+            'concert_date' => $date,
+            'prijs' => $prijs,
+            'file_path' => $newImageName,
+            'artist_id' => $artistId
+            ]
+        );
 
-            $request->session()->put('concertId', $concertId);
-        }
+        $request->session()->put('concertId', $concertId);
+        
 
-        return redirect('/add-songvote'); 
+        echo json_encode(true); 
     }
 
     public function updateConcert(Request $request, $concert)

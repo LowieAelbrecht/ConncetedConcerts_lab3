@@ -414,24 +414,10 @@ textarea {
     margin: 20px 0 10px 5px;
 }
 
-.concert-date a {
-    color: black;
-}
-
-.date,
-.time,
-.datetime {
-    padding-left: 0 !important;
-}
-
-.datetime {
-    padding-right: 0 !important;
-}
-
 .card {
     flex-direction: row;
     width: 100%;
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 15px;
     padding: 0px;
     box-shadow: 1px 2px 11px #888888;
@@ -451,7 +437,7 @@ textarea {
 .card h3 {
     display: block;
     position: relative;
-    font-size: 25px;
+    font-size: 18px;
     color: black;
 }
 
@@ -462,8 +448,30 @@ textarea {
 .card h5 {
     position: relative;
     display: block;
-    font-size: 18px;
+    font-size: 16px;
     color: black;
+}
+
+.card p {
+    font-size: 14px;
+}
+
+.dimmed {
+    position: relative;
+}
+
+.dimmed:after {
+    content: " ";
+    border-radius: 15px;
+    z-index: 10;
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--cc-orange);
+    opacity: 0.4;
 }
 
 /* DETAILPAGE ROOM/CONCERT */

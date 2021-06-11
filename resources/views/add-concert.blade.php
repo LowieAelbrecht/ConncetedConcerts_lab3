@@ -6,60 +6,26 @@
 @endsection
 
 @section('content')
- 
-<form method="post" action="/add-concert" enctype="multipart/form-data"> 
-    @csrf
     <div class="container">
-        <div>
-            <label for="concertName" class="form-label h3-label">Room name</label>
-            <input type="text" name="concertName" class="form-control" value="{{ old('concertName') }}" <?php if($errors->first('concertName')) : ?> style="border-color: red"; <?php endif; ?>>
-            @error('concertName')
-                <div>{{ $message }}</div> 
-            @enderror
+        <div class="text-center">
+            <h2>Select concert</h2>
+            <p>Select the concert in the list where you want to make a concert room for.</p>
         </div>
-        <div class="row datetime">
-            <div class="col-8 date">
-                <label for="date" class="form-label h3-label">Date</label>
-                <input type="date" name="date" class="form-control dateInput" value="{{ old('date') }}" <?php if($errors->first('date')) : ?> style="border-color: red"; <?php endif; ?>>
+        <div class="hasDimmed">
+        @foreach( $concerts as $key => $concert )
+        <div class="card mb-4" id="{{ $key }}">
+            <img  src="{{ $concert['images'][0]['url'] }}" class="card-img-top" alt="concert picture">
+            <div class="card-body">
+                <h3 class="card-title name">{{ $concert['name'] }}</h3>
+                <h5 class="venue">Venue: {{ $concert['_embedded']['venues'][0]['name'] }}</h5>
+                <h5 class="city">City: {{ $concert['_embedded']['venues'][0]['city']['name'] }}</h5>   
+                <p class="dateTime" id="{{ $concert['dates']['access']['startDateTime'] }}">{{ date("H:i", strtotime($concert['dates']['start']['localTime'])) }} {{ date("d/m/'y", strtotime($concert['dates']['start']['localDate'])) }}</p> 
             </div>
-            <div class="col-4 time">
-                <label for="time" class="form-label h3-label">Time</label>
-                <input type="time" name="time" class="form-control" value="{{ old('time') }}" <?php if($errors->first('time')) : ?> style="border-color: red"; <?php endif; ?>>
-            </div>
-            @error('date')
-                <div>{{ $message }}</div>
-            @enderror
-            @error('time')
-                <div>{{ $message }}</div>          
-            @enderror
         </div>
-        <div>
-            <label for="location" class="form-label h3-label">Location</label>
-            <input type="text" name="location" class="form-control" value="{{ old('location') }}" <?php if($errors->first('location')) : ?> style="border-color: red"; <?php endif; ?>> 
-            <div>{{ $errors->first('location') }}</div>
-        </div>
-        <div class="range-wrap col-12">
-            <label for="price" class="form-label h3-label">Price</label>
-            <input type="range" name="price" class="range" min="5" max="10" step="1">
-            <output class="bubble"></output>
-        </div>
-        <div>
-            <label for="photo" class="form-label h3-label inpFile">Add Image</label>
-        <!---    <input type="file" name="photo">-->
+        @endforeach
         </div>
 
-        <div class="inpContainer">
-
-        </div>
-        <input type="file" class="inpFile2" name="photo" id="inpFile">
-
-        <div class="image-preview" id="imagePreview">
-            <img src="" alt="Image Preview" class="image-preview__image">
-            <label for="inpFile" class="labelImg image-preview__default-text material-icons">image</span>
-            <span class="image-preview__default-text"></span> 
-        </div>
-        <div>{{ $errors->first('photo') }}</div>  
-    </div>
+    </div>      
 @endsection
 
 @section('steps')
@@ -74,60 +40,50 @@
             <input class="nextBtn" type="submit" name="upload" value="Next"></input>
         </div>        
     </div>
-</form>
 @endsection
 
+
 @section('js')
-    <script>
-        const allRanges = document.querySelectorAll(".range-wrap");
-        allRanges.forEach(wrap => {
-        const range = wrap.querySelector(".range");
-        const bubble = wrap.querySelector(".bubble");
-
-        range.addEventListener("input", () => {
-            setBubble(range, bubble);
-        });
-        setBubble(range, bubble);
-        });
-
-        function setBubble(range, bubble) {
-        const val = range.value;
-        const min = range.min ? range.min : 4;
-        const max = range.max ? range.max : 10;
-        const newVal = Number(((val - min) * 100) / (max - min));
-        bubble.value = "€ " + val;
+<script>
+$(document).ready(function(){
+    $(".card").click(function(){
+        if($(".hasDimmed").children().hasClass( "dimmed")){
+            $( ".dimmed" ).removeClass( "dimmed" );
         }
+        
+        $(this).addClass("dimmed");
+    });
 
+    $(".nextBtn").click(function(){
+        if($(".hasDimmed").children().hasClass( "dimmed")){
+        var itemId = $( ".dimmed" ).attr("id");
+        var concertName = $("#" + itemId).children(".card-body").children(".name").text();  
+        var venue = $("#" + itemId).children(".card-body").children(".venue").text(); 
+        var city = $("#" + itemId).children(".card-body").children(".city").text(); 
+        var dateTime = $("#" + itemId).children(".card-body").children(".dateTime").attr("id");
+        //var img = $("#" + itemId).children(".img");
 
-        const inpFile =document.getElementById("inpFile");
-        const previewContainer = document.getElementById("imagePreview");
-        const previewImage = previewContainer.querySelector(".image-preview__image");
-        const previewDefaultText =previewContainer.querySelector(".material-icons");  
+        console.log(dateTime);
+        
+        $.ajax({
+            url:'/add-concert',
+            method: 'post',
+            data: { "_token": "{{ csrf_token() }}",
+                "concertName": concertName,
+                "venue": venue,
+                "city": city,
+                "dateTime": dateTime},
+            dataType: 'json',
+            success: function(response){
+                console.log("check");               
+            }
+        }); 
 
+        } else {
+            $(".text-center p").after('<h5 style="color:red;">Please select a concert</h5>');
+        }
+    });   
 
-        inpFile.addEventListener("change", function(){
-        const file =this.files[0];
-
-        if(file){
-        const reader = new FileReader(); //image lezen als url
-
-        previewImage.style.display ="block"; //geladen image tonen.
-        previewImage.style.overflow ="auto"; //geladen image tonen.
-
-        previewDefaultText.style.display ="none"; //geladen image tonen.
-
-         reader.addEventListener("load", function(){      //toegevoegde img laden
-        previewImage.setAttribute("src", this.result);   //src veranderen in html, this verwijst nr fileReader
-
-         });
-
-         reader.readAsDataURL(file); //gelezen data tonen als image
-        }else{
-    previewImage.style.display = null; //als user niks kiest toon default css
-    previewDefaultText.style.display ="block";
-    previewImage.setAttribute("src","");
-}
 });
-
-    </script>
+</script>
 @endsection
