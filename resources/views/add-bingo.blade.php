@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="addItem">
-            <h5 class="text-center">ADD ITEM</h5>
+            <h5 class="text-center addBtn">ADD ITEM</h5>
         </div>
     </div>
 
@@ -63,7 +63,7 @@
             <span class="selected-dot dot"></span>        
         </div>
         <div class="pull-right">
-            <input type="submit" name="upload" value="Finish"></input>
+            <input class="nextBtn" type="submit" name="upload" value="Finish"></input>
         </div>        
     </div>
 </form>   
