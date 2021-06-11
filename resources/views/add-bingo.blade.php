@@ -35,15 +35,15 @@
                     </div>
                     <div class="col-8">
                         <div class="my-2">
-                            <input type="text" name="name[1]" class="form-control" value="" placeholder="Name item"required> 
+                            <input type="text" name="name[1]" class="form-control" value="{{ old('name[1]') }}" placeholder="Name item"> 
                         </div>
                         <div class="my-2">
-                            <input type="text" name="amount[1]" class="form-control" value="" placeholder="Amount"required> 
+                            <input type="text" name="amount[1]" class="form-control" value="{{ old('amount[1]') }}" placeholder="Amount"> 
                         </div>
                     </div>                    
                 </div>
                 <div class="row">
-                    <input type="text" name="info[1]" class="form-control" value="" placeholder="Pick up location / Extra info"required> 
+                    <input type="text" name="info[1]" class="form-control" value="{{ old('info[1]') }}" placeholder="Pick up location / Extra info"> 
                 </div>    
             </div>
         </div>

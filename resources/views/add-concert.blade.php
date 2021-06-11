@@ -12,22 +12,31 @@
     <div class="container">
         <div>
             <label for="concertName" class="form-label h3-label">Room name</label>
-            <input type="text" name="concertName" class="form-control" value="" required> 
+            <input type="text" name="concertName" class="form-control" value="{{ old('concertName') }}" <?php if($errors->first('concertName')) : ?> style="border-color: red"; <?php endif; ?>>
+            @error('concertName')
+                <div>{{ $message }}</div> 
+            @enderror
         </div>
         <div class="row datetime">
             <div class="col-8 date">
                 <label for="date" class="form-label h3-label">Date</label>
-                <input type="date" name="date" class="form-control dateInput" value="" required> 
+                <input type="date" name="date" class="form-control dateInput" value="{{ old('date') }}" <?php if($errors->first('date')) : ?> style="border-color: red"; <?php endif; ?>>
             </div>
             <div class="col-4 time">
                 <label for="time" class="form-label h3-label">Time</label>
-                <input type="time" name="time" class="form-control" value="" required> 
+                <input type="time" name="time" class="form-control" value="{{ old('time') }}" <?php if($errors->first('time')) : ?> style="border-color: red"; <?php endif; ?>>
             </div>
+            @error('date')
+                <div>{{ $message }}</div>
+            @enderror
+            @error('time')
+                <div>{{ $message }}</div>          
+            @enderror
         </div>
         <div>
             <label for="location" class="form-label h3-label">Location</label>
-            <input type="text" name="location" class="form-control" value="" required> 
-
+            <input type="text" name="location" class="form-control" value="{{ old('location') }}" <?php if($errors->first('location')) : ?> style="border-color: red"; <?php endif; ?>> 
+            <div>{{ $errors->first('location') }}</div>
         </div>
         <div class="range-wrap col-12">
             <label for="price" class="form-label h3-label">Price</label>
@@ -42,16 +51,14 @@
         <div class="inpContainer">
 
         </div>
-        <input type="file" class="inpFile2" name="photo" id="inpFile" required>
+        <input type="file" class="inpFile2" name="photo" id="inpFile">
 
         <div class="image-preview" id="imagePreview">
-
-        <img src="" alt="Image Preview" class="image-preview__image">
-        <label for="inpFile" class="labelImg image-preview__default-text material-icons">image</span>
-        <span class="image-preview__default-text"></span>
-
-
+            <img src="" alt="Image Preview" class="image-preview__image">
+            <label for="inpFile" class="labelImg image-preview__default-text material-icons">image</span>
+            <span class="image-preview__default-text"></span> 
         </div>
+        <div>{{ $errors->first('photo') }}</div>  
     </div>
 @endsection
 

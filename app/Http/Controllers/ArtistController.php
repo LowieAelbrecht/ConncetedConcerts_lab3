@@ -23,7 +23,7 @@ class ArtistController extends Controller
     public function storeConcert(Request $request)
     {   
         $request->validate([
-            'name' => 'required',
+            'concertName' => 'required',
             'location' => 'required',
             'date' => 'required|date|after:tomorrow',
             'time' => 'required',
@@ -40,7 +40,7 @@ class ArtistController extends Controller
         if($request->hasFile('photo')){
             // Get all data from form
             $artistName = $artistinfo->name;
-            $concertName = $request->input('name');
+            $concertName = $request->input('concertName');
             $locatie = $request->input('location');
             $date = $request->input('date') . " " .  $request->input('time');
             $prijs = $request->input('price');
@@ -281,7 +281,7 @@ class ArtistController extends Controller
         $request->validate([
             'title' => 'required',
             'tekst' => 'required',
-            'photo' => 'mimes:jpg,png,jpeg'
+            'photo' => 'sometimes|mimes:jpg,png,jpeg'
         ]);  
         
         $now = date("Y-m-d H:i:s");
