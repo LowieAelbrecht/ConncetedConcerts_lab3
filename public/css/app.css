@@ -164,7 +164,6 @@ label {
     font-size: 22px;
     align-items: right;
     border-color: WHITE;
-
 }
 
 .addBtn {
@@ -419,10 +418,6 @@ textarea {
     color: black;
 }
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 .date,
 .time,
 .datetime {
@@ -431,10 +426,6 @@ textarea {
 
 .datetime {
     padding-right: 0 !important;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 }
 
 .card {
