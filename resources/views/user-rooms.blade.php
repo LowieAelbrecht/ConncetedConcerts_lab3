@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <h3>{{ $myConcert->artist_name }}</h3>
                             <h5>{{ $myConcert->name }}</h5>
-                            <?php $var = explode('|', $concert->locatie); ?>
+                            <?php $var = explode('|', $myConcert->locatie); ?>
                             <h5>{{ $var[0] }}</h5>
                             <h5>{{ $var[1] }}</h5>
                         </div>
@@ -62,7 +62,7 @@
                         <img  src="{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
                         <div class="card-body">
                             <h3>{{ $myConcert->name }}</h3>
-                            <?php $var = explode('|', $concert->locatie); ?>
+                            <?php $var = explode('|', $myConcert->locatie); ?>
                             <h5>{{ $var[0] }}</h5>
                             <h5>{{ $var[1] }}</h5>
                             <h5>{{ $myConcert->tickets_sold }} ticket(s) sold</h5>
