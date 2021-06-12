@@ -29,11 +29,14 @@ class ArtistController extends Controller
         $list = json_decode($response, true);
         $data['concerts'] = $list['_embedded']['events'];
 
+        //dd($data['concerts']);
+
         $myConcerts = \DB::table('concerts')
             ->where('artist_id', session()->get('artistId'))
             ->get();
 
         $data['myConcerts'] = array();
+
 
         foreach($myConcerts as $myConcert){
             $concerts = $myConcert->tm_id;
@@ -61,6 +64,8 @@ class ArtistController extends Controller
         $prijs = "0";
         $img = $_POST['img'];
         $tm = $_POST['tm_id'];
+        $latitude = $_POST['latitude'];
+        $longitude = $_POST['longitude'];
         
         // Store in DB
         $concertId = \DB::table('concerts')->insertGetId(
@@ -71,6 +76,8 @@ class ArtistController extends Controller
             'prijs' => $prijs,
             'file_path' => $img,
             'tm_id' => $tm,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
             'artist_id' => $artistId
             ]
         );

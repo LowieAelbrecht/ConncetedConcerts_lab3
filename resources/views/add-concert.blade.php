@@ -18,8 +18,8 @@
                 <img  src="{{ $concert['images'][0]['url'] }}" class="card-img-top" alt="concert picture">
                 <div class="card-body" id="{{ $concert['id'] }}">
                     <h3 class="card-title name">{{ $concert['name'] }}</h3>
-                    <h5 class="venue">Venue: {{ $concert['_embedded']['venues'][0]['name'] }}</h5>
-                    <h5 class="city">City: {{ $concert['_embedded']['venues'][0]['city']['name'] }}</h5>   
+                    <h5 class="venue" id="{{ $concert['_embedded']['venues'][0]['location']['latitude'] }}">Venue: {{ $concert['_embedded']['venues'][0]['name'] }}</h5>
+                    <h5 class="city" id="{{ $concert['_embedded']['venues'][0]['location']['longitude'] }}">City: {{ $concert['_embedded']['venues'][0]['city']['name'] }}</h5>   
                     <p class="dateTime" id="{{ $concert['dates']['access']['startDateTime'] }}">{{ date("H:i", strtotime($concert['dates']['start']['localTime'])) }} {{ date("d/m/'y", strtotime($concert['dates']['start']['localDate'])) }}</p> 
                 </div>
             </div>
@@ -60,8 +60,10 @@ $(document).ready(function(){
         if($(".hasDimmed").children().hasClass( "dimmed")){
         var itemId = $( ".dimmed" ).attr("id");
         var concertName = $("#" + itemId).children(".card-body").children(".name").text();  
-        var venue = $("#" + itemId).children(".card-body").children(".venue").text(); 
+        var venue = $("#" + itemId).children(".card-body").children(".venue").text();
+        var latitude = $("#" + itemId).children(".card-body").children(".venue").attr("id");
         var city = $("#" + itemId).children(".card-body").children(".city").text(); 
+        var longitude = $("#" + itemId).children(".card-body").children(".city").attr("id");
         var dateTime = $("#" + itemId).children(".card-body").children(".dateTime").attr("id");
         var img = $("#" + itemId).children(".card-img-top").attr("src");
         var tm_id = $("#" + itemId).children(".card-body").attr("id");
@@ -76,7 +78,9 @@ $(document).ready(function(){
                 "city": city,
                 "dateTime": dateTime,
                 "img": img,
-                "tm_id": tm_id},
+                "tm_id": tm_id,
+                "latitude": latitude,
+                "longitude": longitude},
             dataType: 'json',
             success: function(response){
                 location.href = '/add-songvote';             

@@ -23,7 +23,7 @@ body {
 }
 
 .content {
-    padding-top: 10vh;
+    padding-top: 7vh;
 }
 
 h2,
@@ -219,7 +219,7 @@ label {
 }
 
 .main-nav .orange-logo {
-    width: 30vw;
+    height: 7vh;
 }
 
 .bottom-nav {
@@ -351,6 +351,23 @@ textarea {
     transform: translateX(-50%);
     bottom: 20px;
     width: 80vw;
+}
+
+.btn-filter {
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 3px 10px;
+    border: 0;
+    box-shadow: 1px 2px 5px #888888;
+    color: var(--cc-purple);
+    font-family: var(--font-coolvetica);
+    font-size: 18px;
+    margin: 0 5px;
+}
+
+.selected-filter {
+    background-image: var(--cc-gradient);
+    color: var(--cc-white);
 }
 
 /* LOGIN */
