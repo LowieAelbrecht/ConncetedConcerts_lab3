@@ -28,9 +28,18 @@ class ArtistController extends Controller
         curl_close($ch);
         $list = json_decode($response, true);
         $data['concerts'] = $list['_embedded']['events'];
-        
 
-        //dd($data['concerts']);
+        $myConcerts = \DB::table('concerts')
+            ->where('artist_id', session()->get('artistId'))
+            ->get();
+
+        $data['myConcerts'] = array();
+
+        foreach($myConcerts as $myConcert){
+            $concerts = $myConcert->tm_id;
+            array_push($data['myConcerts'], $concerts); 
+        }
+        
 
         return view('/add-concert', $data);
     }
@@ -47,14 +56,11 @@ class ArtistController extends Controller
         $jqdate = $_POST['dateTime'];
         $artistName = $artistinfo->name;
         $concertName = $_POST['concertName'];
-        $locatie = ($_POST['venue'] . $_POST['city']);
+        $locatie = ($_POST['venue'] . " | " . $_POST['city']);
         $date = date(preg_replace('/T|\Z/', ' ', $jqdate));
         $prijs = "0";
-        $newImageName = "ok";
-        //$newImageName = time() . '-' . $request->concertName . '.' . $request->photo->extension();
-
-        // store image in public uploads folder    
-        //$request->photo->move(public_path('uploads'), $newImageName);
+        $img = $_POST['img'];
+        $tm = $_POST['tm_id'];
         
         // Store in DB
         $concertId = \DB::table('concerts')->insertGetId(
@@ -63,14 +69,14 @@ class ArtistController extends Controller
             'locatie' => $locatie,
             'concert_date' => $date,
             'prijs' => $prijs,
-            'file_path' => $newImageName,
+            'file_path' => $img,
+            'tm_id' => $tm,
             'artist_id' => $artistId
             ]
         );
 
         $request->session()->put('concertId', $concertId);
         
-
         echo json_encode(true); 
     }
 
@@ -229,6 +235,7 @@ class ArtistController extends Controller
     public function publishConcert(Request $request)
     {
         $concertId = $request->session()->get('concertId');
+        $price = $request->input('price');
 
         switch ($request->input('action')) {
             case 'publish':
@@ -236,11 +243,21 @@ class ArtistController extends Controller
                 ->where('id', $concertId)
                 ->update(
                     [
+                    'prijs' => $price,   
                     'published' => true
                 ]
                 );
                 break;
 
+            case 'save':
+                \DB::table('concerts')
+                ->where('id', $concertId)
+                ->update(
+                    [
+                    'prijs' => $price
+                ]
+                );
+                break;
             }
 
             

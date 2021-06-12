@@ -21,10 +21,10 @@ class CreateConcertsTable extends Migration
             $table->dateTime('concert_date');
             $table->double('prijs', 15, 2);
             $table->string('file_path');
+            $table->string('tm_id');
             $table->boolean('published')->default(false);
             $table->double('tickets_sold')->default(0);
             $table->integer('artist_id')->nullable();            
-            //$table->integer('userID')->nullable(); zal apparte kolom worden dat userid en concerid samenbrengt
             $table->timestamps();
         });
     }

@@ -27,11 +27,13 @@
         <h4 class="concert-date">{{ date("d/m/'y ", strtotime($concert->concert_date)) }}</h4>
         <a href="/concerts/{{ $concert->id }}"> 
         <div class="card">
-                <img src="uploads/{{ $concert->file_path }}" class="card-img-top" alt="concert picture">
+                <img src="{{ $concert->file_path }}" class="card-img-top" alt="concert picture">
                 <div class="card-body">
                     <h3>{{ $concert->artist_name }}</h3>
                     <h5>{{ $concert->name }}</h5>
-                    <h5>{{ $concert->locatie }}</h5>
+                    <?php $var = explode('|', $concert->locatie); ?>
+                    <h5>{{ $var[0] }}</h5>
+                    <h5>{{ $var[1] }}</h5>
                 </div>                         
         </div>
         </a>

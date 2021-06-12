@@ -27,11 +27,13 @@
                     <h4 class="concert-date">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</h4>
                     <a href="/social-room/{{ $myConcert->id }}">
                     <div class="card">
-                        <img src="uploads/{{ $myConcert->file_path }}" alt="concert picture">
+                        <img src="{{ $myConcert->file_path }}" alt="concert picture">
                         <div class="card-body">
                             <h3>{{ $myConcert->artist_name }}</h3>
                             <h5>{{ $myConcert->name }}</h5>
-                            <h5>{{ $myConcert->locatie }}</h5>
+                            <?php $var = explode('|', $concert->locatie); ?>
+                            <h5>{{ $var[0] }}</h5>
+                            <h5>{{ $var[1] }}</h5>
                         </div>
                     </div>
                     </a>
@@ -54,13 +56,15 @@
             @endif
             @foreach( $myConcerts as $myConcert )
                 @if($myConcert->published == true) 
-                    <h4 class="concert-date"><a href="/social-room/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
+                    <h4 class="concert-date">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</h4>
                     <a href="/social-room/{{ $myConcert->id }}">
                     <div class="card">
-                        <img  src="uploads/{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
+                        <img  src="{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
                         <div class="card-body">
                             <h3>{{ $myConcert->name }}</h3>
-                            <h5>{{ $myConcert->locatie }}</h5>
+                            <?php $var = explode('|', $concert->locatie); ?>
+                            <h5>{{ $var[0] }}</h5>
+                            <h5>{{ $var[1] }}</h5>
                             <h5>{{ $myConcert->tickets_sold }} ticket(s) sold</h5>
                         </div>                        
                     </div>
@@ -75,10 +79,12 @@
                     <h4 class="concert-date"><a href="/update-concert/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
                     <a href="/update-concert/{{ $myConcert->id }}">
                     <div class="card">
-                        <img  src="uploads/{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
+                        <img  src="{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
                         <div class="card-body">
                             <h3>{{ $myConcert->name }}</h3>
-                            <h5>{{ $myConcert->locatie }}</h5>
+                            <?php $var = explode('|', $concert->locatie); ?>
+                            <h5>{{ $var[0] }}</h5>
+                            <h5>{{ $var[1] }}</h5>
                         </div>
                     </div>
                     </a>

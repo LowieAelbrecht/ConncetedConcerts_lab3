@@ -46,9 +46,9 @@ class ClientController extends Controller
             return redirect('/user-rooms'); 
         } elseif($request->input('artist') == true){
             $request->session()->put('userType', 'artist');
-            $request->session()->put('artistSpotifyId', '2Sm4rGKWBnOQhdqDy4JJh0');
+            $request->session()->put('artistSpotifyId', '4oMBP1OWXtmxyDhAj2aRyQ');
             $artist = \DB::table('artists')->where('token', session()->get('artistSpotifyId'))->first();
-            $artistinfo = $api->getArtist('2Sm4rGKWBnOQhdqDy4JJh0');
+            $artistinfo = $api->getArtist('4oMBP1OWXtmxyDhAj2aRyQ');
 
             if(empty($artist)){
                 $artistId = \DB::table('artists')->insertGetId([

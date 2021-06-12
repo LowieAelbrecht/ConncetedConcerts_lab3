@@ -13,15 +13,17 @@
         </div>
         <div class="hasDimmed">
         @foreach( $concerts as $key => $concert )
-        <div class="card mb-4" id="{{ $key }}">
-            <img  src="{{ $concert['images'][0]['url'] }}" class="card-img-top" alt="concert picture">
-            <div class="card-body">
-                <h3 class="card-title name">{{ $concert['name'] }}</h3>
-                <h5 class="venue">Venue: {{ $concert['_embedded']['venues'][0]['name'] }}</h5>
-                <h5 class="city">City: {{ $concert['_embedded']['venues'][0]['city']['name'] }}</h5>   
-                <p class="dateTime" id="{{ $concert['dates']['access']['startDateTime'] }}">{{ date("H:i", strtotime($concert['dates']['start']['localTime'])) }} {{ date("d/m/'y", strtotime($concert['dates']['start']['localDate'])) }}</p> 
+            @if(!in_array($concert['id'], $myConcerts))
+            <div class="card mb-4" id="{{ $key }}">
+                <img  src="{{ $concert['images'][0]['url'] }}" class="card-img-top" alt="concert picture">
+                <div class="card-body" id="{{ $concert['id'] }}">
+                    <h3 class="card-title name">{{ $concert['name'] }}</h3>
+                    <h5 class="venue">Venue: {{ $concert['_embedded']['venues'][0]['name'] }}</h5>
+                    <h5 class="city">City: {{ $concert['_embedded']['venues'][0]['city']['name'] }}</h5>   
+                    <p class="dateTime" id="{{ $concert['dates']['access']['startDateTime'] }}">{{ date("H:i", strtotime($concert['dates']['start']['localTime'])) }} {{ date("d/m/'y", strtotime($concert['dates']['start']['localDate'])) }}</p> 
+                </div>
             </div>
-        </div>
+            @endif
         @endforeach
         </div>
 
@@ -61,9 +63,9 @@ $(document).ready(function(){
         var venue = $("#" + itemId).children(".card-body").children(".venue").text(); 
         var city = $("#" + itemId).children(".card-body").children(".city").text(); 
         var dateTime = $("#" + itemId).children(".card-body").children(".dateTime").attr("id");
-        //var img = $("#" + itemId).children(".img");
+        var img = $("#" + itemId).children(".card-img-top").attr("src");
+        var tm_id = $("#" + itemId).children(".card-body").attr("id");
 
-        console.log(dateTime);
         
         $.ajax({
             url:'/add-concert',
@@ -72,16 +74,19 @@ $(document).ready(function(){
                 "concertName": concertName,
                 "venue": venue,
                 "city": city,
-                "dateTime": dateTime},
+                "dateTime": dateTime,
+                "img": img,
+                "tm_id": tm_id},
             dataType: 'json',
             success: function(response){
-                console.log("check");               
+                location.href = '/add-songvote';             
             }
         }); 
-
+        
         } else {
             $(".text-center p").after('<h5 style="color:red;">Please select a concert</h5>');
         }
+        
     });   
 
 });
