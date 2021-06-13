@@ -16,7 +16,7 @@ class Callback extends Controller
         $session = new \SpotifyWebAPI\Session(
             'c3ee0d861721448dbecc1b0c475b29e4',
             '056c230dbe804f16aa56d45718175c4a',
-            'https://ancient-parrot-67.loca.lt/callback'
+            'http://ConnectedConcerts.test/callback'
         );
 
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
@@ -37,7 +37,7 @@ class Callback extends Controller
 
         // Send the user along and fetch some data!
         //header('Location: http://ConnectedConcerts.test/user-home');
-        $url = "https://ancient-parrot-67.loca.lt/checkUser";
+        $url = "http://ConnectedConcerts.test/checkUser";
         return \Illuminate\Support\Facades\Redirect::to($url);
         die();
     }
