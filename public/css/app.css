@@ -581,10 +581,16 @@ textarea {
     margin: 5px 0;
 }
 
+
 .bingo-picture {
-    width: 40vw;
+    width: 250px;
     height: auto;
     border-radius: 25px;
+}
+
+.carousel-item{
+    width: 100%;
+    height: auto;
 }
 
 .bg-white .d-flex .material-icons {
