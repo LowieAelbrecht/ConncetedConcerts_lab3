@@ -520,4 +520,16 @@ class ClientController extends Controller
 
         echo json_encode($data['concertIds']);
     }
+
+    public function sortDistance()
+    {
+        $id = $_POST['ids'];
+
+        $data = \DB::table('concerts')
+            ->where('id', $id)
+            ->first(); 
+
+
+        echo json_encode($data);
+    }
 }

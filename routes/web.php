@@ -66,6 +66,7 @@ Route::post('/check', 'App\Http\Controllers\ClientController@concertCheck');
 Route::post('/likePost', 'App\Http\Controllers\ClientController@likePost');
 Route::post('/unLikePost', 'App\Http\Controllers\ClientController@unLikePost');
 Route::post('/addComment', 'App\Http\Controllers\ClientController@storeComment');
+Route::post('/sortDistance', 'App\Http\Controllers\ClientController@sortDistance');
 
 //MOLLIE ROUTES
 Route::get('mollie-paymnet',[MollieController::Class,'preparePayment'])->name('mollie.payment');

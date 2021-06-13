@@ -17,7 +17,7 @@
       <i class="material-icons">search</i>
     </div>
     <div class="pt-3 text-center">
-        <button class="btn-filter selected-filter">Date</button>
+        <button class="btn-filter selected-filter" id="date">Date</button>
         <button class="btn-filter" id="locatie">Locatie</button>
     </div>
 
@@ -26,18 +26,18 @@
     </ul>
 
     <div class="php-output">
-    @foreach( $concerts as $concert )
+    @foreach( $concerts as $key => $concert )
         @if (!in_array($concert->id, $concertIds))
         <h4 class="concert-date">{{ date("d/m/'y ", strtotime($concert->concert_date)) }}</h4>
-        <a href="/concerts/{{ $concert->id }}"> 
-        <div class="card">
+        <a href="/concerts/{{ $concert->id }}" class="concertId"> 
+        <div class="card" id="{{ $key }}">
                 <img src="{{ $concert->file_path }}" class="card-img-top" alt="concert picture">
                 <div class="card-body">
                     <h3>{{ $concert->artist_name }}</h3>
                     <h5>{{ $concert->name }}</h5>
                     <?php $var = explode('|', $concert->locatie); ?>
-                    <h5>{{ $var[0] }}</h5>
-                    <h5>{{ $var[1] }}</h5>
+                    <h5 class="latitude" id="{{ $concert->latitude }}">{{ $var[0] }}</h5>
+                    <h5 class="longitude" id="{{ $concert->longitude }}">{{ $var[1] }}</h5>
                 </div>                         
         </div>
         </a>
@@ -119,14 +119,88 @@ $(document).ready(function(){
         timeout: 5000,
         maximumAge: 0
         };
+        $("#locatie").addClass("selected-filter");
+        $("#date").removeClass("selected-filter");
 
         function success(pos) {
         var crd = pos.coords;
+        getArray();
+        function getArray() {    
 
-        console.log('Your current position is:');
-        console.log(`Latitude : ${crd.latitude}`);
-        console.log(`Longitude: ${crd.longitude}`);
-        console.log(`More or less ${crd.accuracy} meters.`);
+            var distances = new Array(2);
+
+            var concerts = $( ".card" ).length;
+            for (var i = 0; i < concerts; i++){
+                var lat2 = $("#" + i).children(".card-body").children(".latitude").attr("id");
+                var long2 = $("#" + i).children(".card-body").children(".longitude").attr("id");
+                var concertId = $("#" + i).parent(".concertId").attr("href");
+                var n = concertId.lastIndexOf('/');
+                var id = concertId.substring(n + 1);
+                calcCrow(crd.latitude, crd.longitude, lat2, long2, id, distances);  
+            }
+            post(distances, concerts);
+        }
+
+        function post(distances, concerts) {
+                // SORT ARRAY  
+        distances.sort(function(a, b) {
+            return a[1] - b[1];
+        });
+
+        
+        
+        for (var i = 0; i < concerts; i++){
+            console.log(distances[i][0]);
+            var ids = distances[i][0];
+            ajax(ids); 
+        }
+        }
+
+        function ajax(ids){
+            $.ajax({
+                url:'/sortDistance',
+                method: 'post',
+                data: { "_token": "{{ csrf_token() }}",
+                "ids": ids},
+                dataType: 'json',
+                success: function(response){
+                    console.log(response);
+                    $('.php-output').hide();
+                    var data = response;
+                    var concertDate = data['concert_date'];
+                    var concertDate = new Date(concertDate);
+                    var dd = String(concertDate.getDate()).padStart(2, '0');
+                    var mm = String(concertDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+                    var yyyy = concertDate.getFullYear();
+                    concertDate = yyyy + '/' + mm + '/' + dd;
+                    var yy = String(new Date(concertDate).getFullYear().toString().substr(-2));
+                    concertDateOutput = dd + '/' + mm + '/\'' + yy;
+                    var location = data['locatie'].split('|', 2);
+                    $(".search-results").append('<li class="added"><h4 class="concert-date">' +  concertDateOutput + '</h4><a href="/concerts/' + (data['id']) + '"><div class="card"><img src="' + (data['file_path']) + '" class="card-img-top" alt="concert picture"><div class="card-body"><h3 class="card-title">'+ (data['artist_name']) + '</h3><h5>' + (data['name']) + '</h5><h5>' + (location[0]) + '</h5><h5>' + (location[1]) + '</h5></div></div></a></li>');
+                }
+            });
+        }
+        
+
+        function calcCrow(lat1, lon1, lat2, lon2, id, distances) 
+        {
+        var R = 6371; // km
+        var dLat = toRad(lat2-lat1);
+        var dLon = toRad(lon2-lon1);
+        var lat1 = toRad(lat1);
+        var lat2 = toRad(lat2);
+
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var d = R * c;
+        distances.push([id, d]);
+        }
+
+        function toRad(Value) 
+        {
+            return Value * Math.PI / 180;
+        }
         }
 
         function error(err) {
@@ -135,6 +209,13 @@ $(document).ready(function(){
 
         navigator.geolocation.getCurrentPosition(success, error, options);
     });
+    $("#date").click(function(){
+        $('.added').remove();
+        $('.php-output').show();
+        $("#locatie").removeClass("selected-filter");
+        $("#date").addClass("selected-filter");
+    });
+
 });
 
 

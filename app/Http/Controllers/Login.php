@@ -15,7 +15,7 @@ class Login extends Controller
             $session = new \SpotifyWebAPI\Session(
                 'c3ee0d861721448dbecc1b0c475b29e4',
                 '056c230dbe804f16aa56d45718175c4a',
-                'http://ConnectedConcerts.test/callback'
+                'https://ancient-parrot-67.loca.lt/callback'
             );
 
             $options = [
