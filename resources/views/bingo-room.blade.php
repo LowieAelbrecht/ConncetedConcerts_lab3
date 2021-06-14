@@ -19,7 +19,7 @@
             <div class="text-center">
                 <h3>The prices</h3>
             </div>
-            @foreach($bingoPrices as $key => $bingoPrice)
+            <!-- @foreach($bingoPrices as $key => $bingoPrice)
                 @if($key == 0)
                 <div>                        
                     <div class="d-flex justify-content-center">
@@ -30,7 +30,29 @@
                     <h5 class="text-center" id="item">{{ $bingoPrice->item_amount }} {{ $bingoPrice->item_name }}</h5>
                 </div>
                 @endif
-            @endforeach 
+            @endforeach  -->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                </ol> -->
+                <div class="carousel-inner">
+                    @foreach($bingoPrices as $key => $bingoPrice)
+                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                        <h5 class="text-center" id="item">{{ $bingoPrice->item_amount }} {{ $bingoPrice->item_name }}</h5>
+                        <img src="{{url('uploads', $bingoPrice->file_path)}}"  class="bingo-picture" id="image" alt="...">      <!-- class="d-block w-100 h-100" -->
+                    </div>                
+                    @endforeach
+                </div>
+                
+                <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
         @if((session()->get('userType')) == ("artist"))
         <div  class="d-flex justify-content-center">
