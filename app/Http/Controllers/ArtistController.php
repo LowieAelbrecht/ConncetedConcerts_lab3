@@ -312,7 +312,7 @@ class ArtistController extends Controller
         $request->validate([
             'title' => 'required',
             'tekst' => 'required',
-            'photo' => 'sometimes|mimes:jpg,png,jpeg'
+            'photo' => 'sometimes|mimes:jpg,png,jpeg,mp4,mov,avi'
         ]);  
         
         $now = date("Y-m-d H:i:s");

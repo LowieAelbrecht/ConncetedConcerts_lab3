@@ -20,37 +20,50 @@ class MollieController extends Controller
                 "currency" => "EUR",
                 "value" => number_format($concert->prijs, 2, '.') // You must send the correct number of decimals, thus we enforce the use of strings
             ],
-            "description" => "Order #12345",
+            'description' => 'Connected Concerts payment',
             "redirectUrl" => route('payment.success'),
+            'webhookUrl'   => route('webhooks.mollie'),
             "metadata" => [
-                "order_id" => "12345",
                 "concert_id" => $concert->id,
                 "user_id" => session()->get('userId')
             ],
         ]);
 
-        $request->session()->put('payment_id', $payment->id);
-        $payment = Mollie::api()->payments()->get($payment->id);
+        $payment = Mollie::api()->payments->get($payment->id);
 
         // redirect customer to Mollie checkout page
         return redirect($payment->getCheckoutUrl(), 303);
     }
 
+    
     public function paymentSuccess(Request $request) 
     {
-        $payment = Mollie::api()->payments()->get(session()->get('payment_id'));
-        \DB::table('userconcerts')->insert(
-            ['user_id' => $payment->metadata->user_id, 
-            'concert_id' => $payment->metadata->concert_id
-            ]
-        );
-
-        \DB::table('concerts')->where('id', $payment->metadata->concert_id)
-        ->update([
-          'tickets_sold'=> \DB::raw('tickets_sold+1')
-        ]);
-
+        echo "we received your payment";
         return redirect('/user-rooms'); 
     }
+    
+
+    public function handleRequest(Request $request)
+    {
+        if (! $request->has('id')) {
+            return;
+        }
+
+        $payment = Mollie::api()->payments()->get($request->id);
+
+        if ($payment->isPaid()) {
+            \DB::table('userconcerts')->insert(
+                ['user_id' => $payment->metadata->user_id, 
+                'concert_id' => $payment->metadata->concert_id
+                ]
+            );
+
+            \DB::table('concerts')->where('id', $payment->metadata->concert_id)
+            ->update([
+            'tickets_sold'=> \DB::raw('tickets_sold+1')
+            ]);
+        }      
+    }
+
 
 }

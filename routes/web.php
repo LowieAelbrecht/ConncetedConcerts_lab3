@@ -14,11 +14,7 @@ use App\Http\Controllers\MollieController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
+Route::get('/', 'App\Http\Controllers\Login@index');
 Route::get('/login', 'App\Http\Controllers\Login@index');
 Route::get('/user-rooms', 'App\Http\Controllers\ClientController@index');
 Route::get('/user-discover', 'App\Http\Controllers\ClientController@discover');
@@ -69,5 +65,6 @@ Route::post('/addComment', 'App\Http\Controllers\ClientController@storeComment')
 Route::post('/sortDistance', 'App\Http\Controllers\ClientController@sortDistance');
 
 //MOLLIE ROUTES
-Route::get('mollie-paymnet',[MollieController::Class,'preparePayment'])->name('mollie.payment');
+Route::get('mollie-payment',[MollieController::Class,'preparePayment'])->name('mollie.payment');
 Route::get('payment-success',[MollieController::Class, 'paymentSuccess'])->name('payment.success');
+Route::name('webhooks.mollie')->post('webhooks/mollie', 'App\Http\Controllers\MollieController@handleRequest');

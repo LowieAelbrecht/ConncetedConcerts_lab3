@@ -161,9 +161,6 @@ class ClientController extends Controller
         if(empty($concertCheck)){
         $data['concert'] = \DB::table('concerts')->where('id', $concerts)->first();
 
-        if($_GET){
-            return redirect('/concertspayment/' . $data['concert']->id);            
-        }
         
         return view('/concert', $data);
         }

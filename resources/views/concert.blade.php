@@ -41,7 +41,7 @@
                 @endforeach 
         </div>        
     </div>
-    <form class="text-center" action="" method="get">
+    <form class="text-center" action="/concertspayment/{{ request()->route('concerts') }}" method="get">
         <button class="btn-orange btn-orange2" type="submit" name="room" value="room">Buy room ticket</button>
     </form>
 </div>
