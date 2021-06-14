@@ -17,7 +17,18 @@ class ArtistController extends Controller
 
     public function addConcert(Request $request)
     {
-        $urlAPI = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=BE&keyword=balthazar&apikey=kv2FiO7Vt292weDyR45Muj2uPVbTSpsb';
+        if(session()->get('artistSpotifyId') == "4oMBP1OWXtmxyDhAj2aRyQ"){
+            $urlAPI = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=BE&keyword=balthazar&apikey=kv2FiO7Vt292weDyR45Muj2uPVbTSpsb';
+        }
+        elseif(session()->get('artistSpotifyId') == "0nvdwVbj7NT1WL9P8JowLD"){
+            $urlAPI = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=BE&keyword=blackwave.&apikey=kv2FiO7Vt292weDyR45Muj2uPVbTSpsb';
+        }
+        elseif(session()->get('artistSpotifyId') == "5EP020iZcwBqHRnJftibXX"){
+            $urlAPI = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=BE&keyword=hooverphonic&apikey=kv2FiO7Vt292weDyR45Muj2uPVbTSpsb';
+        }
+        elseif(session()->get('artistSpotifyId') == "6mo0UbyIvIePdXNyLwQlk5"){
+            $urlAPI = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=BE&keyword=milow&apikey=kv2FiO7Vt292weDyR45Muj2uPVbTSpsb';
+        }
 
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL, $urlAPI);

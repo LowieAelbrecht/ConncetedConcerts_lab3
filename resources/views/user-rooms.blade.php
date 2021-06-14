@@ -52,7 +52,7 @@
             </div>        
         @else
             @if(!empty($published))
-                <h4>Published rooms</h4>
+                <h4>My rooms</h4>
             @endif
             @foreach( $myConcerts as $myConcert )
                 @if($myConcert->published == true) 
@@ -70,25 +70,6 @@
                     </div>
                     </a>
                 @endif    
-            @endforeach
-            @if(!empty($unPublished))
-                <h4>Unpublished rooms</h4>
-            @endif
-            @foreach( $myConcerts as $myConcert )
-                @if($myConcert->published == false)  
-                    <h4 class="concert-date"><a href="/update-concert/{{ $myConcert->id }}">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</a></h4>
-                    <a href="/update-concert/{{ $myConcert->id }}">
-                    <div class="card">
-                        <img  src="{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">
-                        <div class="card-body">
-                            <h3>{{ $myConcert->name }}</h3>
-                            <?php $var = explode('|', $concert->locatie); ?>
-                            <h5>{{ $var[0] }}</h5>
-                            <h5>{{ $var[1] }}</h5>
-                        </div>
-                    </div>
-                    </a>
-                @endif 
             @endforeach
             <form action="/add-concert" method="get">
                 <button class="btn-add bottom" type="submit" name="room" value="room">+</button>

@@ -30,6 +30,8 @@ Route::post('/update-concert/{concerts}', 'App\Http\Controllers\ArtistController
 
 Route::get('/checkUser', 'App\Http\Controllers\ClientController@checkUser');
 Route::post('/checkUser', 'App\Http\Controllers\ClientController@fixUser');
+Route::get('/choose-artist', 'App\Http\Controllers\ClientController@chooseArtist');
+Route::post('/choose-artist', 'App\Http\Controllers\ClientController@storeArtist');
 Route::get('/callback', 'App\Http\Controllers\Callback@index');
 Route::get('/user-profile', 'App\Http\Controllers\ClientController@profile');
 Route::get('/settings', 'App\Http\Controllers\ClientController@settings');

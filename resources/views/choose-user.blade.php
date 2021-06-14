@@ -9,10 +9,10 @@
     <form method="post" action="/checkUser">
     @csrf
     <div class="row justify-content-center">
-        <div class="mr-4">
+        <div class="mr-3">
             <input class="userBtn" type="submit" name="user" value="User"></input>
         </div>
-        <div class="ml-4">
+        <div class="ml-3">
             <input class="artistBtn" type="submit" name="artist" value="Artist"></input>
         </div>
     </div>

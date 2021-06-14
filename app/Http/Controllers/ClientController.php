@@ -45,54 +45,64 @@ class ClientController extends Controller
 
             return redirect('/user-rooms'); 
         } elseif($request->input('artist') == true){
-            $request->session()->put('userType', 'artist');
-            $request->session()->put('artistSpotifyId', '4oMBP1OWXtmxyDhAj2aRyQ');
-            $artist = \DB::table('artists')->where('token', session()->get('artistSpotifyId'))->first();
-            $artistinfo = $api->getArtist('4oMBP1OWXtmxyDhAj2aRyQ');
-
-            if(empty($artist)){
-                $artistId = \DB::table('artists')->insertGetId([
-                    'name' => $artistinfo->name,
-                    'token' => $artistinfo->id
-                ]);
-            } else {
-                $artistId = $artist->id;
-            }
-
-            $request->session()->put('artistId', $artistId);
+            return redirect('/choose-artist');
         }
+            
 
         return redirect('/user-rooms');         
     }
 
-    public function change(Request $request)
-    { 
+    public function chooseArtist(Request $request)
+    {
         $accessToken = $request->session()->get('accessToken');
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
         $api->setAccessToken($accessToken);
+        $data['balthazar'] = $api->getArtist('4oMBP1OWXtmxyDhAj2aRyQ');
+        $data['blackwave'] = $api->getArtist('0nvdwVbj7NT1WL9P8JowLD');
+        $data['hooverphonic'] = $api->getArtist('5EP020iZcwBqHRnJftibXX');
+        $data['milow'] = $api->getArtist('6mo0UbyIvIePdXNyLwQlk5');
 
-        if((session()->get('userType')) == ("user")){
-            $request->session()->put('userType', 'artist');
-            $request->session()->put('artistSpotifyId', '2Sm4rGKWBnOQhdqDy4JJh0');
-            $artist = \DB::table('artists')->where('token', session()->get('artistSpotifyId'))->first();
-            $artistinfo = $api->getArtist('2Sm4rGKWBnOQhdqDy4JJh0');
-
-            if(empty($artist)){
-                $artistId = \DB::table('artists')->insertGetId([
-                    'name' => $artistinfo->name,
-                    'token' => $artistinfo->id
-                ]);
-            } else {
-                $artistId = $artist->id;
-            }
-
-            $request->session()->put('artistId', $artistId);
-        } else {
-            $request->session()->put('userType', 'user');
-        }
-        
-        return redirect('/settings');
+        return view('/choose-artist', $data);
     }
+
+    public function storeArtist(Request $request)
+    {
+        $accessToken = $request->session()->get('accessToken');
+        $api = new \SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($accessToken);
+        $request->session()->put('userType', 'artist');
+
+        if($request->input('balthazar') == true){
+            $request->session()->put('artistSpotifyId', '4oMBP1OWXtmxyDhAj2aRyQ');
+        }
+        elseif($request->input('blackwave') == true){
+            $request->session()->put('artistSpotifyId', '0nvdwVbj7NT1WL9P8JowLD');
+        }
+        elseif($request->input('hooverphonic') == true){
+            $request->session()->put('artistSpotifyId', '5EP020iZcwBqHRnJftibXX');
+        }
+        elseif($request->input('milow') == true){
+            $request->session()->put('artistSpotifyId', '6mo0UbyIvIePdXNyLwQlk5');
+        }
+            
+                
+        $artist = \DB::table('artists')->where('token', session()->get('artistSpotifyId'))->first();
+        $artistinfo = $api->getArtist(session()->get('artistSpotifyId'));
+
+        if(empty($artist)){
+            $artistId = \DB::table('artists')->insertGetId([
+                'name' => $artistinfo->name,
+                'token' => $artistinfo->id
+            ]);
+        } else {
+            $artistId = $artist->id;
+        }
+
+        $request->session()->put('artistId', $artistId);
+
+        return redirect('/user-rooms');            
+    }
+
 
     public function index(Request $request)
     {

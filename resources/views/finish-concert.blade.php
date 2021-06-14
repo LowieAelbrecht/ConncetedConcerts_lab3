@@ -30,8 +30,6 @@
     
         <div class="text-center">
             <button class="btn-orange btn-orange2" type="submit" name="action" value="publish">Publish room</button>
-            <p>or</p>
-            <button class="btn-outline-purple" type="submit" name="action" value="save">Save room</button>
         </div>
     </form>  
 </div>
