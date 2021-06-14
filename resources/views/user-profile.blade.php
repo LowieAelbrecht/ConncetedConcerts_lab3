@@ -18,7 +18,7 @@
             <h3 class="userProfileName"><?php echo $profile->name; ?></h3>
         </div>
         <div class="mt-3">
-        @if(!empty($mostVoted[0]))
+        @if(!empty($amount))
             <h5 class="text-center mb-2">Top 3 voted songs</h5>
             <div class="song-overview justify-content-center">
                 <h5 class="text-center">All time</h5>

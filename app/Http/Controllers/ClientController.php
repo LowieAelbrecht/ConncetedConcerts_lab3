@@ -488,6 +488,8 @@ class ClientController extends Controller
 
             $data['amount'] = count($data['mostVoted']);
 
+            if($data['amount'] > 0){
+
             $trackIds = array();
 
             for($x = 0; $x <= 2; $x++){
@@ -501,10 +503,13 @@ class ClientController extends Controller
                 $votes = $data['mostVoted'][$x]->votes;
                 $data['totalVotes'] = $data['totalVotes'] + $votes; 
             }
+        
 
 
             $data['songVoteOptions'] = $api->getTracks($trackIds, []);
         }
+
+    }
         
         //dd($data['mostVoted']);
 
