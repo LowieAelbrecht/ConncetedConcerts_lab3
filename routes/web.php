@@ -49,6 +49,8 @@ Route::post('/add-bingo', 'App\Http\Controllers\ArtistController@storeBingo');
 Route::get('/finish-concert', 'App\Http\Controllers\ArtistController@finishConcert');
 Route::post('/finish-concert', 'App\Http\Controllers\ArtistController@publishConcert');
 
+Route::get('/delete-room', 'App\Http\Controllers\ArtistController@deleteRoom');
+
 Route::get('/new-post/{concerts}', 'App\Http\Controllers\ArtistController@addPost');
 Route::post('/add-post/{concerts}', 'App\Http\Controllers\ArtistController@storePost');
 

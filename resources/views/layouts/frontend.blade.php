@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div class="containter login">
+    <div class="containter">
         @yield('content')
     </div>
 </body>

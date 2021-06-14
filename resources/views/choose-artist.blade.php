@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<div class="choose">
     <h2 class="choose-artist">Choose an artist to use the app as</h2>
     <form method="post" action="/choose-artist">
     @csrf
@@ -31,4 +32,5 @@
         </div>
     </div>
     </form>
+</div>
 @endsection

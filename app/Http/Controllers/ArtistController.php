@@ -278,8 +278,18 @@ class ArtistController extends Controller
                 break;
             }
 
+        $request->session()->forget('concertId');
+
             
         return redirect('/user-rooms'); 
+    }
+
+    public function deleteRoom(Request $request)
+    {
+        $concertId = $request->session()->get('concertId');
+        \DB::table('concerts')->where('id', $concertId)->delete();
+
+        return redirect('/user-rooms');
     }
 
     public function bingoResults(Request $request, $concert)

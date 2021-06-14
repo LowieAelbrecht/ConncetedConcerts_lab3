@@ -400,6 +400,16 @@ textarea {
     overflow: hidden;
 }
 
+.choose {
+    background-color: var(--cc-purple);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 /* SEARCHBAR */
 
 .input-container {

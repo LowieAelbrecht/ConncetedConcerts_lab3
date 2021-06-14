@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<div class="choose">
     <h2 class="text-white loginMessage">Choose how you want to use the app</h2>
     <form method="post" action="/checkUser">
     @csrf
@@ -17,4 +18,5 @@
         </div>
     </div>
     </form>
+</div>
 @endsection
