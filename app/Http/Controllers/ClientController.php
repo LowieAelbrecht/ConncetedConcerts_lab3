@@ -58,7 +58,7 @@ class ClientController extends Controller
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
         $api->setAccessToken($accessToken);
         $data['balthazar'] = $api->getArtist('4oMBP1OWXtmxyDhAj2aRyQ');
-        $data['blackwave'] = $api->getArtist('0nvdwVbj7NT1WL9P8JowLD');
+        $data['equalIdiots'] = $api->getArtist('4nljEo4gnUFgczxjNt5KOR');
         $data['hooverphonic'] = $api->getArtist('5EP020iZcwBqHRnJftibXX');
         $data['milow'] = $api->getArtist('6mo0UbyIvIePdXNyLwQlk5');
 
@@ -75,8 +75,8 @@ class ClientController extends Controller
         if($request->input('balthazar') == true){
             $request->session()->put('artistSpotifyId', '4oMBP1OWXtmxyDhAj2aRyQ');
         }
-        elseif($request->input('blackwave') == true){
-            $request->session()->put('artistSpotifyId', '0nvdwVbj7NT1WL9P8JowLD');
+        elseif($request->input('equalIdiots') == true){
+            $request->session()->put('artistSpotifyId', '4nljEo4gnUFgczxjNt5KOR');
         }
         elseif($request->input('hooverphonic') == true){
             $request->session()->put('artistSpotifyId', '5EP020iZcwBqHRnJftibXX');

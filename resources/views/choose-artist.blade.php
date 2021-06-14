@@ -15,8 +15,8 @@
                 <input class="choose-artistBtn" type="submit" name="balthazar" value="<?php echo $balthazar->name; ?>"></input>
             </div>
             <div class="col-6 artist">
-                <img class="artist-image mb-2" src="<?php echo $blackwave->images[0]->url; ?>" alt="profile_image">
-                <input class="choose-artistBtn" type="submit" name="blackwave" value="<?php echo $blackwave->name; ?>"></input>
+                <img class="artist-image mb-2" src="<?php echo $equalIdiots->images[0]->url; ?>" alt="profile_image">
+                <input class="choose-artistBtn" type="submit" name="equalIdiots" value="<?php echo $equalIdiots->name; ?>"></input>
             </div>
         </div>
         <div class="row">

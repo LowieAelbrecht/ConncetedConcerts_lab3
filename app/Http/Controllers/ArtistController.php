@@ -20,8 +20,8 @@ class ArtistController extends Controller
         if(session()->get('artistSpotifyId') == "4oMBP1OWXtmxyDhAj2aRyQ"){
             $urlAPI = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=BE&keyword=balthazar&apikey=kv2FiO7Vt292weDyR45Muj2uPVbTSpsb';
         }
-        elseif(session()->get('artistSpotifyId') == "0nvdwVbj7NT1WL9P8JowLD"){
-            $urlAPI = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=BE&keyword=blackwave.&apikey=kv2FiO7Vt292weDyR45Muj2uPVbTSpsb';
+        elseif(session()->get('artistSpotifyId') == "4nljEo4gnUFgczxjNt5KOR"){
+            $urlAPI = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=BE&keyword=equal-idiots&apikey=kv2FiO7Vt292weDyR45Muj2uPVbTSpsb';
         }
         elseif(session()->get('artistSpotifyId') == "5EP020iZcwBqHRnJftibXX"){
             $urlAPI = 'https://app.ticketmaster.com/discovery/v2/events.json?countryCode=BE&keyword=hooverphonic&apikey=kv2FiO7Vt292weDyR45Muj2uPVbTSpsb';
