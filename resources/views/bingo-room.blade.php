@@ -32,18 +32,20 @@
                 @endif
             @endforeach  -->
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
+                <!-- <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                </ol>
+                </ol> -->
                 <div class="carousel-inner">
                     @foreach($bingoPrices as $key => $bingoPrice)
                     <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                        <h5 class="text-center" id="item">{{ $bingoPrice->item_amount }} {{ $bingoPrice->item_name }}</h5>
                         <img src="{{url('uploads', $bingoPrice->file_path)}}"  class="bingo-picture" id="image" alt="...">      <!-- class="d-block w-100 h-100" -->
-                    </div>
+                    </div>                
                     @endforeach
                 </div>
+                
                 <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true">     </span>
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">

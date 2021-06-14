@@ -149,7 +149,7 @@ label {
 .main-nav {
     background-color: var(--cc-purple);
     width: 100vw;
-    height: 7vh;
+    height: 8vh;
     z-index: 12;
     position: fixed;
     top: 0;
@@ -177,6 +177,7 @@ label {
 .main-nav .material-icons {
     color: var(--cc-white);
     font-size: 48px;
+    padding-top: 1vh;
 }
 
 .image-upload .custom-file-upload .material-icons {
@@ -220,6 +221,7 @@ label {
 
 .main-nav .orange-logo {
     width: 30vw;
+    padding: 1vh;
 }
 
 .bottom-nav {
@@ -582,16 +584,35 @@ textarea {
 }
 
 
-.bingo-picture {
-    width: 250px;
-    height: auto;
-    border-radius: 25px;
+
+.carousel {
+    display: block;
+    width: 90vw;
+    height: 30vh;
 }
 
-.carousel-item{
-    width: 100%;
-    height: auto;
+.carousel-inner{
+    width: 90vw;
+    height: 70vh;
+    margin: 10px 0 0 0;
+    
 }
+
+.carousel-item img{
+    width: 100%;
+    height: 25vh;
+    object-fit: contain;
+    object-position: center;
+    
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+
+    color: lightgrey;
+    background-color: lightgrey;
+}
+
 
 .bg-white .d-flex .material-icons {
     font-size: 60px;
