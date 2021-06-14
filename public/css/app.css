@@ -31,12 +31,11 @@ h3,
 h4 {
     font-family: var(--font-coolvetica);
     color: var(--cc-purple);
-    font-style: bolder;
 }
 
 h5 {
     font-family: var(--font-humana);
-    color: black;
+    color: var(--cc-purple);
     font-weight: 700;
 }
 
@@ -142,7 +141,11 @@ h5 {
 }
 
 .userProfileName {
-    margin-left: 10px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--cc-purple);
 }
 
 label {
@@ -516,8 +519,12 @@ textarea {
     margin-left: 10px;
     margin-top: 10px;
     border-radius: 50%;
-    width: 50vw;
-    height: 50vw;
+    width: 25vw;
+    height: 25vw;
+}
+
+.profile {
+    margin-top: 15px;
 }
 
 .artist-image {
@@ -586,6 +593,12 @@ textarea {
 .song-vote {
     background-color: #fff;
     padding: 0em 0 3em 0;
+    border-radius: 20px;
+}
+
+.song-overview {
+    background-color: #fff;
+    padding: 1em 0;
     border-radius: 20px;
 }
 

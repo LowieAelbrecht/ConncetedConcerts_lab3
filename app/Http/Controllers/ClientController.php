@@ -480,9 +480,34 @@ class ClientController extends Controller
             $data['profile'] = $api->me();
         } else {
             $data['profile'] = $api->getArtist(session()->get('artistSpotifyId'));
-            
+
+            $data['mostVoted'] = \DB::table('songvote')
+            ->where('artist_id', session()->get('artistId'))
+            ->orderBy('votes', 'desc')
+            ->get(); 
+
+            $data['amount'] = count($data['mostVoted']);
+
+            $trackIds = array();
+
+            for($x = 0; $x <= 2; $x++){
+                $songId = $data['mostVoted'][$x]->song;
+                array_push($trackIds, $songId);  
+            }
+
+            $data['totalVotes'] = 0;
+
+            for($x = 0; $x < $data['amount']; $x++){
+                $votes = $data['mostVoted'][$x]->votes;
+                $data['totalVotes'] = $data['totalVotes'] + $votes; 
+            }
+
+
+            $data['songVoteOptions'] = $api->getTracks($trackIds, []);
         }
         
+        //dd($data['mostVoted']);
+
         return view('/user-profile', $data);
     }
 
