@@ -10,7 +10,7 @@
 </div>
 <div class="tutorial">
     <div>
-        <p>After choosing a room, You will need to select at least 2 songs from your catalogue. This gives your fans a chance to vote on which song they would like to hear.</p>
+        <p>After choosing a room, You will need to select at least 2 songs from your catalogue. This gives your fans a chance to vote for the song that they would like to hear at your concert.</p>
     </div>
     <div class="text-center">
         <a href="/user-rooms" class="skip">Skip</a>
