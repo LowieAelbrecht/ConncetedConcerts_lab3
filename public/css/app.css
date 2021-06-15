@@ -520,7 +520,7 @@ textarea {
 /* ROOMS/CONCERTS */
 
 .rooms {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .rooms a {
@@ -538,7 +538,9 @@ textarea {
 }
 
 .concert-date {
-    margin: 20px 0 10px 5px;
+    font-weight: bold;
+    margin: 20px 0 5px 5px;
+    font-size: 20px;
 }
 
 .card {
@@ -551,11 +553,12 @@ textarea {
 }
 
 .card-body {
-    padding: 10px;
+    padding: 10px 5px;
 }
 
 .card img {
-    width: 30%;
+    object-fit: cover;
+    width: 35%;
     height: auto;
     margin: 0;
     border-radius: 15px 0 0 15px;
@@ -564,8 +567,9 @@ textarea {
 .card h3 {
     display: block;
     position: relative;
-    font-size: 18px;
-    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--cc-purple);
 }
 
 .card a {
@@ -576,6 +580,7 @@ textarea {
     position: relative;
     display: block;
     font-size: 16px;
+    font-weight: normal;
     color: black;
 }
 
@@ -754,7 +759,6 @@ textarea {
 
 .carousel-inner {
     width: 90vw;
-    height: 70vh;
     margin: 10px 0 0 0;
 }
 
@@ -786,8 +790,8 @@ textarea {
     font-size: 24px;
     background-image: var(--cc-gradient);
     color: #fff;
-    height: 200px;
-    width: 200px;
+    height: 160px;
+    width: 160px;
 }
 
 .lostBingo {

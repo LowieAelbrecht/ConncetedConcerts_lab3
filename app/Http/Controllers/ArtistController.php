@@ -168,11 +168,9 @@ class ArtistController extends Controller
         $concertId = $request->session()->get('concertId');
         $date = $request->input('endingDate');
 
-
-
         $request->validate([
             'endingDate' => 'required|date|after:tomorrow',
-            'songs' => 'array|min:2'
+            'songs' => 'required|array|min:2'
         ]);
 
         foreach(($request->input('songs')) as $song){
@@ -185,6 +183,7 @@ class ArtistController extends Controller
                 ]
             );
         }
+
         
         return redirect('/add-bingo');
     }
