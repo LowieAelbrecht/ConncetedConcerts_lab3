@@ -19,10 +19,10 @@
             <textarea type="text" cols="40" name="tekst" rows="5" placeholder="Your text"></textarea> 
         </div>
 
-        <input type="file" name="photo" id="inpFile">
+        <input accept=".mp4,.jpg,.png,.jpeg" type="file" name="photo" id="inpFile">
 
         <div class="image-preview" id="imagePreview">
-
+        <video class="videoPost" src="" width="400" controls></video>        
         <img src="" alt="Image Preview" class="image-preview__image">
         <span class="image-preview__default-text"></span>
         </div>
@@ -60,6 +60,7 @@
         const previewContainer = document.getElementById("imagePreview");
         const previewImage = previewContainer.querySelector(".image-preview__image");
         const previewDefaultText =previewContainer.querySelector(".image-preview__default-tet");  
+        const videoUpload = previewContainer.querySelector(".videoPost");
 
         inpFile.addEventListener("change", function(){
         const file =this.files[0];
@@ -67,11 +68,17 @@
         if(file){
         const reader = new FileReader(); //image lezen als url
 
-        previewImage.style.display ="block"; //geladen image tonen.
+        previewImage.style.display="block";
+        videoUpload.style.display="block"; //geladen image tonen.
        // previewDefaultText.style.display ="none"; //geladen image tonen.
 
-         reader.addEventListener("load", function(){      //toegevoegde img laden
-        previewImage.setAttribute("src", this.result);   //src veranderen in html, this verwijst nr fileReader
+        reader.addEventListener("load", function(){      //toegevoegde img laden
+        previewImage.setAttribute("src", this.result);
+        videoUpload.setAttribute("src", this.result);   //src veranderen in html, this verwijst nr fileReader   //src veranderen in html, this verwijst nr fileReader
+        previewImage.style.objectFit="none";
+        previewImage.style.width="100%";
+        videoUpload.style.objectFit="none";
+        videoUpload.style.width="100%";
 
          });
 

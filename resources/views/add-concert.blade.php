@@ -9,7 +9,7 @@
     <div class="container">
         <div class="text-center">
             <h2>Select concert</h2>
-            <p>Select the concert in the list where you want to make a concert room for.</p>
+            <p>Select the concert in the list for which you want to make a concert room for & click Next.</p>
         </div>
         <div class="hasDimmed">
         @foreach( $concerts as $key => $concert )

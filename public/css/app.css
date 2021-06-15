@@ -23,7 +23,7 @@ body {
 }
 
 .content {
-    padding-top: 7vh;
+    padding-top: 9vh;
 }
 
 h2,
@@ -53,7 +53,13 @@ h5 {
 
 .image-preview__image {
     display: none;
-    width: 100%;
+    height: 220px;
+}
+
+.videoPost {
+    height: 250px;
+
+    display: none;
 }
 
 #inpFile {
@@ -91,6 +97,8 @@ h5 {
 .labelImg:hover {
     color: rgb(255, 137, 0);
 }
+
+
 
 .material-icons .labelImgBingo {
     background-color: red;
@@ -319,15 +327,17 @@ textarea {
 
 .btn-outline-purple {
     font-family: var(--font-humana);
-    color: red;
+    color: rgba(128, 128, 128, 0.849);
     font-weight: 700;
     font-size: 18px;
     border-radius: 50px;
+    border: solid;
     border-width: 3px;
-    border-color: red;
+    border-color: rgba(128, 128, 128, 0.781);
     width: 80vw;
+    height: 100%;
     padding: 6px 20px;
-    margin-top: 290px;
+    margin-top: 190px;
 }
 
 .btn-info {
@@ -627,6 +637,7 @@ textarea {
     height: auto;
     margin: 5px 5px 5px 20px;
     border-radius: 20%;
+    display: inline;
 }
 
 .days-left {
