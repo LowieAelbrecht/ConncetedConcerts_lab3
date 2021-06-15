@@ -23,7 +23,7 @@ body {
 }
 
 .content {
-    padding-top: 9vh;
+    padding-top: 11vh;
 }
 
 h2,
@@ -49,6 +49,15 @@ h5 {
     justify-content: center;
     font-weight: bold;
     color: #cccccc;
+}
+
+.no-rooms img {
+    color: var(--cc-purple);
+    max-width: 50vw;
+}
+
+.no-rooms {
+    margin-top: 10vh;
 }
 
 .image-preview__image {
@@ -168,7 +177,7 @@ label {
 .main-nav {
     background-color: var(--cc-purple);
     width: 100vw;
-    height: 8vh;
+    height: 10vh;
     z-index: 12;
     position: fixed;
     top: 0;
@@ -196,7 +205,7 @@ label {
 .main-nav .material-icons {
     color: var(--cc-white);
     font-size: 48px;
-    padding-top: 1vh;
+    padding-top: 2vh;
 }
 
 .image-upload .custom-file-upload .material-icons {
@@ -239,7 +248,8 @@ label {
 }
 
 .main-nav .orange-logo {
-    height: 7vh;
+    margin-top: 1vh;
+    height: 8vh;
 }
 
 .bottom-nav {
@@ -337,7 +347,7 @@ textarea {
     width: 80vw;
     height: 100%;
     padding: 6px 20px;
-    margin-top: 190px;
+    margin-top: 50px;
 }
 
 .btn-info {
@@ -392,13 +402,90 @@ textarea {
     color: var(--cc-white);
 }
 
+/* TUTORIAL */
+
+.choose h2 {
+    color: var(--cc-white);
+}
+
+.choose a {
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: bolder;
+    color: var(--cc-white);
+}
+
+.tutorial a {
+    color: var(--cc-white);
+}
+
+.tutorial {
+    background-color: var(--cc-purple);
+    height: 30vh;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 3px 4px 5px #888888;
+}
+
+.tutorial .text-center {
+    height: 5vh;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+}
+
+.tutorial-img img {
+    height: 100vh;
+    width: 100vw;
+}
+
+.tutorial p {
+    color: var(--cc-white);
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.8;
+}
+
+.tutorial .dot {
+    height: 15px;
+    width: 15px;
+    background-color: #b4b1b1;
+    opacity: 50%;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 3px;
+}
+
+.tutorial .skip {
+    position: absolute;
+    color: #ccbbab;
+    margin-left: 20px;
+    left: 0;
+}
+
+.tutorial .next {
+    position: absolute;
+    color: var(--cc-orange);
+    text-decoration: underline;
+    font-weight: bold;
+    margin-right: 20px;
+    right: 0;
+}
+
+.tutorial .selected-dot {
+    background-color: var(--cc-orange);
+    opacity: 100%;
+}
+
 /* LOGIN */
 
 .logofull {
     background-image: var(--logo-full);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100vw;
+    background-size: 90vw;
     height: 30%;
 }
 
@@ -443,7 +530,7 @@ textarea {
 /* ROOMS/CONCERTS */
 
 .rooms {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .rooms a {
@@ -461,7 +548,9 @@ textarea {
 }
 
 .concert-date {
-    margin: 20px 0 10px 5px;
+    font-weight: bold;
+    margin: 20px 0 5px 5px;
+    font-size: 20px;
 }
 
 .card {
@@ -474,11 +563,12 @@ textarea {
 }
 
 .card-body {
-    padding: 10px;
+    padding: 10px 5px;
 }
 
 .card img {
-    width: 30%;
+    object-fit: cover;
+    width: 35%;
     height: auto;
     margin: 0;
     border-radius: 15px 0 0 15px;
@@ -487,8 +577,9 @@ textarea {
 .card h3 {
     display: block;
     position: relative;
-    font-size: 18px;
-    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--cc-purple);
 }
 
 .card a {
@@ -499,6 +590,7 @@ textarea {
     position: relative;
     display: block;
     font-size: 16px;
+    font-weight: normal;
     color: black;
 }
 
@@ -678,7 +770,6 @@ textarea {
 
 .carousel-inner {
     width: 90vw;
-    height: 70vh;
     margin: 10px 0 0 0;
 }
 
@@ -710,8 +801,8 @@ textarea {
     font-size: 24px;
     background-image: var(--cc-gradient);
     color: #fff;
-    height: 200px;
-    width: 200px;
+    height: 160px;
+    width: 160px;
 }
 
 .lostBingo {
@@ -749,7 +840,8 @@ textarea {
 
 .row {
     padding: 10px;
-    margin-left: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 .winners h4 {
