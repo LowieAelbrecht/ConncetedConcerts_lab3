@@ -392,6 +392,83 @@ textarea {
     color: var(--cc-white);
 }
 
+/* TUTORIAL */
+
+.choose h2 {
+    color: var(--cc-white);
+}
+
+.choose a {
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: bolder;
+    color: var(--cc-white);
+}
+
+.tutorial a {
+    color: var(--cc-white);
+}
+
+.tutorial {
+    background-color: var(--cc-purple);
+    height: 30vh;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 3px 4px 5px #888888;
+}
+
+.tutorial .text-center {
+    height: 5vh;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+}
+
+.tutorial-img img {
+    height: 100vh;
+    width: 100vw;
+}
+
+.tutorial p {
+    color: var(--cc-white);
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.8;
+}
+
+.tutorial .dot {
+    height: 15px;
+    width: 15px;
+    background-color: #b4b1b1;
+    opacity: 50%;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 3px;
+}
+
+.tutorial .skip {
+    position: absolute;
+    color: #ccbbab;
+    margin-left: 20px;
+    left: 0;
+}
+
+.tutorial .next {
+    position: absolute;
+    color: var(--cc-orange);
+    text-decoration: underline;
+    font-weight: bold;
+    margin-right: 20px;
+    right: 0;
+}
+
+.tutorial .selected-dot {
+    background-color: var(--cc-orange);
+    opacity: 100%;
+}
+
 /* LOGIN */
 
 .logofull {

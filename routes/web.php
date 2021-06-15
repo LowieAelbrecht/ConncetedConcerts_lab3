@@ -35,7 +35,24 @@ Route::post('/choose-artist', 'App\Http\Controllers\ClientController@storeArtist
 Route::get('/callback', 'App\Http\Controllers\Callback@index');
 Route::get('/user-profile', 'App\Http\Controllers\ClientController@profile');
 Route::get('/settings', 'App\Http\Controllers\ClientController@settings');
-Route::get('/changeArtist', 'App\Http\Controllers\ClientController@change');
+
+// TUTORIALS
+Route::get('/tutorial', 'App\Http\Controllers\ClientController@tutorial');
+
+Route::view('/tutorial-artist1', '/artist-tutorial1');
+Route::view('/tutorial-artist2', '/artist-tutorial2');
+Route::view('/artist-tutorial3', '/artist-tutorial3');
+Route::view('/artist-tutorial4', '/artist-tutorial4');
+Route::view('/artist-tutorial5', '/artist-tutorial5');
+Route::view('/artist-tutorial6', '/artist-tutorial6');
+
+Route::view('/tutorial-user1', '/user-tutorial1');
+Route::view('/tutorial-user2', '/user-tutorial2');
+Route::view('/user-tutorial3', '/user-tutorial3');
+Route::view('/user-tutorial4', '/user-tutorial4');
+Route::view('/user-tutorial5', '/user-tutorial5');
+Route::view('/user-tutorial6', '/user-tutorial6');
+
 
 Route::get('/add-concert', 'App\Http\Controllers\ArtistController@addConcert');
 Route::post('/add-concert', 'App\Http\Controllers\ArtistController@storeConcert');
