@@ -19,22 +19,7 @@
             <div class="text-center">
                 <h3>The prices</h3>
             </div>
-            <!-- @foreach($bingoPrices as $key => $bingoPrice)
-                @if($key == 0)
-                <div>                        
-                    <div class="d-flex justify-content-center">
-                        <span class="material-icons my-auto" id="previous">chevron_left</span>
-                        <img  src="/uploads/{{ $bingoPrice->file_path }}" class="bingo-picture" alt="Picture of bingo price" id="image">
-                        <span class="material-icons my-auto" id="next">chevron_right</span>
-                    </div>
-                    <h5 class="text-center" id="item">{{ $bingoPrice->item_amount }} {{ $bingoPrice->item_name }}</h5>
-                </div>
-                @endif
-            @endforeach  -->
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                </ol> -->
                 <div class="carousel-inner">
                     @foreach($bingoPrices as $key => $bingoPrice)
                     <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
@@ -61,8 +46,7 @@
                 <button class="button bingo-btn">START <br>BINGO</button>
             </form>    
         </div>
-    </div>    
-    @endif  
+        @endif 
     @else
         @if((session()->get('userType')) == ("artist")) 
         <div class="container">
@@ -138,6 +122,7 @@
                 <h5>Bingo</h5>
             </a>                  
         </div>      
+    </div>
     </div>
 @endsection
 

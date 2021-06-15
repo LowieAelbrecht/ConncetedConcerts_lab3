@@ -37,19 +37,30 @@ class ClientController extends Controller
                     'name' => $me->display_name,
                     'token' => $me->id
                 ]);
+                $request->session()->put('userId', $userId);
+                return redirect('/tutorial-user1'); 
             } else {
                 $userId = $users->id;
+                $request->session()->put('userId', $userId);
+                return redirect('/user-rooms'); 
             }
 
-            $request->session()->put('userId', $userId);
-
-            return redirect('/user-rooms'); 
+            
         } elseif($request->input('artist') == true){
             return redirect('/choose-artist');
         }
             
 
         return redirect('/user-rooms');         
+    }
+
+    public function tutorial(Request $request)
+    {
+        if($request->session()->get('userType') == 'artist'){
+            return redirect('/tutorial-artist2');
+        } else {
+            return redirect('/tutorial-user2');
+        }
     }
 
     public function chooseArtist(Request $request)
@@ -94,13 +105,13 @@ class ClientController extends Controller
                 'name' => $artistinfo->name,
                 'token' => $artistinfo->id
             ]);
+            $request->session()->put('artistId', $artistId);
+            return redirect('/tutorial-artist1'); 
         } else {
             $artistId = $artist->id;
-        }
-
-        $request->session()->put('artistId', $artistId);
-
-        return redirect('/user-rooms');            
+            $request->session()->put('artistId', $artistId);
+            return redirect('/user-rooms');   
+        }             
     }
 
 
