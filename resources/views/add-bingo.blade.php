@@ -10,7 +10,7 @@
     <div class="container pb-5">
         <div class="text-center">
             <h2>Bingo</h2>
-            <p>All fans that bought a ticket for your room make an equal chance of winning prices. Add prices and activate the bingo after the performance.</p>
+            <p>All fans that bought a ticket for your room make an equal chance of winning prizes. Add prizes and activate the bingo after the performance.</p>
         </div>
         <h3>Give away items</h3>
 

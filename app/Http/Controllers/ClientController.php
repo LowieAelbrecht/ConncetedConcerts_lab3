@@ -582,4 +582,19 @@ class ClientController extends Controller
 
         echo json_encode($data);
     }
+
+    public function checkWinners()
+    {
+        $concertId = $_POST['concertId'];
+
+        $userBingoCheck = \DB::table('userbingo')
+        ->where('concert_id', $concertId)
+        ->first();
+        
+        if(!empty($userBingoCheck)){
+            echo json_encode(true);
+        } else {
+            echo json_encode(false);
+        }
+    }
 }

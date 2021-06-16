@@ -28,7 +28,7 @@
     <div class="php-output">
     @foreach( $concerts as $key => $concert )
         @if (!in_array($concert->id, $concertIds))
-        <h4 class="concert-date">{{ date("d/m/'y ", strtotime($concert->concert_date)) }}</h4>
+        <h4 class="concert-date">{{ date("d/m/'y ", strtotime($concert->concert_date)) }} at {{ date("H:i", strtotime($concert->concert_date)) }}</h4>
         <a href="/concerts/{{ $concert->id }}" class="concertId"> 
         <div class="card" id="{{ $key }}">
             

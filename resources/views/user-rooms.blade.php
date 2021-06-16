@@ -23,7 +23,7 @@
         @else
             @for($x = 0; $x < $amount; $x++)
                 @foreach( $myConcerts[$x] as $myConcert )
-                    <h4 class="concert-date">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</h4>
+                    <h4 class="concert-date">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }} at {{ date("H:i", strtotime($myConcert->concert_date)) }}</h4>
                     <a href="/social-room/{{ $myConcert->id }}">
                     <div class="card">
                         <img src="{{ $myConcert->file_path }}" alt="concert picture">
@@ -55,7 +55,7 @@
             @endif
             @foreach( $myConcerts as $myConcert )
                 @if($myConcert->published == true) 
-                    <h4 class="concert-date">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }}</h4>
+                    <h4 class="concert-date">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }} at {{ date("H:i", strtotime($myConcert->concert_date)) }}</h4>
                     <a href="/social-room/{{ $myConcert->id }}">
                     <div class="card">
                         <img  src="{{ $myConcert->file_path }}" class="card-img-top" alt="concert picture">

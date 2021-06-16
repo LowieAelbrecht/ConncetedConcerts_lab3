@@ -17,7 +17,7 @@
         </div>
         <div class="bg-white"> 
             <div class="text-center">
-                <h3>The prices</h3>
+                <h3>The prizes</h3>
             </div>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -85,6 +85,7 @@
             </div>
         </div>    
         @else
+        <div class="winnersReveiled">
             @if(empty($winnerOrNot))
                 <div class="lostBingo">
                     <div class="bingoEndConcent">
@@ -100,10 +101,10 @@
                         <p>{{ $price->item_info }}</p>
                     </div>
                 </div>
-            @endif
+            @endif 
+        </div>                        
         @endif
-    @endif
-   
+    @endif 
 @endsection
 
 @section('steps')
@@ -129,6 +130,9 @@
 @section('js')
 <script>
 $(document).ready(function(){
+    var url = window.location.pathname;
+    var concertId = url.substring(url.lastIndexOf('/') + 1);
+
     $(".received").click(function(){
         var id = $(this).attr("id");
         var checked = $(this).attr("value");
@@ -145,6 +149,44 @@ $(document).ready(function(){
         });
 
     });
+
+    window.onload = function() {
+        $.ajax({
+        url:'/checkWinners',
+        method: 'post',
+        data: { "_token": "{{ csrf_token() }}",
+        "concertId": concertId,},
+        dataType: 'json',
+        success: function(response){
+            if(response == true){
+               var check = true;
+            }  
+        }
+    });
+    };
+
+
+        var intervalID = window.setInterval(myCallback, 5000);    
+        function myCallback() {
+            $.ajax({
+                url:'/checkWinners',
+                method: 'post',
+                data: { "_token": "{{ csrf_token() }}",
+                "concertId": concertId,},
+                dataType: 'json',
+                success: function(response){
+                    if(response == true){
+                        console.log("reload");
+                        location.reload(true); 
+                    } else {
+                        console.log("not ok");
+                    }
+                }
+                
+            });
+        }
+
+    
 
 });
 </script>

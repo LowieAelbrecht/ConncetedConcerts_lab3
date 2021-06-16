@@ -17,7 +17,7 @@
             </div>            
         </div>
         <div class="row mt-2">
-            <h5>{{ date("d/m/Y ", strtotime($concert->concert_date)) }} at {{ date("h:i", strtotime($concert->concert_date)) }}</h5>
+            <h5>{{ date("d/m/Y ", strtotime($concert->concert_date)) }} at {{ date("H:i", strtotime($concert->concert_date)) }}</h5>
         </div>
                 <div class="row mt-2">
                     <div class="col-2">
@@ -43,7 +43,7 @@
         <p class="p-concert-info">AND</p>
         <div class="bg-concert-info"> 
             <div class="text-center">
-                <h3>The prices</h3>
+                <h3>The prizes</h3>
             </div>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner2">

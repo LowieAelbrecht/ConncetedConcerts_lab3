@@ -267,8 +267,6 @@ label {
     bottom: 0;
 }
 
-
-
 .selected-nav {
     background-color: rgba(36, 0, 70, 0.199);
     border-radius: 50px;
@@ -276,12 +274,11 @@ label {
     padding-top: 9px;
 }
 
-.main-bottom-nav .row{
+.main-bottom-nav .row {
     padding: 15px 0;
-    
 }
 
-.row .px-4{
+.row .px-4 {
     padding: 10px;
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -290,16 +287,13 @@ label {
     margin-left: 7px; */
 }
 
-.row .px-4 i{
+.row .px-4 i {
     font-size: 24px;
     line-height: 1;
     height: 20px;
-    
 }
-.row .px-4 h5{
-    
+.row .px-4 h5 {
     height: 20px;
-    
 }
 
 .px-4:hover {
@@ -851,7 +845,7 @@ textarea {
     margin: auto 0;
 }
 
-.my-auto-vote-titel{
+.my-auto-vote-titel {
     align-items: right;
     display: inline-block;
     margin: auto 0;
@@ -863,7 +857,7 @@ textarea {
     display: block;
     width: 20px;
     margin: auto 0;
-    float: right;    
+    float: right;
 }
 
 .song-vote {
@@ -878,7 +872,7 @@ textarea {
     border-radius: 20px;
 }
 
-.grey-row-SongVote{
+.grey-row-SongVote {
     background-color: var(--cc-white);
     margin: 10px 0px;
     width: 100vw;
