@@ -184,20 +184,6 @@ label {
     margin-bottom: 30px;
 }
 
-.nextBtn {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 3px;
-    font-family: var(--font-humana);
-    font-size: 22px;
-    align-items: right;
-    border-color: WHITE;
-}
-
-.addBtn {
-    color: white !important;
-}
-
 .my-auto {
     align-items: right;
 }
@@ -318,6 +304,12 @@ textarea {
     box-shadow: 1px 2px 5px #888888;
 }
 
+/* ERRORS */
+.errors {
+    color: red;
+    font-size: 16px;
+}
+
 /* BUTTONS */
 
 .btn-orange {
@@ -335,6 +327,14 @@ textarea {
     width: 80vw;
 }
 
+.btn-bottom {
+    position: absolute;
+    bottom: 0;
+    margin: 40px auto;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
 .btn-outline-purple {
     font-family: var(--font-humana);
     color: rgba(128, 128, 128, 0.849);
@@ -348,6 +348,20 @@ textarea {
     height: 100%;
     padding: 6px 20px;
     margin-top: 50px;
+}
+
+.nextBtn {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 3px;
+    font-family: var(--font-humana);
+    font-size: 22px;
+    align-items: right;
+    border-color: WHITE;
+}
+
+.addBtn {
+    color: white !important;
 }
 
 .btn-info {
@@ -553,6 +567,10 @@ textarea {
     font-size: 20px;
 }
 
+.card-body h3 {
+    max-width: 92%;
+}
+
 .card {
     flex-direction: row;
     width: 100%;
@@ -577,7 +595,7 @@ textarea {
 .card h3 {
     display: block;
     position: relative;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     color: var(--cc-purple);
 }
@@ -847,6 +865,7 @@ textarea {
 .winners h4 {
     color: var(--cc-orange);
     font-size: 18px;
+    margin: 0 !important;
 }
 
 .winners p {

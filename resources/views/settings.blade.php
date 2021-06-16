@@ -11,7 +11,6 @@
         <li><a href="http://www.connectedconcerts.be" target="_blank" class="setting">About<a></li>
         <div class="purple-line"></div>
         <li><a href="/tutorial" class="setting">Tutorial<a></li>
-
         <div class="purple-line"></div>
         <li><a class="setting">Partners<a></li>
         <div class="purple-line"></div>

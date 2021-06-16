@@ -62,8 +62,8 @@
                         <h3>{{ $price->item_name }}</h3>
                     </div>
                     @if($prices[0]->item_name == $price->item_name) 
-                    <div>
-                        <p class="col-4">Received</p>
+                    <div  class="col-4">
+                        <p>Received</p>
                     </div>
                      @endif
                 </div>

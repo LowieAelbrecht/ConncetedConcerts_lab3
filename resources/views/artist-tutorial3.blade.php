@@ -15,7 +15,7 @@
     <div class="text-center">
         <a href="/user-rooms" class="skip">Skip</a>
         <span class="dot"></span>
-        <span class="selected-dot  dot"></span>
+        <span class="selected-dot dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>

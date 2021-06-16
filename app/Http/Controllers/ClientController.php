@@ -310,6 +310,8 @@ class ClientController extends Controller
     {
         $postId = $_POST['postId'];
         $comment = $_POST['comment'];
+
+
         $userType = $request->session()->get('userType');
         $now = date("Y-m-d H:i:s");
 

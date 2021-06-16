@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ArtistController extends Controller
 {
@@ -97,56 +98,6 @@ class ArtistController extends Controller
         
         echo json_encode(true); 
     }
-
-    public function updateConcert(Request $request, $concert)
-    {
-        $data['myConcert'] = \DB::table('concerts')
-            ->where('artist_id', session()->get('artistId'))
-            ->where('id', $concert)
-            ->first();
-
-        return view('/update-concert', $data);
-    }
-
-    public function saveUpdateConcert(Request $request, $concert)
-    {
-        $date = $request->input('date') . " " .  $request->input('time');
-        //$newImageName = time() . '-' . $request->concertName . '.' . $request->photo->extension(); 
-        //$request->photo->move(public_path('uploads'), $newImageName);
-
-        switch ($request->input('action')) {
-            case 'publish':
-                \DB::table('concerts')
-                ->where('id', $concert)
-                ->update(
-                    ['name' => $request->input('concertName'), 
-                    'locatie' => $request->input('location'),
-                    'concert_date' => $date,
-                    'prijs' => $request->input('price'),
-                   // 'file_path' => $newImageName,
-                    'published' => true
-                ]
-                );
-                return redirect('/update-concert/' . $concert); 
-                break;
-    
-            case 'save':
-                \DB::table('concerts')
-                ->where('id', $concert)
-                ->update(
-                    ['name' => $request->input('concertName'), 
-                    'locatie' => $request->input('location'),
-                    'concert_date' => $date,
-                    'prijs' => $request->input('price'),
-                   // 'file_path' => $newImageName,
-                    'published' => false
-                ]
-                );
-                return redirect('/update-concert/' . $concert);  
-                break;
-            }       
-    }
-
         
     public function addSongVote(Request $request)
     {
@@ -219,12 +170,13 @@ class ArtistController extends Controller
             $request->photo[$key]->move(public_path('uploads'), $newImageName[$key]);
             /*
             $request->validate([
-                'name' => 'required',
+                'name'=> 'required',
                 'amount' => 'required',
                 'info' => 'required',
                 'photo' => 'required|mimes:jpg,png,jpeg'
             ]);
             */
+            
 
             \DB::table('bingo')->insertOrIgnore(
                 ['item_name' => $item,
