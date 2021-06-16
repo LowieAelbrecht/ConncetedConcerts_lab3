@@ -31,6 +31,7 @@
         <h4 class="concert-date">{{ date("d/m/'y ", strtotime($concert->concert_date)) }}</h4>
         <a href="/concerts/{{ $concert->id }}" class="concertId"> 
         <div class="card" id="{{ $key }}">
+            
                 <img src="{{ $concert->file_path }}" class="card-img-top" alt="concert picture">
                 <div class="card-body">
                     <h3>{{ $concert->artist_name }}</h3>
@@ -38,9 +39,10 @@
                     <?php $var = explode('|', $concert->locatie); ?>
                     <h5 class="latitude" id="{{ $concert->latitude }}">{{ $var[0] }}</h5>
                     <h5 class="longitude" id="{{ $concert->longitude }}">{{ $var[1] }}</h5>
-                </div>                         
+                </div>   
+                                
         </div>
-        </a>
+        </a>  
         @endif
     @endforeach
     </div>
@@ -165,7 +167,6 @@ $(document).ready(function(){
                 dataType: 'json',
                 success: function(response){
                     console.log(response);
-                    $('.php-output').hide();
                     var data = response;
                     var concertDate = data['concert_date'];
                     var concertDate = new Date(concertDate);

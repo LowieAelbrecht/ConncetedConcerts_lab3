@@ -13,10 +13,16 @@
     <form action="/add-post/{{ request()->route('concerts') }}" method="post" enctype="multipart/form-data">
     @csrf
         <div class="pb-3">
-            <input type="text" name="title" class="form-control" value="" placeholder="Your title"> 
+            @if($errors->first('title'))   
+                <h5 class="errors text-center">{{ $errors->first('title') }}</h5>    
+            @endif
+            <input type="text" name="title" class="form-control" value="" placeholder="Your title" <?php if($errors->first('title')) : ?> style="border-color: red"; <?php endif; ?>>  
         </div>
         <div>
-            <textarea type="text" cols="40" name="tekst" rows="5" placeholder="Your text"></textarea> 
+            @if($errors->first('tekst'))   
+                <h5 class="errors text-center">{{ $errors->first('tekst') }}</h5>    
+            @endif
+            <textarea type="text" cols="40" name="tekst" rows="5" placeholder="Your text" <?php if($errors->first('tekst')) : ?> style="border-color: red"; <?php endif; ?>></textarea> 
         </div>
 
         <input type="file" name="photo" id="inpFile">

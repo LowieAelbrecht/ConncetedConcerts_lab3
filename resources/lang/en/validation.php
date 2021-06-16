@@ -134,8 +134,19 @@ return [
     */
 
     'custom' => [
-        'concertName' => [
-            'required' => 'Concert name must be filled in',
+        'songs' => [
+            'required' => 'Please select at least 2 songvote options.',
+            'array' => 'Please select at least 2 songvote options.',
+            'min' => 'Please select at least 2 songvote options.',
+        ],
+        'endingDate' => [
+            'after' => 'Please select a date after today.',
+        ],
+        'title' => [
+            'required' => 'Please insert a title for your post.',
+        ],
+        'tekst' => [
+            'required' => 'Please insert some text for your post.',
         ],
     ],
 

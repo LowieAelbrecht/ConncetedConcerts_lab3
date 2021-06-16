@@ -42,7 +42,7 @@
      </div>
      @endfor
      <div href="#" class="input-container">
-        <textarea id="txtArea" class="commentbox" type="text" name="comment" placeholder="Write a comment..."></textarea> 
+        <textarea id="txtArea" class="commentbox" type="text" name="comment" placeholder="Write a comment..." <?php if($errors->first('comment')) : ?> style="border-color: red"; <?php endif; ?>></textarea> 
         <i class="material-icons" id="add-comment">arrow_forward</i>
     </div> 
 </div>
@@ -52,6 +52,16 @@
 <script>
 $(document).ready(function(){
     $("#add-comment").click(function(){
+        comment();
+    });
+
+    $(document).on("keypress", function(e){
+        if(e.which == 13){
+            comment();
+        }
+    });
+    
+        function comment(){
         var comment = $("#txtArea").val();
         var url = window.location.pathname;
         var postId = url.substring(url.lastIndexOf('/') + 1);        
@@ -70,7 +80,7 @@ $(document).ready(function(){
             }
         });
         }
-    });
+    }
            
 
 });   

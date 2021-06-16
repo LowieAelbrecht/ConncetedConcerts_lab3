@@ -13,14 +13,14 @@
             <p>All fans that bought a ticket for your room make an equal chance of winning prices. Add prices and activate the bingo after the performance.</p>
         </div>
         <h3>Give away items</h3>
+
         <div class="bg-white mb-5" id="1">
             <div class="card-body">
                 <div class="row">
                     <div id="image-upload2" class="image-upload col-4 my-2">
                         <label class="custom-file-upload">
 
-
-                            <input class="inpFileBingo" id="inpFileBingo" type="file" name="photo[1]" required/>
+                            <input class="inpFileBingo" id="inpFileBingo" type="file" name="photo[1]"/>
                             <label for="inpFileBingo" class="labelImgBingo image-preview__default-text material-icons">add_a_photo</span>
 
                             <div id="image-upload2">
