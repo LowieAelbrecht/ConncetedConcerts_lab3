@@ -24,6 +24,7 @@ body {
 
 .content {
     padding-top: 11vh;
+    padding-bottom: 11vh;
 }
 
 h2,
@@ -182,11 +183,7 @@ label {
     margin-bottom: 30px;
 }
 
-
-
-
 .nextBtn {
-    
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 3px;
@@ -200,7 +197,7 @@ label {
     color: white !important;
 }
 
-.albumDetails h4{
+.albumDetails h4 {
     display: block;
     width: 60%;
     float: left;
@@ -723,7 +720,6 @@ textarea {
 .range-wrap {
     position: relative;
 }
-
 
 .bottom-nav a {
     color: var(--cc-white);
