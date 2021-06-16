@@ -19,7 +19,7 @@
         <span class="selected-dot dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
-        <a href="/artist-tutorial5" class="next">Next</a>        
+        <a href="/user-tutorial5" class="next">Next</a>        
     </div>
 </div>
 @endsection
