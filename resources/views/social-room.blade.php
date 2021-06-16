@@ -60,8 +60,8 @@
 @endsection
 
 @section('steps')
-    <div class="bottom-nav">
-        <div class="justify-content-center row bottom-nav">
+    <div class="main-bottom-nav">
+        <div class="justify-content-center row main-bottom-nav">
             <a class="row px-4 selected-nav">
                 <i class="material-icons navSocial">people</i>
                 <h5>Social</h5>
