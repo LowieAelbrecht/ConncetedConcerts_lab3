@@ -24,6 +24,7 @@ body {
 
 .content {
     padding-top: 11vh;
+    padding-bottom: 11vh;
 }
 
 h2,
@@ -211,11 +212,11 @@ label {
     margin-bottom: 30px;
 }
 
-
-
-
 .nextBtn {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8a5fa57 (belangrijke update)
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 3px;
@@ -752,7 +753,6 @@ textarea {
 .range-wrap {
     position: relative;
 }
-
 
 .bottom-nav a {
     color: var(--cc-white);
