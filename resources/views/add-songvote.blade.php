@@ -35,16 +35,13 @@
 @endsection
 
 @section('steps')
-    <div class="steps row justify-content-center">
+<div class="bottom-nav">
         <div class="text-center">
-            <h5>Song vote</h5>
             <span class="dot"></span>
             <span class="selected-dot dot"></span>
-            <span class="dot"></span>        
+            <span class="dot"></span>
+            <input class="nextBtn" type="submit" name="next" value="Next">Next</input>        
         </div>
-        <div class="pull-right">
-            <input class="nextBtn" type="submit" name="next" value="Next"></input>
-        </div>        
     </div>
 </form>
 @endsection
@@ -66,7 +63,7 @@ $(document).ready(function(){
                 $('.album-tracks').hide();
                 if(response.length > 0){  
                     for (var i = 0; i < response.length; i++){   
-                    $("#" + albumId).after('<div class="row grey-row-sm album-tracks"><label class="pl-5 my-auto" style="font-size: 18px;" name="songs">' + response[i]['name'] + '</label><input type="checkbox" class="my-auto" style="width: 20px; display: flex; align-items: right;" class="pull-right" name="songs[]" id="' + response[i]['id'] +'"value="' + response[i]['id'] +'""></div>');  
+                    $("#" + albumId).after('<div class="row grey-row-sm album-tracks"><label class="pl-5 my-auto" style="font-size: 18px;" name="songs">' + response[i]['name'] + '</label><input type="checkbox" class="my-auto" style="width: 20px; display: inline-block; float:right; " class="pull-right" name="songs[]" id="' + response[i]['id'] +'"value="' + response[i]['id'] +'""></div>');  
                     }                   
                 } else {
                     $('.album-tracks').hide();
