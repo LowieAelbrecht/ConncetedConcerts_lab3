@@ -31,7 +31,7 @@
 @endsection
 
 @section('steps')
-    <div class="steps row justify-content-center">
+    <!-- <div class="steps row justify-content-center">
         <div class="text-center">
             <h5>Basic info</h5>
             <span class="selected-dot dot"></span>
@@ -41,9 +41,17 @@
         <div class="pull-right">
             <input class="nextBtn" type="submit" name="upload" value="Next"></input>
         </div>        
-    </div>
+    </div> -->
+    
 @endsection
-
+<div class="bottom-nav">
+        <div class="text-center">
+            <span class="selected-dot dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <input class="nextBtn" type="submit" name="upload" value="Next">Next</input>        
+        </div>
+    </div>
 
 @section('js')
 <script>

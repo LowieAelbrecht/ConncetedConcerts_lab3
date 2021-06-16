@@ -55,7 +55,7 @@
 @endsection
 
 @section('steps')
-    <div class="steps row justify-content-center">
+    <!-- <div class="steps row justify-content-center">
         <div class="text-center">
             <h5>Bingo</h5>
             <span class="dot"></span>
@@ -65,6 +65,14 @@
         <div class="pull-right">
             <input class="nextBtn" type="submit" name="upload" value="Finish"></input>
         </div>        
+    </div> -->
+    <div class="bottom-nav">
+        <div class="text-center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="selected-dot dot"></span>
+            <input class="nextBtn" type="submit" name="upload" value="Next">Next</input>        
+        </div>
     </div>
 </form>   
 @endsection

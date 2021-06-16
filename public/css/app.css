@@ -184,8 +184,34 @@ label {
     margin-bottom: 30px;
 }
 
+
+
+
+.nextBtn {
+    
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 3px;
+    font-family: var(--font-humana);
+    font-size: 22px;
+    align-items: right;
+    border-color: WHITE;
+}
+
+.addBtn {
+    color: white !important;
+}
+
+.albumDetails h4{
+    display: block;
+    width: 60%;
+    float: left;
+}
+
 .my-auto {
     align-items: right;
+    width: 90%;
+    float: right;
 }
 
 .main-nav .material-icons {
@@ -696,15 +722,86 @@ textarea {
     position: relative;
 }
 
-.steps {
-    background-color: #fff;
+
+.bottom-nav a {
+    color: var(--cc-white);
+}
+
+.bottom-nav {
+    background-color: var(--cc-purple);
+    height: 8vh;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+    bottom: 0;
+    box-shadow: 3px 4px 5px #888888;
+}
+
+.bottom-nav .text-center {
+    height: 5vh;
     width: 100vw;
+    position: absolute;
+    bottom: 0;
+}
+
+.bottom-nav .dot {
+    height: 15px;
+    width: 15px;
+    background-color: #b4b1b1;
+    opacity: 50%;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 3px;
+}
+
+.bottom-nav .nextBtn {
+    /* display: block;
+    float: right; */
+    position: absolute;
+    color: var(--cc-white);
+    /* text-decoration: underline; */
+    padding: 2px 15px;
+    font-weight: bold;
+    margin-right: 20px;
+    right: 0;
+    top: -10px;
+    background-color: var(--cc-orange);
+    border-color: var(--cc-orange);
+    border-radius: 10px;
+}
+
+.bottom-nav .selected-dot {
+    background-color: var(--cc-orange);
+    opacity: 100%;
+}
+
+/* .bottom-nav {
+    background-color: #fff;
+    width: 100%;
     margin: 0;
     overflow: hidden;
     position: fixed;
     bottom: 0;
+    text-align: center;
 }
 
+.text-bottom-nav{
+    display: block;
+    position: fixed;
+    width: 100%;
+    margin: auto 0;
+    text-align: center;
+    float: left;
+} 
+
+.btn-bottom-nav{
+
+    display: block;
+    width: 30vw;
+    text-align: center;
+    float: right;
+    z-index: 10;
+} */
 .dot {
     height: 15px;
     width: 15px;
@@ -744,10 +841,11 @@ textarea {
 
 .album-cover {
     width: 50px;
-    height: auto;
+    height: 50px;
     margin: 5px 5px 5px 20px;
     border-radius: 20%;
     display: inline;
+    object-fit: contain;
 }
 
 .days-left {
