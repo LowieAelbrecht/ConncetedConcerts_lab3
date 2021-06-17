@@ -27,12 +27,11 @@
                 @foreach($mostVoted as $key => $voted)
                     @if($key <= 2)
                         @if($voted->song == $songVoteOption->id)
-                        <div class="row grey-row"
-                                style="background: linear-gradient(to right, #ff9e00 0%, #ff9e00 <?php echo  round((($voted->votes)/$totalVotes)*100); ?>%, #ff9e00 <?php echo  round((($voted->votes)/$totalVotes)*100); ?>%, #ddd <?php echo  round((($voted->votes)/$totalVotes)*100); ?>%, #ddd 100%);">
-                            <h4 class="pl-2 my-auto" >{{ $key+1 }}</h4>
+                            <div class="row grey-row SongVote" style="background: linear-gradient(to right, #ff9e00 0%, #ff9e00 <?php echo  round((($voted->votes)/$totalVotes)*100); ?>%, #ff9e00 <?php echo  round((($voted->votes)/$totalVotes)*100); ?>%, #ddd <?php echo  round((($voted->votes)/$totalVotes)*100); ?>%, #ddd 100%);">
+                            <h4 class="pl-2 my-auto-vote-rank" >{{ $key+1 }}</h4>
                             <div class="play"><audio id="<?php echo $key; ?>"><source src="<?php echo $songVoteOption->preview_url; ?>" /></audio><img class="album-cover" src="<?php echo $songVoteOption->album->images[0]->url; ?>" alt="album cover"><i class="material-icons">play_circle_filled</i></div>  
-                            <h4 class="pl-2 my-auto" >{{ $songVoteOption->name }}</h4>
-                            <h4 class="pl-2 my-auto">{{ round((($voted->votes)/$totalVotes)*100) }}%</h4> 
+                            <h4 class="pl-2 my-auto-vote-titel" >{{ $songVoteOption->name }}</h4>
+                            <h4 class="pl-2 my-auto-vote-perc">{{ round((($voted->votes)/$totalVotes)*100) }}%</h4> 
                         </div>
                         @endif
                     @endif
