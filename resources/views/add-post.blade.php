@@ -72,6 +72,7 @@
         const file =this.files[0];
 
         if(file){
+     //  if (allowedExtensions.exec(filePath)){
         const reader = new FileReader(); //image lezen als url
 
         previewImage.style.display="block";
@@ -89,6 +90,11 @@
          });
 
          reader.readAsDataURL(file); //gelezen data tonen als image
+      /*  }else{
+alert('yooooo');
+
+
+        }; */
         }else{
     previewImage.style.display = null; //als user niks kiest toon default css
     previewDefaultText.Style.display =null;
