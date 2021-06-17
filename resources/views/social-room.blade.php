@@ -47,6 +47,18 @@
                     </div>         
             </div>             
         @endforeach
+    @else
+        @if((session()->get('userType')) == ("artist"))
+        <div class="row justify-content-center no-posts">
+            <span class="material-icons">post_add</span>            
+            <p class="text-center mt-3">Don't leave your fans waiting for content. Add your fist exclusive content now!</p>
+        </div>
+        @else 
+        <div class="row justify-content-center no-posts">
+        <span class="material-icons">sentiment_dissatisfied</span>           
+            <p class="text-center mt-3">The artist haven't posted yet, discover the other features or come back later.</p>
+        </div>                    
+        @endif
     @endif
 
     @if((session()->get('userType')) == ("artist"))

@@ -23,8 +23,8 @@ body {
 }
 
 .content {
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+    padding-top: 11vh;
+    padding-bottom: 11vh;
 }
 
 h2,
@@ -119,7 +119,15 @@ h5 {
 }
 
 .material-icons .labelImgBingo {
-    background-color: red;
+
+    width: 100%;
+    margin-left: -5px;
+    color: rgb(61, 59, 59);
+    font-weight: bold;
+    white-space: nowrap;
+    display: inline-block;
+
+
 }
 
 .text-white {
@@ -296,6 +304,7 @@ label {
 .main-bottom-nav .row {
     padding: 10px 0;
 
+
 }
 
 .row .px-4 {
@@ -430,7 +439,7 @@ textarea {
 
 .btn-add {
     font-family: var(--font-humana);
-    background-color: var(--cc-purple);
+    background-image: var(--cc-gradient);
     color: var(--cc-white);
     font-size: 24px;
     width: 40px;
@@ -446,7 +455,7 @@ textarea {
 }
 
 .bottom-nav-btn {
-    bottom: 78px;
+    bottom: 100px;
     right: 15px;
 }
 
@@ -1018,6 +1027,8 @@ textarea {
     width: 100%;
     height: 80vh;
     overflow: auto;
+    position: absolute;
+    top: 10%;
 }
 
 .wonBingo {
@@ -1025,6 +1036,30 @@ textarea {
     width: 100%;
     height: 80vh;
     overflow: auto;
+    position: absolute;
+    top: 10%;
+}
+
+.wonBingo h1 {
+    z-index: 5;
+}
+
+/* .confetti{
+    display: block;
+    width: 100%;
+    height: 50%;
+    margin:0 auto;
+    
+} */
+
+.firework {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    z-index: -1;
+    bottom: 0;
 }
 
 .wonBingo h1 {
@@ -1118,6 +1153,18 @@ textarea {
 .post-image {
     width: 100%;
     height: auto;
+}
+
+.no-posts .material-icons {
+    font-size: 64px;
+    color: var(--cc-purple);
+}
+
+.no-posts {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .like-comment {
@@ -1254,33 +1301,12 @@ hr {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media only screen and (max-height: 670px) {
-
-
     .main-nav .material-icons {
         color: var(--cc-white);
         font-size: 48px;
         padding-top: 10%;
     }
-
 
     .main-bottom-nav {
         background-color: #fff;
@@ -1299,7 +1325,6 @@ hr {
 
     .main-bottom-nav .row {
         padding: 10px 0;
-
     }
 
     .row .px-4 {
@@ -1316,13 +1341,17 @@ hr {
         font-size: 20px;
         line-height: 1;
         height: 18px;
-
     }
 
     .row .px-4 h5 {
         /* width: 50px; */
         height: 16px;
 
+    }
+
+    .row .px-4 h5 {
+        /* width: 50px; */
+        height: 16px;
     }
 
     .px-4:hover {
