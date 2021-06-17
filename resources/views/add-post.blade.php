@@ -28,13 +28,13 @@
         <input accept=".mp4,.jpg,.png,.jpeg" type="file" name="photo" id="inpFile">
 
         <div class="image-preview" id="imagePreview">
-        <video class="videoPost" src="" width="400" controls></video>        
+    <video class="videoPost" src="" width="400" controls></video>      
         <img src="" alt="Image Preview" class="image-preview__image">
         <span class="image-preview__default-text"></span>
         </div>
         <div class="bottom-buttons">
             <button class="btn-orange btn-orange2 mb-2" type="submit" name="room" value="room">Publish post</button>
-            <a class="cancel" href="/social-room/{{ request()->route('concerts') }}">cancel</a>
+            <a class="cancel" href="/social-room/{{ request()->route('concerts') }}">Cancel</a>
         </div>        
     </form>
 </div>
@@ -61,8 +61,11 @@
         bubble.value = "€ " + val;
         }
 
-
+        
         const inpFile =document.getElementById("inpFile");
+        const filePath =inpFile.value;
+        var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+        var allowedExtensions2 = /(\.mp4)$/i;
         const previewContainer = document.getElementById("imagePreview");
         const previewImage = previewContainer.querySelector(".image-preview__image");
         const previewDefaultText =previewContainer.querySelector(".image-preview__default-tet");  
@@ -72,23 +75,32 @@
         const file =this.files[0];
 
         if(file){
+       if (allowedExtensions.exec(filePath)){
         const reader = new FileReader(); //image lezen als url
 
         previewImage.style.display="block";
-        videoUpload.style.display="block"; //geladen image tonen.
+     //   previewImage.style.objectFit="cover";
+      //  previewImage.style.width="220px";
+
+        //videoUpload.style.display="block"; //geladen image tonen.
        // previewDefaultText.style.display ="none"; //geladen image tonen.
 
         reader.addEventListener("load", function(){      //toegevoegde img laden
         previewImage.setAttribute("src", this.result);
-        videoUpload.setAttribute("src", this.result);   //src veranderen in html, this verwijst nr fileReader   //src veranderen in html, this verwijst nr fileReader
-        previewImage.style.objectFit="none";
-        previewImage.style.width="100%";
-        videoUpload.style.objectFit="none";
-        videoUpload.style.width="100%";
+           //src veranderen in html, this verwijst nr fileReader   //src veranderen in html, this verwijst nr fileReader
+
+     //   videoUpload.setAttribute("src", this.result);
+     //   videoUpload.style.objectFit="none";
+      //  videoUpload.style.width="100%";
 
          });
 
          reader.readAsDataURL(file); //gelezen data tonen als image
+        }else{
+alert('yooooo');
+
+
+        };
         }else{
     previewImage.style.display = null; //als user niks kiest toon default css
     previewDefaultText.Style.display =null;

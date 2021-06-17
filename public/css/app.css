@@ -61,8 +61,18 @@ h5 {
 }
 
 .image-preview__image {
+    object-fit: cover;
     display: none;
+    width: 320px;
     height: 220px;
+    object-position: top left;
+}
+
+.image-preview__image2 {
+    object-fit: cover;
+
+    display: none;
+
 }
 
 .videoPost {
@@ -81,11 +91,11 @@ h5 {
 
 .inpFileBingo {
     display: none;
-    background-color: white;
+    /*background-color: white;
     border: 1px solid #ced4da;
     border-radius: 15px;
     color: rgb(36, 0, 70);
-    outline: none;
+    outline: none;*/
 }
 
 ::-webkit-file-upload-button {
@@ -109,8 +119,13 @@ h5 {
 
 
 
-.material-icons .labelImgBingo {
-    background-color: red;
+.labelImgBingo {
+    width: 100%;
+    margin-left: -5px;
+    color: rgb(61, 59, 59);
+    font-weight: bold;
+    white-space: nowrap;
+    display: inline-block;
 }
 
 .text-white {
@@ -174,6 +189,13 @@ label {
     font-size: 24px;
 }
 
+.cancel {
+    color: black;
+    margin-left: 40%;
+    font-size: 1.2em;
+
+}
+
 .main-nav {
     background-color: var(--cc-purple);
     width: 100vw;
@@ -188,7 +210,7 @@ label {
 
 
 .nextBtn {
-    
+
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 3px;
@@ -202,7 +224,7 @@ label {
     color: white !important;
 }
 
-.albumDetails h4{
+.albumDetails h4 {
     display: block;
     width: 60%;
     float: left;

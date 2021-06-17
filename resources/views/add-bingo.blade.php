@@ -17,22 +17,23 @@
         <div class="bg-white mb-5" id="1">
             <div class="card-body">
                 <div class="row">
+
                     <div id="image-upload2" class="image-upload col-4 my-2">
+
                         <label class="custom-file-upload">
+                        <label for="inpFileBingo" class="labelImgBingo image-preview__default-text">Add a photo</span>
 
-                            <input class="inpFileBingo" id="inpFileBingo" type="file" name="photo[1]"/>
-                            <label for="inpFileBingo" class="labelImgBingo image-preview__default-text material-icons">add_a_photo</span>
-
-                            <div id="image-upload2">
-
-                            <img src="" alt="Image Preview" class="image-preview__image">
-
-                            </div>
+                        <input accept=".jpg,.png,.jpeg" class="inpFileBingo" id="inpFileBingo" type="file" name="photo[1]"/>
+                        <div id="image-upload2">   
+                        <img src="" alt="Image Preview" class="image-preview__image2">
+                        
+                        </div>
                            <!-- <span class="material-icons">image</span>-->
                         </label>
                         
 
                     </div>
+
                     <div class="col-8">
                         <div class="my-2">
                             <input type="text" name="name[1]" class="form-control" value="{{ old('name[1]') }}" placeholder="Name item"> 
@@ -48,7 +49,7 @@
             </div>
         </div>
         <div class="addItem">
-            <h5 class="text-center addBtn">ADD ITEM</h5>
+            <h5 class="text-center addBtn">Add new item</h5>
         </div>
     </div>
 
@@ -80,22 +81,28 @@
 @section('js')
 <script>
 $(document).ready(function(){
+
     $(".addItem").click(function(){
         var itemId = $(".bg-white").last().attr("id");
         var newItemId = (+itemId +1);
     // var newImg = getElementById("#inpFile");
        // var addNewImg =(+newImg +1);
-        $("#" + itemId).after('<div class="bg-white mb-5" id="'+ newItemId +'"><div class="card-body"><div class="row"><div class="image-upload col-4 my-2"><label class="custom-file-upload"><input id="inpFile" type="file" name="photo['+newItemId+']"/><img src="" alt="Image Preview" class="image-preview__image"> </label></div><div class="col-8"><div class="my-2"><input type="text" name="name['+newItemId+']" class="form-control" value="" placeholder="Name item"></div><div class="my-2"><input type="text" name="amount['+newItemId+']" class="form-control" value="" placeholder="Amount"></div></div></div><div class="row"><input type="text" name="info['+newItemId+']" class="form-control" value="" placeholder="Pick up location / Extra info"></div></div></div>');  
+        $("#" + itemId).after('<div class="bg-white mb-5" id="'+ newItemId +'"><div class="card-body"><div class="row"><div class="image-upload col-4 my-2"><label class="custom-file-upload">   <label for="inpFileBingo" class="labelImgBingo image-preview__default-text">Add a photo</span><input accept=".jpg,.png,.jpeg" class="inpFileBingo" id="inpFileBingo['+newItemId+']" type="file" name="photo['+newItemId+']"/><div id="image-upload2"><img src="" alt="Image Preview" class="image-preview__image2"></div></label></div><div class="col-8"><div class="my-2"><input type="text" name="name['+newItemId+']" class="form-control" value="" placeholder="Name item"></div><div class="my-2"><input type="text" name="amount['+newItemId+']" class="form-control" value="" placeholder="Amount"></div></div></div><div class="row"><input type="text" name="info['+newItemId+']" class="form-control" value="" placeholder="Pick up location / Extra info"></div></div></div>');  
+        for (var i = 0; i < newItemId; i++){  
+    
+    console.log(newItemId);
+                    } 
+  
     });
+    
 });
 
 
-
-        const inpFile =document.getElementById("inpFileBingo");
+        const inpFile =document.querySelector(".inpFileBingo");
         const previewContainer = document.getElementById("image-upload2");
-        const previewImage = previewContainer.querySelector(".image-preview__image");
+        const previewImage = previewContainer.querySelector(".image-preview__image2");
         const labelImg =previewContainer.querySelector(".labelImgBingo");
-        const previewDefaultText =previewContainer.querySelector(".image-preview__default-tet");  
+      //  const previewDefaultText =previewContainer.querySelector(".image-preview__default-tet");  
 
         inpFile.addEventListener("change", function(){
         const file =this.files[0];
@@ -104,11 +111,11 @@ $(document).ready(function(){
         const reader = new FileReader(); //image lezen als url
 
         previewImage.style.display ="block"; //geladen image tonen.
-        previewImage.style.width ="100%"; //geladen image tonen.
+        previewImage.style.width ="120%"; //geladen image tonen.
         previewContainer.style.overflow ="auto"; //geladen image tonen.
 
         inpFile.style.display = "none"
-        labelImg.style.display ="none"; //geladen image tonen.
+        //labelImg.style.display ="none"; //geladen image tonen.
 
          reader.addEventListener("load", function(){      //toegevoegde img laden
         previewImage.setAttribute("src", this.result);   //src veranderen in html, this verwijst nr fileReader
@@ -118,7 +125,7 @@ $(document).ready(function(){
          reader.readAsDataURL(file); //gelezen data tonen als image
         }else{
         previewImage.style.display = null; //als user niks kiest toon default css
-        previewDefaultText.Style.display =null;
+       // previewDefaultText.Style.display =null;
         inpFile.style.display = null;
         previewImage.setAttribute("src","");
 }
