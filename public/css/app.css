@@ -24,6 +24,7 @@ body {
 
 .content {
     padding-top: 11vh;
+    padding-bottom: 11vh;
 }
 
 h2,
@@ -117,6 +118,7 @@ h5 {
     color: rgb(255, 137, 0);
 }
 
+<<<<<<< HEAD
 
 
 .labelImgBingo {
@@ -126,6 +128,10 @@ h5 {
     font-weight: bold;
     white-space: nowrap;
     display: inline-block;
+=======
+.material-icons .labelImgBingo {
+    background-color: red;
+>>>>>>> origin/main
 }
 
 .text-white {
@@ -206,11 +212,11 @@ label {
     margin-bottom: 30px;
 }
 
-
-
-
 .nextBtn {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 3px;
@@ -239,7 +245,7 @@ label {
 .main-nav .material-icons {
     color: var(--cc-white);
     font-size: 48px;
-    padding-top: 2vh;
+    padding-top: 25%;
 }
 
 .image-upload .custom-file-upload .material-icons {
@@ -286,7 +292,7 @@ label {
     height: 8vh;
 }
 
-.bottom-nav {
+.main-bottom-nav {
     background-color: #fff;
     width: 100vw;
     padding: 10px 0px;
@@ -301,9 +307,26 @@ label {
     padding-top: 9px;
 }
 
-.px-4 {
-    margin-top: 2px;
-    margin-left: 7px;
+.main-bottom-nav .row {
+    padding: 15px 0;
+}
+
+.row .px-4 {
+    padding: 10px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    /* padding-top: 4px;
+    margin-left: 7px; */
+}
+
+.row .px-4 i {
+    font-size: 24px;
+    line-height: 1;
+    height: 20px;
+}
+.row .px-4 h5 {
+    height: 20px;
 }
 
 .px-4:hover {
@@ -312,6 +335,7 @@ label {
 
 .navSocial {
     color: var(--cc-purple);
+    margin: 0 auto;
 }
 
 .purple-line {
@@ -418,7 +442,7 @@ textarea {
 
 .btn-add {
     font-family: var(--font-humana);
-    background-color: var(--cc-purple);
+    background-image: var(--cc-gradient);
     color: var(--cc-white);
     font-size: 24px;
     width: 40px;
@@ -434,7 +458,7 @@ textarea {
 }
 
 .bottom-nav-btn {
-    bottom: 78px;
+    bottom: 100px;
     right: 15px;
 }
 
@@ -688,6 +712,10 @@ textarea {
     background-image: var(--cc-gradient);
     color: var(--cc-white);
     border-radius: 50%;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    text-align: center;
 }
 
 /* PROFILE */
@@ -743,7 +771,6 @@ textarea {
 .range-wrap {
     position: relative;
 }
-
 
 .bottom-nav a {
     color: var(--cc-white);
@@ -839,6 +866,47 @@ textarea {
 
 /* ADD SONGVOTE */
 
+.my-auto {
+    align-items: right;
+    width: 90%;
+    float: right;
+}
+
+.my-auto-vote {
+    align-items: right;
+    display: inline-block;
+    margin: auto 0;
+}
+
+.my-auto-vote-titel {
+    align-items: right;
+    display: inline-block;
+    margin: auto 0;
+    width: 55%;
+}
+
+.my-auto-vote-check {
+    align-items: right;
+    display: block;
+    width: 20px;
+    margin: auto 0;
+    float: right;
+}
+
+.my-auto-vote-rank {
+    align-items: right;
+    display: inline-block;
+    margin: auto 0;
+    width: 20px;
+}
+
+.my-auto-vote-perc {
+    align-items: right;
+    display: inline-block;
+    margin: auto 0;
+    width: 20px;
+}
+
 .song-vote {
     background-color: #fff;
     padding: 0em 0 3em 0;
@@ -849,6 +917,12 @@ textarea {
     background-color: #fff;
     padding: 1em 0;
     border-radius: 20px;
+}
+
+.grey-row-SongVote {
+    background-color: var(--cc-white);
+    margin: 10px 0px;
+    width: 90vw;
 }
 
 .grey-row {
@@ -943,25 +1017,59 @@ textarea {
     width: 160px;
 }
 
+.bingo-picture {
+    width: 100%;
+    height: 25vh;
+    object-fit: contain;
+    object-position: center;
+    z-index: 10;
+}
+
 .lostBingo {
     background-image: linear-gradient(#bd00ff, #f80000);
-    width: 100vw;
-    height: 92vh;
+    width: 100%;
+    height: 80vh;
     overflow: auto;
+    position: absolute;
+    top: 10%;
 }
 
 .wonBingo {
     background-image: var(--cc-gradient);
-    width: 100vw;
-    height: 92vh;
+    width: 100%;
+    height: 80vh;
     overflow: auto;
+    position: absolute;
+    top: 10%;
+}
+
+.wonBingo h1 {
+    z-index: 5;
+}
+
+/* .confetti{
+    display: block;
+    width: 100%;
+    height: 50%;
+    margin:0 auto;
+    
+} */
+
+.firework {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    z-index: -1;
+    bottom: 0;
 }
 
 .bingoEndConcent {
     text-align: center;
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 55%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
@@ -1028,6 +1136,18 @@ textarea {
     height: auto;
 }
 
+.no-posts .material-icons {
+    font-size: 64px;
+    color: var(--cc-purple);
+}
+
+.no-posts {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 .like-comment {
     background-color: var(--cc-purple);
     color: var(--cc-orange);
@@ -1084,4 +1204,134 @@ textarea {
 
 hr {
     margin: 0;
+}
+
+/* CONCERT INFO */
+.concert-info .col-10,
+.concert-info .col-2,
+.concert-info .col-auto {
+    padding: 0;
+}
+
+.concert-info {
+    margin-top: -2vh;
+}
+
+.concert-info .row {
+    padding: 0 10px;
+}
+
+.concert-info .bg {
+    background-color: #fff;
+    padding: 8px 0;
+    box-shadow: 1px 2px 5px #888888;
+}
+
+.concert-info h2 {
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.concert-info h4 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.concert-info h3 {
+    font-size: 24px;
+    color: var(--cc-orange);
+}
+
+.concert-info i {
+    color: var(--cc-orange);
+    font-size: 48px;
+}
+
+.price h4 {
+    font-size: 24px;
+    margin-top: 9px;
+}
+
+.bg-concert-info {
+    background-color: #fff;
+    text-align: center;
+    margin-bottom: 4px;
+    padding: 3px 0;
+    border-radius: 15px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: 0.5px 3px 4px #888888;
+}
+
+.bg-concert-info h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.p-concert-info {
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.carousel-inner2 {
+    width: 90vw;
+    margin: 10px 0 0 0;
+}
+
+@media only screen and (max-height: 670px) {
+    .main-nav .material-icons {
+        color: var(--cc-white);
+        font-size: 48px;
+        padding-top: 10%;
+    }
+
+    .main-bottom-nav {
+        background-color: #fff;
+        width: 100vw;
+        padding: 10px 0px;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .selected-nav {
+        background-color: rgba(36, 0, 70, 0.199);
+        border-radius: 50px;
+        opacity: 90px;
+        padding-top: 9px;
+    }
+
+    .main-bottom-nav .row {
+        padding: 10px 0;
+    }
+
+    .row .px-4 {
+        padding: 10px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        /* width: 33%; */
+        margin: auto 0;
+        /* padding-top: 4px;
+        margin-left: 7px; */
+    }
+
+    .row .px-4 i {
+        font-size: 20px;
+        line-height: 1;
+        height: 18px;
+    }
+    .row .px-4 h5 {
+        /* width: 50px; */
+        height: 16px;
+    }
+
+    .px-4:hover {
+        text-decoration: none;
+    }
+
+    .navSocial {
+        color: var(--cc-purple);
+        margin: 0 auto;
+    }
 }

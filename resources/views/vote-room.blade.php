@@ -19,29 +19,29 @@
         @foreach( $songVoteOptions->tracks as $key => $songVoteOption)
                 @if(empty($voted))
                     @if((session()->get('userType')) == ("user")) 
-                    <div class="row grey-row" id="{{ $songVoteOption->id }}">
-                        <h4 class="pl-2 my-auto <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" >{{ $key+1 }}</h4>
+                    <div class="row grey-row-SongVote" id="{{ $songVoteOption->id }}">
+                        <h4 class="pl-2 my-auto-vote-rank <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" >{{ $key+1 }}</h4>
                         <div class="play"><audio id="<?php echo $key; ?>"><source src="<?php echo $songVoteOption->preview_url; ?>" /></audio><img class="album-cover" src="<?php echo $songVoteOption->album->images[0]->url; ?>" alt="album cover"><i class="material-icons">play_circle_filled</i></div>  
-                        <h4 class="pl-2 my-auto <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" >{{ $songVoteOption->name }}</h4>
-                        <input type="checkbox" class="my-auto <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>">
+                        <h4 class="pl-2 my-auto-vote-titel  <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" >{{ $songVoteOption->name }}</h4>
+                        <input type="checkbox" class="my-auto-vote-check <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>">
                     </div>
                     @else
                         @foreach($songs as $song)
                             @if($song->song == $songVoteOption->id)
                                 @if($totalVotes > 0)
-                                <div class="row grey-row" 
+                                <div class="row grey-row SongVote" 
                                 style="background: linear-gradient(to right, #ff9e00 0%, #ff9e00 <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ff9e00 <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ddd <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ddd 100%);"
                                 id="{{ $songVoteOption->id }}">
                                 @else
-                                <div class="row grey-row">  
+                                <div class="row grey-row SongVote">  
                                 @endif
-                                    <h4 class="pl-2 my-auto" >{{ $key+1 }}</h4>
+                                    <h4 class="pl-2 my-auto-vote" >{{ $key+1 }}</h4>
                                     <div class="play"><audio id="<?php echo $key; ?>"><source src="<?php echo $songVoteOption->preview_url; ?>" /></audio><img class="album-cover" src="<?php echo $songVoteOption->album->images[0]->url; ?>" alt="album cover"><i class="material-icons">play_circle_filled</i></div>  
-                                    <h4 class="pl-2 my-auto" >{{ $songVoteOption->name }}</h4>
+                                    <h4 class="pl-2 my-auto-vote" >{{ $songVoteOption->name }}</h4>
                                     @if($totalVotes > 0)
-                                    <h4 class="pl-2 my-auto">{{ round((($song->votes)/$totalVotes)*100) }}%</h4>
+                                    <h4 class="pl-2 my-auto-vote">{{ round((($song->votes)/$totalVotes)*100) }}%</h4>
                                     @else
-                                    <h4 class="pl-2 my-auto">0%</h4> 
+                                    <h4 class="pl-2 my-auto-vote">0%</h4> 
                                     @endif
                                 </div>                  
                             @endif
@@ -50,17 +50,17 @@
                 @else 
                     @foreach($songs as $key => $song)
                         @if($song->song == $songVoteOption->id)
-                            <div class="row grey-row"
+                            <div class="row grey-row SongVote"
                                 <?php if($voted->songSpotifyId != $songVoteOption->id) : ?>
                                 style="background: linear-gradient(to right, #ff9e00 0%, #ff9e00 <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ff9e00 <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ddd <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ddd 100%);" 
                                 <?php else : ?>
                                 style="background: linear-gradient(to right, #0094FF 0%, #0094FF <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #0094FF <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ddd <?php echo  round((($song->votes)/$totalVotes)*100); ?>%, #ddd 100%);" 
                                 <?php endif; ?>
                                 id="{{ $songVoteOption->id }}">
-                                <h4 class="pl-2 my-auto <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" >{{ $key+1 }}</h4>
+                                <h4 class="pl-2 my-auto-vote <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" >{{ $key+1 }}</h4>
                                 <div class="play"><audio id="<?php echo $key; ?>"><source src="<?php echo $songVoteOption->preview_url; ?>" /></audio><img class="album-cover" src="<?php echo $songVoteOption->album->images[0]->url; ?>" alt="album cover"><i class="material-icons">play_circle_filled</i></div>  
-                                <h4 class="pl-2 my-auto <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" >{{ $songVoteOption->name }}</h4>
-                                <h4 class="pl-2 my-auto <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>">{{ round((($song->votes)/$totalVotes)*100) }}%</h4>
+                                <h4 class="pl-2 my-auto-vote <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" >{{ $songVoteOption->name }}</h4>
+                                <h4 class="pl-2 my-auto-vote <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>">{{ round((($song->votes)/$totalVotes)*100) }}%</h4>
                             </div>                  
                         @endif
                     @endforeach
@@ -71,8 +71,8 @@
 @endsection
 
 @section('steps')
-    <div class="bottom-nav">
-        <div class="justify-content-center row bottom-nav">
+    <div class="main-bottom-nav">
+        <div class="justify-content-center row main-bottom-nav">
             <a class="row px-4" href="/social-room/{{ request()->route('concerts') }}">
                 <i class="material-icons navSocial">people</i>
                 <h5>Social</h5>
