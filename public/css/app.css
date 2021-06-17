@@ -427,7 +427,7 @@ textarea {
 }
 
 .bottom-nav-btn {
-    bottom: 78px;
+    bottom: 100px;
     right: 15px;
 }
 
@@ -1103,6 +1103,18 @@ textarea {
 .post-image {
     width: 100%;
     height: auto;
+}
+
+.no-posts .material-icons {
+    font-size: 64px;
+    color: var(--cc-purple);
+}
+
+.no-posts {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .like-comment {
