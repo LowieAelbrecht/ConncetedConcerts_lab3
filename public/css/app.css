@@ -117,6 +117,7 @@ h5 {
     color: rgb(255, 137, 0);
 }
 
+<<<<<<< HEAD
 
 
 .labelImgBingo {
@@ -126,6 +127,10 @@ h5 {
     font-weight: bold;
     white-space: nowrap;
     display: inline-block;
+=======
+.material-icons .labelImgBingo {
+    background-color: red;
+>>>>>>> f02f070... update inkopen concert view
 }
 
 .text-white {
@@ -688,6 +693,10 @@ textarea {
     background-image: var(--cc-gradient);
     color: var(--cc-white);
     border-radius: 50%;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    text-align: center;
 }
 
 /* PROFILE */
@@ -1084,4 +1093,78 @@ textarea {
 
 hr {
     margin: 0;
+}
+
+/* CONCERT INFO */
+.concert-info .col-10,
+.concert-info .col-2,
+.concert-info .col-auto {
+    padding: 0;
+}
+
+.concert-info {
+    margin-top: -2vh;
+}
+
+.concert-info .row {
+    padding: 0 10px;
+}
+
+.concert-info .bg {
+    background-color: #fff;
+    padding: 8px 0;
+    box-shadow: 1px 2px 5px #888888;
+}
+
+.concert-info h2 {
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.concert-info h4 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.concert-info h3 {
+    font-size: 24px;
+    color: var(--cc-orange);
+}
+
+.concert-info i {
+    color: var(--cc-orange);
+    font-size: 48px;
+}
+
+.price h4 {
+    font-size: 24px;
+    margin-top: 9px;
+}
+
+.bg-concert-info {
+    background-color: #fff;
+    text-align: center;
+    margin-bottom: 4px;
+    padding: 3px 0;
+    border-radius: 15px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: 0.5px 3px 4px #888888;
+}
+
+.bg-concert-info h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.p-concert-info {
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.carousel-inner2 {
+    width: 90vw;
+    margin: 10px 0 0 0;
 }
