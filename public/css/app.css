@@ -209,8 +209,6 @@ label {
     float: right;
 }
 
-
-
 .main-nav .material-icons {
     color: var(--cc-white);
     font-size: 48px;
@@ -411,7 +409,7 @@ textarea {
 
 .btn-add {
     font-family: var(--font-humana);
-    background-color: var(--cc-purple);
+    background-image: var(--cc-gradient);
     color: var(--cc-white);
     font-size: 24px;
     width: 40px;
@@ -862,14 +860,14 @@ textarea {
     float: right;
 }
 
-.my-auto-vote-rank{
+.my-auto-vote-rank {
     align-items: right;
     display: inline-block;
     margin: auto 0;
     width: 20px;
 }
 
-.my-auto-vote-perc{
+.my-auto-vote-perc {
     align-items: right;
     display: inline-block;
     margin: auto 0;
@@ -986,7 +984,7 @@ textarea {
     width: 160px;
 }
 
-.bingo-picture{
+.bingo-picture {
     width: 100%;
     height: 25vh;
     object-fit: contain;
@@ -1004,7 +1002,7 @@ textarea {
 }
 
 .wonBingo {
-    background-image: var(--cc-gradient);    
+    background-image: var(--cc-gradient);
     width: 100%;
     height: 80vh;
     overflow: auto;
@@ -1012,7 +1010,7 @@ textarea {
     top: 10%;
 }
 
-.wonBingo h1{
+.wonBingo h1 {
     z-index: 5;
 }
 
@@ -1024,14 +1022,14 @@ textarea {
     
 } */
 
-.firework{
+.firework {
     display: block;
-    position:absolute;
+    position: absolute;
     width: 100%;
     height: 100vh;
-    margin:0 auto;
-    z-index: -1;  
-    bottom: 0; 
+    margin: 0 auto;
+    z-index: -1;
+    bottom: 0;
 }
 
 .bingoEndConcent {
@@ -1249,36 +1247,13 @@ hr {
     margin: 10px 0 0 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media only screen and (max-height: 670px) {
-    
-
     .main-nav .material-icons {
         color: var(--cc-white);
         font-size: 48px;
         padding-top: 10%;
     }
 
-    
     .main-bottom-nav {
         background-color: #fff;
         width: 100vw;
@@ -1294,12 +1269,11 @@ hr {
         padding-top: 9px;
     }
 
-    .main-bottom-nav .row{
+    .main-bottom-nav .row {
         padding: 10px 0;
-        
     }
 
-    .row .px-4{
+    .row .px-4 {
         padding: 10px;
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -1309,16 +1283,14 @@ hr {
         margin-left: 7px; */
     }
 
-    .row .px-4 i{
+    .row .px-4 i {
         font-size: 20px;
         line-height: 1;
         height: 18px;
-        
     }
-    .row .px-4 h5{
+    .row .px-4 h5 {
         /* width: 50px; */
         height: 16px;
-        
     }
 
     .px-4:hover {
@@ -1329,4 +1301,4 @@ hr {
         color: var(--cc-purple);
         margin: 0 auto;
     }
-  }
+}
