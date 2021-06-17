@@ -47,7 +47,7 @@
             <span class="dot"></span>
             <span class="selected-dot dot"></span>
             <span class="dot"></span>
-            <input class="nextBtn" type="submit" name="next" value="Next">Next</input>        
+            <input class="nextBtn" type="submit" name="next" value="Next"></input>        
         </div>
     </div>
 </form>

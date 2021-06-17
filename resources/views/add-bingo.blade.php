@@ -13,7 +13,6 @@
             <p>All fans that bought a ticket for your room make an equal chance of winning prizes. Add prizes and activate the bingo after the performance.</p>
         </div>
         <h3>Give away items</h3>
-
         <div class="bg-white mb-5" id="1">
             <div class="card-body">
                 <div class="row">
@@ -48,34 +47,24 @@
             </div>
         </div>
         <div class="addItem">
-            <h5 class="text-center addBtn">ADD ITEM</h5>
+            <h5 class="text-center addBtn">NEW ITEM</h5>
         </div>
     </div>
 
 @endsection
 
 @section('steps')
-    <!-- <div class="steps row justify-content-center">
-        <div class="text-center">
-            <h5>Bingo</h5>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="selected-dot dot"></span>        
-        </div>
-        <div class="pull-right">
-            <input class="nextBtn" type="submit" name="upload" value="Finish"></input>
-        </div>        
-    </div> -->
-    <div class="bottom-nav">
+<div class="bottom-nav">
         <div class="text-center">
             <span class="dot"></span>
             <span class="dot"></span>
             <span class="selected-dot dot"></span>
-            <input class="nextBtn" type="submit" name="upload" value="Next">Next</input>        
+            <input class="nextBtn" type="submit" name="upload" value="Next"></input>        
         </div>
     </div>
 </form>   
 @endsection
+
 
 @section('js')
 <script>
@@ -123,7 +112,6 @@ $(document).ready(function(){
         previewImage.setAttribute("src","");
 }
 });
-
 
 
 

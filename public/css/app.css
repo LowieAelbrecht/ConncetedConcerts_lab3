@@ -1247,6 +1247,12 @@ hr {
     margin: 10px 0 0 0;
 }
 
+.cancel {
+    color: var(--cc-purple);
+    margin-left: 40%;
+    font-size: 1.2em;
+}
+
 @media only screen and (max-height: 670px) {
     .main-nav .material-icons {
         color: var(--cc-white);

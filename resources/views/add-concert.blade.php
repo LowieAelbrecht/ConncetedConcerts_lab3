@@ -49,7 +49,7 @@
             <span class="selected-dot dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
-            <input class="nextBtn" type="submit" name="upload" value="Next">Next</input>        
+            <input class="nextBtn" type="submit" name="upload" value="Next"></input>        
         </div>
     </div>
 
