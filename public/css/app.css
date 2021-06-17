@@ -23,8 +23,8 @@ body {
 }
 
 .content {
-    padding-top: 11vh;
-    padding-bottom: 11vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
 }
 
 h2,
@@ -118,20 +118,8 @@ h5 {
     color: rgb(255, 137, 0);
 }
 
-<<<<<<< HEAD
-
-
-.labelImgBingo {
-    width: 100%;
-    margin-left: -5px;
-    color: rgb(61, 59, 59);
-    font-weight: bold;
-    white-space: nowrap;
-    display: inline-block;
-=======
 .material-icons .labelImgBingo {
     background-color: red;
->>>>>>> f02f070... update inkopen concert view
 }
 
 .text-white {
@@ -213,10 +201,6 @@ label {
 }
 
 .nextBtn {
-<<<<<<< HEAD
-
-=======
->>>>>>> 8a5fa57 (belangrijke update)
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 3px;
@@ -309,14 +293,9 @@ label {
     padding-top: 9px;
 }
 
-<<<<<<< HEAD
 .main-bottom-nav .row {
-    padding: 15px 0;
-=======
-.main-bottom-nav .row{
     padding: 10px 0;
-    
->>>>>>> c609fc8 (gif & song vote)
+
 }
 
 .row .px-4 {
@@ -333,6 +312,7 @@ label {
     line-height: 1;
     height: 20px;
 }
+
 .row .px-4 h5 {
     height: 20px;
 }
@@ -901,14 +881,14 @@ textarea {
     float: right;
 }
 
-.my-auto-vote-rank{
+.my-auto-vote-rank {
     align-items: right;
     display: inline-block;
     margin: auto 0;
     width: 20px;
 }
 
-.my-auto-vote-perc{
+.my-auto-vote-perc {
     align-items: right;
     display: inline-block;
     margin: auto 0;
@@ -1025,7 +1005,7 @@ textarea {
     width: 160px;
 }
 
-.bingo-picture{
+.bingo-picture {
     width: 100%;
     height: 25vh;
     object-fit: contain;
@@ -1038,20 +1018,16 @@ textarea {
     width: 100%;
     height: 80vh;
     overflow: auto;
-    position: absolute;
-    top: 10%;
 }
 
 .wonBingo {
-    background-image: var(--cc-gradient);    
+    background-image: var(--cc-gradient);
     width: 100%;
     height: 80vh;
     overflow: auto;
-    position: absolute;
-    top: 10%;
 }
 
-.wonBingo h1{
+.wonBingo h1 {
     z-index: 5;
 }
 
@@ -1063,14 +1039,14 @@ textarea {
     
 } */
 
-.firework{
+.firework {
     display: block;
-    position:absolute;
+    position: absolute;
     width: 100%;
     height: 100vh;
-    margin:0 auto;
-    z-index: -1;  
-    bottom: 0; 
+    margin: 0 auto;
+    z-index: -1;
+    bottom: 0;
 }
 
 .bingoEndConcent {
@@ -1297,7 +1273,7 @@ hr {
 
 
 @media only screen and (max-height: 670px) {
-    
+
 
     .main-nav .material-icons {
         color: var(--cc-white);
@@ -1305,7 +1281,7 @@ hr {
         padding-top: 10%;
     }
 
-    
+
     .main-bottom-nav {
         background-color: #fff;
         width: 100vw;
@@ -1321,12 +1297,12 @@ hr {
         padding-top: 9px;
     }
 
-    .main-bottom-nav .row{
+    .main-bottom-nav .row {
         padding: 10px 0;
-        
+
     }
 
-    .row .px-4{
+    .row .px-4 {
         padding: 10px;
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -1336,16 +1312,17 @@ hr {
         margin-left: 7px; */
     }
 
-    .row .px-4 i{
+    .row .px-4 i {
         font-size: 20px;
         line-height: 1;
         height: 18px;
-        
+
     }
-    .row .px-4 h5{
+
+    .row .px-4 h5 {
         /* width: 50px; */
         height: 16px;
-        
+
     }
 
     .px-4:hover {
@@ -1356,4 +1333,4 @@ hr {
         color: var(--cc-purple);
         margin: 0 auto;
     }
-  }
+}
