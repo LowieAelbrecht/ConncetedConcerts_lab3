@@ -79,7 +79,7 @@ $(document).ready(function(){
 });
 
 
-
+        /*
         const inpFile =document.getElementById("inpFileBingo");
         const previewContainer = document.getElementById("image-upload2");
         const previewImage = previewContainer.querySelector(".image-preview__image");
@@ -112,6 +112,7 @@ $(document).ready(function(){
         previewImage.setAttribute("src","");
 }
 });
+*/
 
 
 

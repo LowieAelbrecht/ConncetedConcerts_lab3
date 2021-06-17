@@ -53,6 +53,9 @@
             @if(!empty($published))
                 <h4>My rooms</h4>
             @endif
+            @if( $flash = session('message'))
+                    <h5 class="errors">{{ $flash }}</h5>
+            @endif
             @foreach( $myConcerts as $myConcert )
                 @if($myConcert->published == true) 
                     <h4 class="concert-date">{{ date("d/m/'y ", strtotime($myConcert->concert_date)) }} at {{ date("H:i", strtotime($myConcert->concert_date)) }}</h4>

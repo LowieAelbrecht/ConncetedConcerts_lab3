@@ -39,7 +39,9 @@ class ArtistController extends Controller
         $response = curl_exec($ch);
         curl_close($ch);
         $list = json_decode($response, true);
+
         $data['concerts'] = $list['_embedded']['events'];
+
 
         //dd($data['concerts']);
 
@@ -53,6 +55,11 @@ class ArtistController extends Controller
         foreach($myConcerts as $myConcert){
             $concerts = $myConcert->tm_id;
             array_push($data['myConcerts'], $concerts); 
+        }
+
+        if(count($data['concerts']) == (count($data['myConcerts']))){
+            $request->session()->flash('message', 'You have already made concert rooms for all of your upcoming concerts.');
+            return redirect('/user-rooms');
         }
         
 
