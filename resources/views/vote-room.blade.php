@@ -20,7 +20,7 @@
                 @if(empty($voted))
                     @if((session()->get('userType')) == ("user")) 
                     <div class="row grey-row-SongVote" id="{{ $songVoteOption->id }}">
-                        <h4 class="pl-2 my-auto-vote <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" >{{ $key+1 }}</h4>
+                        <h4 class="pl-2 my-auto-vote-rank <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" >{{ $key+1 }}</h4>
                         <div class="play"><audio id="<?php echo $key; ?>"><source src="<?php echo $songVoteOption->preview_url; ?>" /></audio><img class="album-cover" src="<?php echo $songVoteOption->album->images[0]->url; ?>" alt="album cover"><i class="material-icons">play_circle_filled</i></div>  
                         <h4 class="pl-2 my-auto-vote-titel  <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>" >{{ $songVoteOption->name }}</h4>
                         <input type="checkbox" class="my-auto-vote-check <?php if(strtotime($daysleft) < strtotime('now')) : ?> vote <?php endif; ?>">
