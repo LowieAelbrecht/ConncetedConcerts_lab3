@@ -23,8 +23,8 @@ body {
 }
 
 .content {
-    padding-top: 11vh;
-    padding-bottom: 11vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
 }
 
 h2,
@@ -242,10 +242,12 @@ label {
     float: right;
 }
 
+
+
 .main-nav .material-icons {
     color: var(--cc-white);
     font-size: 48px;
-    padding-top: 2vh;
+    padding-top: 25%;
 }
 
 .image-upload .custom-file-upload .material-icons {
@@ -307,8 +309,14 @@ label {
     padding-top: 9px;
 }
 
+<<<<<<< HEAD
 .main-bottom-nav .row {
     padding: 15px 0;
+=======
+.main-bottom-nav .row{
+    padding: 10px 0;
+    
+>>>>>>> c609fc8 (gif & song vote)
 }
 
 .row .px-4 {
@@ -882,7 +890,7 @@ textarea {
     align-items: right;
     display: inline-block;
     margin: auto 0;
-    width: 60%;
+    width: 55%;
 }
 
 .my-auto-vote-check {
@@ -891,6 +899,20 @@ textarea {
     width: 20px;
     margin: auto 0;
     float: right;
+}
+
+.my-auto-vote-rank{
+    align-items: right;
+    display: inline-block;
+    margin: auto 0;
+    width: 20px;
+}
+
+.my-auto-vote-perc{
+    align-items: right;
+    display: inline-block;
+    margin: auto 0;
+    width: 20px;
 }
 
 .song-vote {
@@ -908,7 +930,7 @@ textarea {
 .grey-row-SongVote {
     background-color: var(--cc-white);
     margin: 10px 0px;
-    width: 100vw;
+    width: 90vw;
 }
 
 .grey-row {
@@ -1003,25 +1025,55 @@ textarea {
     width: 160px;
 }
 
+.bingo-picture{
+    width: 100%;
+    height: 25vh;
+    object-fit: contain;
+    object-position: center;
+    z-index: 10;
+}
+
 .lostBingo {
     background-image: linear-gradient(#bd00ff, #f80000);
-    width: 100vw;
-    height: 92vh;
+    width: 100%;
+    height: 80vh;
     overflow: auto;
 }
 
 .wonBingo {
-    background-image: var(--cc-gradient);
-    width: 100vw;
-    height: 92vh;
+    background-image: var(--cc-gradient);    
+    width: 100%;
+    height: 80vh;
     overflow: auto;
+}
+
+.wonBingo h1{
+    z-index: 5;
+}
+
+/* .confetti{
+    display: block;
+    width: 100%;
+    height: 50%;
+    margin:0 auto;
+    
+} */
+
+.firework{
+    display: block;
+    position:absolute;
+    width: 100%;
+    height: 100vh;
+    margin:0 auto;
+    z-index: -1;  
+    bottom: 0; 
 }
 
 .bingoEndConcent {
     text-align: center;
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 55%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
@@ -1219,3 +1271,85 @@ hr {
     width: 90vw;
     margin: 10px 0 0 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-height: 670px) {
+    
+
+    .main-nav .material-icons {
+        color: var(--cc-white);
+        font-size: 48px;
+        padding-top: 10%;
+    }
+
+    
+    .main-bottom-nav {
+        background-color: #fff;
+        width: 100vw;
+        padding: 10px 0px;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .selected-nav {
+        background-color: rgba(36, 0, 70, 0.199);
+        border-radius: 50px;
+        opacity: 90px;
+        padding-top: 9px;
+    }
+
+    .main-bottom-nav .row{
+        padding: 10px 0;
+        
+    }
+
+    .row .px-4{
+        padding: 10px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        /* width: 33%; */
+        margin: auto 0;
+        /* padding-top: 4px;
+        margin-left: 7px; */
+    }
+
+    .row .px-4 i{
+        font-size: 20px;
+        line-height: 1;
+        height: 18px;
+        
+    }
+    .row .px-4 h5{
+        /* width: 50px; */
+        height: 16px;
+        
+    }
+
+    .px-4:hover {
+        text-decoration: none;
+    }
+
+    .navSocial {
+        color: var(--cc-purple);
+        margin: 0 auto;
+    }
+  }

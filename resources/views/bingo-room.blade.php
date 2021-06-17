@@ -99,6 +99,8 @@
                         <img  src="/uploads/{{ $price->file_path }}" class="bingo-picture" alt="Picture of bingo price">
                         <h3 class="py-2">1 {{ $price->item_name }}</h3>
                         <p>{{ $price->item_info }}</p>
+                        <!-- <img src="../images/giphy.gif" alt="gif" class="confetti"> -->
+                        <img src="../images/giphyfirework.gif" alt="gif" class="firework">
                     </div>
                 </div>
             @endif 
